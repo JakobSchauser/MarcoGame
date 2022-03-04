@@ -1,0 +1,8 @@
+C:\Users\jakob\Documents\Marco\.mono\temp\bin\Debug\Marco.dll
+C:\Users\jakob\Documents\Marco\.mono\temp\bin\Debug\Marco.pdb
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.csprojAssemblyReference.cache
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.AssemblyInfoInputs.cache
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.AssemblyInfo.cs
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.csproj.CoreCompileInputs.cache
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.dll
+C:\Users\jakob\Documents\Marco\.mono\temp\obj\Debug\Marco.pdb

@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Marco.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://water.jpg" type="Texture" id=4]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+
+[node name="Worms" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 65, 51 )
+current = true
+smoothing_enabled = true
+script = ExtResource( 5 )
+min_zoom = 0.1
+max_zoom = 1
+margin = Vector2( 200, 100 )
+
+[node name="Marco" type="Sprite" parent="." groups=["Player"]]
+position = Vector2( 62.5, 44.5 )
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Line2D" type="Line2D" parent="Marco"]
+visible = false
+points = PoolVector2Array( -411.077, -179.692 )
+
+[node name="Marco2" type="Sprite" parent="." groups=["Player"]]
+position = Vector2( 72, 106 )
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+player_num = 1
+
+[node name="Line2D" type="Line2D" parent="Marco2"]
+visible = false
+points = PoolVector2Array( -411.077, -179.692 )
+
+[node name="Trails" type="Node2D" parent="."]
+
+[node name="Water" type="Sprite" parent="."]
+position = Vector2( 496, 300 )
+texture = ExtResource( 4 )

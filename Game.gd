@@ -1,0 +1,71 @@
+extends Node2D
+
+
+# Boost
+# Force hole by janking into other snake
+# Slalom
+# Destroy all snake bodies
+# 
+# Lives
+# Reversed controls
+# Slow enemy
+# 
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
+
+var segments = []
+# onready var lake = $L
+
+var players = []
+
+func check_collision(trails, player):
+	for t in trails:
+		var closest_point : Vector2 = Geometry.get_closest_point_to_segment_2d(player.position, t[0], t[0+1])
+		if closest_point.distance_squared_to(player.position) <= player.radius:
+			return true
+	return false
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	players = get_tree().get_nodes_in_group("Player")
+	for p in players:
+		$Camera2D.add_target(p)
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func get_kills():
+	var kills = []
+	for p in players:
+		for q in players:
+			if check_collision(p.points, q):
+				kills.append([p, q]) 
+
+	return kills
+
+
+# func _draw():
+# 	for p in players:
+# 		var pp = p.points
+# 		for i in range(pp.size() - 1):
+# 			draw_line(pp[i],pp[i+1],p.color,6)
+
+
+func _process(delta):
+	# update()
+	var kills = get_kills()
+	if kills.size() != 0:
+		get_tree().reload_current_scene()
+	$Camera2D.position = avg_pos(players)
+	
+
+func avg_pos(objs):
+	var pos = Vector2()
+	for p in objs:
+		pos += p.position
+	
+	return pos / objs.size()
+
+func on_add_segment(segment):
+	segments.append(segment)
