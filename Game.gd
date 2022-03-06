@@ -1,15 +1,8 @@
 extends Node2D
 
 
-# Boost
-# Force hole by janking into other snake
-# Slalom
-# Destroy all snake bodies
-# 
-# Lives
-# Reversed controls
-# Slow enemy
-# 
+# Make lives
+# Boost ui
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -24,8 +17,8 @@ func check_collision(trails, player):
 	for t in trails:
 		var closest_point : Vector2 = Geometry.get_closest_point_to_segment_2d(player.position, t[0], t[0+1])
 		if closest_point.distance_squared_to(player.position) <= player.radius:
-			return true
-	return false
+			return t
+	return null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,7 +32,9 @@ func get_kills():
 	var kills = []
 	for p in players:
 		for q in players:
-			if check_collision(p.points, q):
+			var c = check_collision(p.points, q)
+			if c:
+				p.points.erase(c)
 				kills.append([p, q]) 
 
 	return kills
@@ -56,7 +51,11 @@ func _process(delta):
 	# update()
 	var kills = get_kills()
 	if kills.size() != 0:
-		get_tree().reload_current_scene()
+		for k in kills:
+			k[1].lives -= 1
+			if k[1].lives <= 0:
+				get_tree().reload_current_scene()
+		# pass
 	$Camera2D.position = avg_pos(players)
 	
 
