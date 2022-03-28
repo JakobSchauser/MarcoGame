@@ -1,9 +1,9 @@
 extends Area2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+
+
 var boost = 0
 var maxboost = 5
 var basespeed = 100
@@ -181,13 +181,13 @@ func spawn_powerup(pos):
 	
 func power_slow():
 	speed = slowspeed
-	yield(get_tree().create_timer(2),"timeout")
+	yield(get_tree().create_timer(4),"timeout")
 	speed = basespeed
 
 
 func power_stun():
 	speed = 0.0007
-	yield(get_tree().create_timer(0.5),"timeout")
+	yield(get_tree().create_timer(2),"timeout")
 	speed = basespeed
 
 func power_reverse():

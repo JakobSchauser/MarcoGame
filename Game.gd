@@ -1,12 +1,8 @@
 extends Node2D
 
 
-# Make lives
-# Boost ui
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
 
 var segments = []
 # onready var lake = $L
