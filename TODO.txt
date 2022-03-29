@@ -1,4 +1,5 @@
 # TODO:
+# Fix laps
 # Kig på at lave touch?
 # Kig på overworld
 # Lav banerne unikke -> nye karakterer
@@ -6,3 +7,5 @@
 # Make lives
 # Boost ui
 # Twitter account der kan deles af spaniere
+
+# Lav slangen enten 'kuglet' eller med linealstreger
