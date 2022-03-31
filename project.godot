@@ -14,14 +14,18 @@ config/name="Marco"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+G="*res://G.gd"
+
 [display]
 
-window/size/fullscreen=true
 window/stretch/aspect="keep"
 
 [global]
 
 screen=false
+hdr=false
 
 [input]
 
@@ -82,4 +86,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0.960784, 0.831373, 1 )
 environment/default_environment="res://default_env.tres"

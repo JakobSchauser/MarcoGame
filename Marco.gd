@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 
 
@@ -23,9 +23,11 @@ var has_spawned = false
 export(PackedScene) var powerup_scene 
 
 var radius = 10
-var spawn_hole = 1
+var spawn_hole = 0.1
 
 export var player_num = 0
+
+var current_line = null
 
 var lives = 3  
 
@@ -37,7 +39,7 @@ onready var draw_timer = Timer.new()
 
 var points = []
 
-var colors = [Color.red, Color.green]
+var colors = [G.red,G.green]
 
 onready var color = colors[player_num]
 
@@ -49,15 +51,23 @@ var render_list = []
 
 var fake_pos = Vector2()
 
+
+
+
+
 # onready var line : Line2D = $Line2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite.modulate = color
+	spawn_line2d()
+	# current_line.add_point(position)
+	
 	# collision_timer.connect("timeout",self,"on_collision_timeout")
 	# add_child(collision_timer)
 	# collision_timer.wait_time = 0.1
 	# collision_timer.one_shot = true
 	# collision_timer.start()
-
+	
 	connect("area_entered", self, "on_area_entered")
 
 	draw_timer.connect("timeout",self,"on_draw_timeout")
@@ -73,39 +83,65 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+
+
+func get_closest_thing(things):
+	var d = INF
+	var o = null
+	for thing in things:
+		for p in G.group(thing):
+			if p != self:
+				var dd = (p.position - position).length()
+				if dd < d:
+					o = p
+					d = dd
+	return o
+
+
+
+func move_dir():
+	return Vector2(cos(angle),sin(angle))
+
 func on_area_entered(area):
 	if area.is_in_group("Lap"):
-		laps += 1
-		get_tree().get_nodes_in_group("LapLabel")[0].text = "Laps: " + str(laps)
+		var sgn = sign(move_dir().x) # Work only in levels with horizontal lap
+		
+		var max_laps = laps
+		laps += sgn
+		for p in get_tree().get_nodes_in_group("Player"):
+			if p.laps > max_laps:
+				max_laps = p.laps
 
-func in_grass():
-	for a in get_overlapping_areas():
-		if a.is_in_group("Grass"):
-			return true
-	return false
+		get_tree().get_nodes_in_group("LapLabel")[0].text = "Laps: " + str(max_laps)
+
+
+func spawn_line2d():
+	current_line = Line2D.new()
+	current_line.joint_mode = 2
+	current_line.begin_cap_mode = 2
+	current_line.end_cap_mode = 2
+
+	add_child(current_line)
+	current_line.default_color = color
+	current_line.width = 10
+	current_line.set_as_toplevel(true)
 
 func _process(delta):
+	$Eyes.rotation = angle + PI / 2
+
+	var p
+	
+	
+	p = get_closest_thing(["Player","Powerup"]).position 
+	for c in $Eyes.get_children():
+		c.look_at(p)
+
+
 	$ProgressBar.value = boost
 	$Lives.text = str(lives)
 	t += delta
 	var spd = speed
 
-	if in_grass():
-		var p = fake_pos
-		var n = 2
-		p = points[-n]
-		fake_pos = p[1]
-		lastpos = fake_pos
-		for k in range(n):
-			points.remove(points.size()-1)
-
-		for k in range(n*joints_collison+joints_collison_count):
-			render_list[render_list.size()-1].queue_free()
-			render_list.remove(render_list.size()-1)
-			
-		power_stun()
-
-		# spd *= 0.1
 
 	if Input.is_action_pressed("left"+str(player_num)):
 		angle -= turnspeed*delta
@@ -128,42 +164,42 @@ func _process(delta):
 	var movevec = Vector2(cos(angle),sin(angle))*spd
 
 
-	# vel_vec = (movevec+vel_vec).clamped(200)
-	# line.points = points
+	var off = movevec#*delta
 	
-	var off = movevec*delta
 	
-	fake_pos += off
 	
-	position = fake_pos + off.normalized()*0.5 * radius
+	#fake_pos += off
 	
+	#position = fake_pos + off.normalized()*0.5 * radius
+	
+	move_and_slide(off)
+	fake_pos = position - off.normalized()*0.5 * radius
+	
+	if get_slide_count() > 0:
+		var col = get_slide_collision(0)
+
+		if col != null:
+			if col.collider.is_in_group("Grass"):
+				var bouncevec = movevec.bounce(col.normal)
+				angle = atan2(bouncevec.y,bouncevec.x)
+				collide_slow()
 	spawn_hole = max(0, spawn_hole - delta)
 
 	if rand_range(0, 1) > 0.995 and spawn_hole <= 0:
 		should_spawn_powerups = rand_range(0,1) < 0.9999
 		spawn_hole = 0.5
-
+		spawn_line2d()
 
 func make_collision():
 	if spawn_hole <= 0:
-		points.append([lastpos, fake_pos])
+		points.append([lastpos, fake_pos]) # Is used in game.gd 
 	elif should_spawn_powerups and not has_spawned and spawn_hole <= 0.25:
 		spawn_powerup(lastpos)
-
 
 func on_draw_timeout():
 	if spawn_hole <= 0:
 		joints_collison_count = (joints_collison_count + 1)%joints_collison
-
-		var l =	Line2D.new()
-		l.width = 5
-		l.points =[lastpos, fake_pos]
-		l.default_color = color
-
-		add_child(l)
-		l.set_as_toplevel(true)
-		render_list.append(l)
-
+		current_line.add_point(fake_pos)
 
 	if joints_collison_count == 0:
 		make_collision()
@@ -182,6 +218,11 @@ func spawn_powerup(pos):
 func power_slow():
 	speed = slowspeed
 	yield(get_tree().create_timer(4),"timeout")
+	speed = basespeed
+
+func collide_slow():
+	speed = 0.2*basespeed 
+	yield(get_tree().create_timer(1),"timeout")
 	speed = basespeed
 
 

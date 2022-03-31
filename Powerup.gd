@@ -6,10 +6,9 @@ extends Area2D
 var types = ["Lives","Slow others","Reversed controls","Boost","Stun"]
 onready var type = types[randi() % types.size()]
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	connect("area_entered",self,"on_area_entered")
+	connect("body_entered",self,"on_body_entered")
 
 func give_power(player):
 	match type:
@@ -32,8 +31,8 @@ func give_power(player):
 	
 	player.show_pickup("Picked up: " + type + "!")
 
-func on_area_entered(area):
-	if area.is_in_group("Player"):
-		give_power(area)
+func on_body_entered(body):
+	if body.is_in_group("Player"):
+		give_power(body)
 		
 		queue_free()

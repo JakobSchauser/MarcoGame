@@ -1,11 +1,21 @@
-# TODO:
+TODO:
 # Fix laps
-# Kig på at lave touch?
-# Kig på overworld
-# Lav banerne unikke -> nye karakterer
-# Lav grafik til editorialgunis
-# Make lives
-# Boost ui
-# Twitter account der kan deles af spaniere
+# Fix collision with stuff
+Kig på at lave touch?
+Kig på overworld
+Lav banerne unikke -> nye karakterer
+Lav grafik til editorialgunis
+Make lives feedback
+Boost ui
+Twitter account der kan deles af spaniere
+Mere end 2 spillere
+Fungerer det med 1 spiller?
+Unikke baner
+Interaktive baner som i speed runners
+HTML export
+Character select
+7 great lakes
 
-# Lav slangen enten 'kuglet' eller med linealstreger
+Man skal måle så lidt som muligt - så er man en mere effektiv målerlave! Som de siger et mål er mere end bare at måle sit liv. Det handler nemlig også om at gøre det godt.
+
+Lav slangen enten 'kuglet' eller med linealstreger

@@ -6,13 +6,18 @@
 [ext_resource path="res://water.jpg" type="Texture" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
-[ext_resource path="res://arrowmarco.png" type="Texture" id=7]
+[ext_resource path="res://Screenshot from 2022-03-31 16-37-37.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.5, 200.5 )
+extents = Vector2( 7, 200.5 )
 
 [node name="Worms" type="Node2D"]
 script = ExtResource( 3 )
+
+[node name="ScreenshotFrom2022-03-3116-37-37" type="Sprite" parent="."]
+position = Vector2( 641, 327.75 )
+scale = Vector2( 4.13585, 3.29026 )
+texture = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 65, 51 )
@@ -143,7 +148,7 @@ polygon = PoolVector2Array( 58, -229, 258, -227, 258, -188, -106, -182, -108, -2
 position = Vector2( 463, 76 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lap"]
-position = Vector2( 3.5, -35.5 )
+position = Vector2( 5, -35.5 )
 shape = SubResource( 1 )
 
 [node name="Goal" type="Sprite" parent="Lap"]
@@ -173,68 +178,3 @@ margin_right = 448.0
 margin_bottom = 15.0
 rect_scale = Vector2( 6, 6 )
 text = "Laps: 0"
-
-[node name="Arrowmarco" type="Sprite" parent="."]
-position = Vector2( 13, 183 )
-rotation = -1.36791
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco9" type="Sprite" parent="."]
-position = Vector2( 316, 219 )
-rotation = -1.36791
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco10" type="Sprite" parent="."]
-position = Vector2( 449, 441 )
-rotation = -2.68655
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco11" type="Sprite" parent="."]
-position = Vector2( 453, 598 )
-rotation = -2.99797
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco2" type="Sprite" parent="."]
-position = Vector2( 685, -47 )
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco3" type="Sprite" parent="."]
-position = Vector2( 553, 174 )
-rotation = 0.475074
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco4" type="Sprite" parent="."]
-position = Vector2( 1043, 208 )
-rotation = 1.01496
-scale = Vector2( 0.0792155, 0.0792155 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco5" type="Sprite" parent="."]
-position = Vector2( 666, 387 )
-rotation = -0.726327
-scale = Vector2( -0.0585523, -0.0585523 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco6" type="Sprite" parent="."]
-position = Vector2( 704, 448 )
-rotation = -0.726327
-scale = Vector2( -0.0585523, -0.0585523 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco7" type="Sprite" parent="."]
-position = Vector2( 734, 527 )
-rotation = -0.726327
-scale = Vector2( -0.0585523, -0.0585523 )
-texture = ExtResource( 7 )
-
-[node name="Arrowmarco8" type="Sprite" parent="."]
-position = Vector2( 762, 596 )
-rotation = -0.726327
-scale = Vector2( -0.0585523, -0.0585523 )
-texture = ExtResource( 7 )
