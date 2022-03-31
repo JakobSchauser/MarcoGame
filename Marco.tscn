@@ -57,3 +57,5 @@ position = Vector2( -6.5, -5.5 )
 
 [node name="Eye2" parent="Eyes" instance=ExtResource( 4 )]
 position = Vector2( 6.5, -5.5 )
+
+[node name="pickup" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/jazzmand.wav-8d18032d3de4976f3ffdb3ef02f844f7.sample"
+
+[deps]
+
+source_file="res://jazzmand.wav"
+dest_files=[ "res://.import/jazzmand.wav-8d18032d3de4976f3ffdb3ef02f844f7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

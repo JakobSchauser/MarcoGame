@@ -3,10 +3,10 @@
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
-[ext_resource path="res://water.jpg" type="Texture" id=4]
+[ext_resource path="res://Color.gd" type="Script" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
-[ext_resource path="res://Color.gd" type="Script" id=7]
+[ext_resource path="res://jazzmand.wav" type="AudioStream" id=7]
 [ext_resource path="res://lake.png" type="Texture" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
@@ -25,7 +25,7 @@ script = ExtResource( 3 )
 visible = false
 position = Vector2( 649, 452 )
 texture = ExtResource( 13 )
-script = ExtResource( 7 )
+script = ExtResource( 14 )
 color = "green"
 
 [node name="Lap" type="Area2D" parent="." groups=["Lap"]]
@@ -81,17 +81,11 @@ position = Vector2( 863, 562 )
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 932, 380 )
 
-[node name="Water" type="Sprite" parent="."]
-visible = false
-position = Vector2( 497, 293 )
-scale = Vector2( 0.59, 0.528388 )
-texture = ExtResource( 4 )
-
 [node name="Lake" type="Sprite" parent="."]
 position = Vector2( 494, 264 )
 scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
-script = ExtResource( 14 )
+script = ExtResource( 4 )
 color = "blue"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -111,3 +105,7 @@ position = Vector2( 1618, 206 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
 position = Vector2( 383, 181 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
