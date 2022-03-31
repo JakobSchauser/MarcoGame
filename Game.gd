@@ -1,9 +1,5 @@
 extends Node2D
 
-
-
-
-
 var segments = []
 # onready var lake = $L
 
@@ -18,6 +14,7 @@ func check_collision(trails, player):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Lap.connect("race_over", self, "on_race_over")
 	players = get_tree().get_nodes_in_group("Player")
 	for p in players:
 		$Camera2D.add_target(p)
@@ -41,6 +38,10 @@ func get_kills():
 # 		var pp = p.points
 # 		for i in range(pp.size() - 1):
 # 			draw_line(pp[i],pp[i+1],p.color,6)
+
+func on_race_over():
+	get_tree().reload_current_scene()
+
 
 
 func _process(delta):

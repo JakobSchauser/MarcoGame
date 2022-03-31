@@ -68,7 +68,7 @@ func _ready():
 	# collision_timer.one_shot = true
 	# collision_timer.start()
 	
-	connect("area_entered", self, "on_area_entered")
+	
 
 	draw_timer.connect("timeout",self,"on_draw_timeout")
 	add_child(draw_timer)
@@ -101,19 +101,6 @@ func get_closest_thing(things):
 
 func move_dir():
 	return Vector2(cos(angle),sin(angle))
-
-func on_area_entered(area):
-	if area.is_in_group("Lap"):
-		var sgn = sign(move_dir().x) # Work only in levels with horizontal lap
-		
-		var max_laps = laps
-		laps += sgn
-		for p in get_tree().get_nodes_in_group("Player"):
-			if p.laps > max_laps:
-				max_laps = p.laps
-
-		get_tree().get_nodes_in_group("LapLabel")[0].text = "Laps: " + str(max_laps)
-
 
 func spawn_line2d():
 	current_line = Line2D.new()
