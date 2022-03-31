@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://boot.png" type="Texture" id=1]
+[ext_resource path="res://Color.gd" type="Script" id=2]
+
+[node name="Boot" type="Sprite" groups=["Grass"]]
+position = Vector2( -161, -252 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+color = "silver"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Grass"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -498, 251, -478, 128, -429, 0, -403, -177, -379, -321, -331, -388, -287, -422, -205, -450, -18, -455, 69, -464, 258, -460, 407, -463, 511, -466, 575, -479, 630, -503, 687, -580, 687, -649, 646, -674, 428, -719, 220, -723, 137, -717, -38, -717, -350, -691, -549, -623, -569, -611, -609, -520, -624, -323, -649, -129, -687, 333, -699, 505, -649, 632, -600, 670, -558, 676, -510, 634, -488, 578, -492, 375 )

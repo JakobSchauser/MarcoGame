@@ -5,12 +5,27 @@ extends Node
 # var a = 2
 # var b = "text"
 
-var red = Color("FF3333")
-var pink = Color("F15BB5")
-var yellow = Color("FEE440")
-var purple = Color("9B5DE5")
-var blue = Color("00BBF9")
-var green = Color("00F5D4")
+var red = Color("FF5C5C")
+var pink = Color("F47BC4")
+var yellow = Color("FEEB71")
+var purple = Color("B284EB")
+var blue = Color("47D1FF")
+var turqoise = Color("85FFEF")
+var green = Color("62E95D")
+var brown = Color("D0804E")
+var silver = Color("A8A29F")
+
+var colors = {
+	"red": red,
+	"pink": pink,
+	"yellow": yellow,
+	"purple": purple,
+	"blue": blue,
+	"turqoise": turqoise,
+	"green": green,
+	"brown": brown,
+	"silver": silver
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

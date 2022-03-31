@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Grass.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game.gd" type="Script" id=3]
 [ext_resource path="res://water.jpg" type="Texture" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
-[ext_resource path="res://Screenshot from 2022-03-31 16-37-37.png" type="Texture" id=7]
+[ext_resource path="res://Color.gd" type="Script" id=7]
+[ext_resource path="res://lake.png" type="Texture" id=8]
+[ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -14,148 +18,50 @@ extents = Vector2( 7, 200.5 )
 [node name="Worms" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="ScreenshotFrom2022-03-3116-37-37" type="Sprite" parent="."]
-position = Vector2( 641, 327.75 )
-scale = Vector2( 4.13585, 3.29026 )
-texture = ExtResource( 7 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 65, 51 )
 current = true
+zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
-min_zoom = 0.1
-max_zoom = 1
-margin = Vector2( 200, 100 )
 
 [node name="Marco" parent="." instance=ExtResource( 1 )]
-position = Vector2( 163.5, -20 )
+position = Vector2( 461, -128 )
 
 [node name="Marco2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 114, 40.5 )
+position = Vector2( 462, -164 )
 player_num = 1
 
 [node name="Trails" type="Node2D" parent="."]
 
+[node name="Longrock" parent="Trails" instance=ExtResource( 9 )]
+position = Vector2( 952, 364 )
+
+[node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
+position = Vector2( -157, 420 )
+rotation = 1.24029
+
+[node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( -109, 914 )
+
+[node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 863, 562 )
+
+[node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 932, 380 )
+
 [node name="Water" type="Sprite" parent="."]
+visible = false
 position = Vector2( 497, 293 )
 scale = Vector2( 0.59, 0.528388 )
 texture = ExtResource( 4 )
 
-[node name="Grass10" type="Node" parent="."]
-
-[node name="Grass" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 9, -90 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Grass10/Grass"]
-polygon = PoolVector2Array( -61, 79, 197, -5, 385, -49, 564, -48, 888, -3, 1076, 74, 1154, 305, 1138, 523, 1078, 707, 953, 786, 725, 776, 434, 757, 31, 724, -98, 615, -171, 420, -103, 256, -56, 86, -590, -284, -712, 71, -521, 1487, 1141, 1598, 2005, 1400, 2299, 682, 2039, -98, 1367, -550, 200, -503, -592, -278 )
-
-[node name="CollisionPolygon2D2" type="Polygon2D" parent="Grass10/Grass"]
-polygon = PoolVector2Array( -61, 79, 197, -5, 385, -49, 564, -48, 888, -3, 1076, 74, 1154, 305, 1138, 523, 1078, 707, 953, 786, 725, 776, 434, 757, 31, 724, -98, 615, -171, 420, -103, 256, -56, 86, -590, -284, -712, 71, -521, 1487, 1141, 1598, 2005, 1400, 2299, 682, 2039, -98, 1367, -550, 200, -503, -592, -278 )
-
-[node name="Grass11" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 9, -90 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Grass10/Grass11"]
-polygon = PoolVector2Array( -61, 79, 197, -5, 385, -49, 564, -48, 888, -3, 1076, 74, 1154, 305, 1138, 523, 1078, 707, 953, 786, 725, 776, 434, 757, 31, 724, -98, 615, -171, 420, -103, 256, -56, 86, -590, -284, -712, 71, -521, 1487, 1141, 1598, 2005, 1400, 2299, 682, 2039, -98, 1367, -550, 200, -503, -592, -278 )
-
-[node name="CollisionPolygon2D2" type="Polygon2D" parent="Grass10/Grass11"]
-polygon = PoolVector2Array( -61, 79, 197, -5, 385, -49, 564, -48, 888, -3, 1076, 74, 1154, 305, 1138, 523, 1078, 707, 953, 786, 725, 776, 434, 757, 31, 724, -98, 615, -171, 420, -103, 256, -56, 86, -590, -284, -712, 71, -521, 1487, 1141, 1598, 2005, 1400, 2299, 682, 2039, -98, 1367, -550, 200, -503, -592, -278 )
-
-[node name="Grass2" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 79, 190 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass2"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass2"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass5" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 674, 702 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass5"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass5"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass6" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 609, 642 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass6"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass6"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass7" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 592, 561 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass7"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass7"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass8" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 554, 498 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass8"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass8"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass9" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 511, 420 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass9"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="CollisionPolygon2D3" type="Polygon2D" parent="Grass10/Grass9"]
-polygon = PoolVector2Array( 35, -10, 108, -15, 111, -74 )
-
-[node name="Grass3" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 782, 201 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Grass10/Grass3"]
-polygon = PoolVector2Array( -527, 257, -461, 189, -492, 144, -559, 170, -625, 127, -654, 170, -673, 208, -652, 238, -551, 333, -296, 306 )
-
-[node name="CollisionPolygon2D2" type="Polygon2D" parent="Grass10/Grass3"]
-polygon = PoolVector2Array( -527, 257, -461, 189, -492, 144, -559, 170, -625, 127, -654, 170, -673, 208, -652, 238, -551, 333, -296, 306 )
-
-[node name="Grass4" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 701, 486 )
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Grass10/Grass4"]
-polygon = PoolVector2Array( 58, -229, 258, -227, 258, -188, -106, -182, -108, -221 )
-
-[node name="CollisionPolygon2D2" type="Polygon2D" parent="Grass10/Grass4"]
-polygon = PoolVector2Array( 58, -229, 258, -227, 258, -188, -106, -182, -108, -221 )
-
-[node name="Grass10" parent="Grass10" instance=ExtResource( 2 )]
-position = Vector2( 808, 286 )
-rotation = -0.528688
-
-[node name="CollisionPolygon2D" type="Polygon2D" parent="Grass10/Grass10"]
-polygon = PoolVector2Array( 58, -229, 258, -227, 258, -188, -106, -182, -108, -221 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Grass10/Grass10"]
-polygon = PoolVector2Array( 58, -229, 258, -227, 258, -188, -106, -182, -108, -221 )
-
 [node name="Lap" type="Area2D" parent="." groups=["Lap"]]
-position = Vector2( 463, 76 )
+position = Vector2( 492, 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lap"]
 position = Vector2( 5, -35.5 )
 shape = SubResource( 1 )
-
-[node name="Goal" type="Sprite" parent="Lap"]
-position = Vector2( 2.99994, 71.9999 )
-rotation = 1.56572
-scale = Vector2( 0.203125, 0.203125 )
-texture = ExtResource( 6 )
 
 [node name="Goal2" type="Sprite" parent="Lap"]
 position = Vector2( 3.99988, -77 )
@@ -169,12 +75,27 @@ rotation = 1.56572
 scale = Vector2( 0.203125, 0.203125 )
 texture = ExtResource( 6 )
 
+[node name="Lake" type="Sprite" parent="."]
+position = Vector2( 494, 264 )
+scale = Vector2( 0.59082, 0.59082 )
+texture = ExtResource( 8 )
+script = ExtResource( 7 )
+color = "blue"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="LapLabel" type="Label" parent="CanvasLayer" groups=["LapLabel"]]
 margin_left = 403.0
 margin_top = 1.0
-margin_right = 448.0
-margin_bottom = 15.0
-rect_scale = Vector2( 6, 6 )
+margin_right = 541.0
+margin_bottom = 56.0
 text = "Laps: 0"
+
+[node name="Boot" parent="." instance=ExtResource( 11 )]
+position = Vector2( 383, 181 )
+
+[node name="Boot2" parent="Boot" instance=ExtResource( 11 )]
+position = Vector2( -50, 1285 )
+
+[node name="Boot3" parent="Boot" instance=ExtResource( 11 )]
+position = Vector2( 1235, 25 )

@@ -7,7 +7,7 @@ extends KinematicBody2D
 var boost = 0
 var maxboost = 5
 var basespeed = 100
-var slowspeed = 50
+var slowspeed = 20
 var speed = basespeed
 var turnspeed = 2.3
 var angle = 0
@@ -39,7 +39,7 @@ onready var draw_timer = Timer.new()
 
 var points = []
 
-var colors = [G.red,G.green]
+var colors = [G.red,G.turqoise]
 
 onready var color = colors[player_num]
 
@@ -52,7 +52,7 @@ var render_list = []
 var fake_pos = Vector2()
 
 
-
+var collides = false
 
 
 # onready var line : Line2D = $Line2D
@@ -180,9 +180,16 @@ func _process(delta):
 
 		if col != null:
 			if col.collider.is_in_group("Grass"):
-				var bouncevec = movevec.bounce(col.normal)
-				angle = atan2(bouncevec.y,bouncevec.x)
-				collide_slow()
+				speed = slowspeed
+				collides = true
+	else:
+		if collides:
+			collide_slow()
+			collides = false
+
+			#	var bouncevec = movevec.bounce(col.normal)
+			#	angle = atan2(bouncevec.y,bouncevec.x)
+				
 	spawn_hole = max(0, spawn_hole - delta)
 
 	if rand_range(0, 1) > 0.995 and spawn_hole <= 0:
@@ -193,7 +200,7 @@ func _process(delta):
 func make_collision():
 	if spawn_hole <= 0:
 		points.append([lastpos, fake_pos]) # Is used in game.gd 
-	elif should_spawn_powerups and not has_spawned and spawn_hole <= 0.25:
+	elif should_spawn_powerups and not has_spawned and spawn_hole <= 0.25 and speed >= basespeed:
 		spawn_powerup(lastpos)
 
 func on_draw_timeout():
@@ -217,18 +224,18 @@ func spawn_powerup(pos):
 	
 func power_slow():
 	speed = slowspeed
-	yield(get_tree().create_timer(4),"timeout")
+	yield(get_tree().create_timer(6),"timeout")
 	speed = basespeed
 
 func collide_slow():
-	speed = 0.2*basespeed 
+	speed = slowspeed
 	yield(get_tree().create_timer(1),"timeout")
 	speed = basespeed
 
 
 func power_stun():
 	speed = 0.0007
-	yield(get_tree().create_timer(2),"timeout")
+	yield(get_tree().create_timer(4),"timeout")
 	speed = basespeed
 
 func power_reverse():

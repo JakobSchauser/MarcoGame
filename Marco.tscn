@@ -22,18 +22,18 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Lives" type="Label" parent="."]
+visible = false
 margin_left = -27.0769
 margin_top = 46.7692
-margin_right = 12.9231
-margin_bottom = 60.7692
-rect_scale = Vector2( 5, 5 )
+margin_right = -27.0769
+margin_bottom = 101.769
 
 [node name="Pickup" type="Label" parent="."]
+visible = false
 margin_left = -27.0769
 margin_top = -51.6923
 margin_right = 12.9231
 margin_bottom = -37.6923
-rect_scale = Vector2( 5, 5 )
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
