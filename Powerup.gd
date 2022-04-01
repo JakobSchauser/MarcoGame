@@ -34,6 +34,6 @@ func give_power(player):
 func on_body_entered(body):
 	if body.is_in_group("Player"):
 		give_power(body)
-		body.play_pickup
+		body.play_pickup()
 		
 		queue_free()

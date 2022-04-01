@@ -41,7 +41,6 @@ var points = []
 
 var colors = [G.red,G.turqoise]
 
-onready var color = colors[player_num]
 
 var lastpos = position 
 
@@ -51,6 +50,7 @@ var render_list = []
 
 var fake_pos = Vector2()
 
+onready var color = colors[player_num]
 
 var collides = false
 
@@ -240,3 +240,6 @@ func show_pickup(msg):
 	yield(get_tree().create_timer(2),"timeout")
 	$Pickup.hide()
 
+
+func play_pickup():
+	$pickup.play()
