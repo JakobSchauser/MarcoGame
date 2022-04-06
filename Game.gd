@@ -5,6 +5,8 @@ var segments = []
 
 var players = []
 
+var total_time = 0
+
 func check_collision(trails, player):
 	for t in trails:
 		var closest_point : Vector2 = Geometry.get_closest_point_to_segment_2d(player.position, t[0], t[0+1])
@@ -40,11 +42,12 @@ func get_kills():
 # 			draw_line(pp[i],pp[i+1],p.color,6)
 
 func on_race_over():
-	get_tree().reload_current_scene()
-
+	remove_child($Players)
+	get_tree().change_scene("res://Gameover.tscn")
 
 
 func _process(delta):
+	total_time += delta
 	# update()
 	var kills = get_kills()
 	if kills.size() != 0:
@@ -54,6 +57,10 @@ func _process(delta):
 				get_tree().reload_current_scene()
 		# pass
 	$Camera2D.position = avg_pos(players)
+
+	if Input.is_action_just_pressed("ui_accept"):
+		print("yay")
+		on_race_over()
 	
 
 func avg_pos(objs):

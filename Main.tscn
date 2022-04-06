@@ -20,6 +20,17 @@ extents = Vector2( 7, 200.5 )
 [node name="Worms" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Marco" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 461, -128 )
+worm_name = "Agnes"
+
+[node name="Marco2" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 462, -164 )
+worm_name = "Marco"
+player_num = 1
+
 [node name="Gradient" type="Sprite" parent="."]
 visible = false
 position = Vector2( 649, 452 )
@@ -54,13 +65,6 @@ zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
 margin = Vector2( 100, 100 )
-
-[node name="Marco" parent="." instance=ExtResource( 1 )]
-position = Vector2( 461, -128 )
-
-[node name="Marco2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 462, -164 )
-player_num = 1
 
 [node name="Trails" type="Node2D" parent="."]
 

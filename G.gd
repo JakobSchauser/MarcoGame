@@ -34,13 +34,15 @@ var colors = {
 func _ready():
 	pass # Replace with function body.
 
+func _process(dt):
+	run_time += dt
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
 func timer(delay):
-	get_tree().create_timer(delay)
+	return get_tree().create_timer(delay)
 
 func group(tag):
 	return get_tree().get_nodes_in_group(tag)

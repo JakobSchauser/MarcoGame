@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 
-
+export(String) var worm_name
 
 var boost = 0
 var maxboost = 5
