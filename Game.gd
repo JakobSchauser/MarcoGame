@@ -18,6 +18,10 @@ func _ready():
 	players = get_tree().get_nodes_in_group("Player")
 	for p in players:
 		$Camera2D.add_target(p)
+
+
+	for i in range(9999):
+		var x = rand_range(0,1000);
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
