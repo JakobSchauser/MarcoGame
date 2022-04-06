@@ -37,6 +37,28 @@ var colors = {
 	"white": Color.white
 }
 
+
+
+var worms = [
+	{ "name": "Agnes",
+	   "describe": "Royal blue business ladylike.",
+	   "color": colors.blue },
+
+	{ "name": "Marco",
+	   "describe": "The classic.",
+	   "color": colors.green
+    },
+	{
+		"name": "Levi",
+		"color": colors.red,
+		"describe": "Pants!"
+	},
+	{   "name": "Udo",
+	    "color": colors.yellow,
+		"describe": "Loves archives"
+	}
+	]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

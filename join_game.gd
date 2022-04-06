@@ -9,26 +9,6 @@ var selected = false
 
 var scroll_index = 0
 
-var worms = [
-	{ "name": "Agnes",
-	   "describe": "Royal blue business ladylike.",
-	   "color": G.blue },
-
-	{ "name": "Marco",
-	   "describe": "The classic.",
-	   "color": G.green
-    },
-	{
-		"name": "Levi",
-		"color": G.red,
-		"describe": "Pants!"
-	},
-	{   "name": "Udo",
-	    "color": Color.yellow,
-		"describe": "No one knows who this guy is."
-	}
-	]
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Label.text = "Press '" + select_key + "' to join!"

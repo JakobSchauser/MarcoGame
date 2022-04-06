@@ -38,7 +38,6 @@ player_num = 1
 [node name="Gradient" type="Sprite" parent="."]
 visible = false
 position = Vector2( 649, 452 )
-texture = ExtResource( 13 )
 script = ExtResource( 14 )
 color = "green"
 
@@ -80,15 +79,18 @@ wobble_amount = 0.2
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
 position = Vector2( -109, 914 )
+outline = true
 wobble_amount = 0.2
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 863, 562 )
-wobble_amount = 0.2
+outline = true
+wobble_amount = 0.4
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 932, 380 )
-wobble_amount = 0.2
+outline = true
+wobble_amount = 0.4
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
@@ -113,10 +115,10 @@ size_flags_vertical = 0
 margin_left = 443.0
 margin_right = 581.0
 margin_bottom = 59.0
+size_flags_horizontal = 3
 
 [node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 margin_right = 138.0
-margin_bottom = 138.0
 
 [node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
 margin_top = 4.0
