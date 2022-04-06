@@ -13,6 +13,8 @@ var turnspeed = 2.3
 var angle = 0
 var laps = 0
 
+var held_powerup = ""
+
 var joints_collison = 3
 var joints_collison_count = 0
 
@@ -116,6 +118,7 @@ func spawn_line2d():
 	current_line.set_as_toplevel(true)
 
 func _process(delta):
+	$Face.get_node("Eyes").rotation = angle + PI / 2
 
 	$Face/Eyes.rotation = angle + PI / 2
 
@@ -134,9 +137,9 @@ func _process(delta):
 	var spd = speed
 
 
-	if Input.is_action_pressed("left"+str(player_num)):
+	if Input.is_action_pressed("left" + str(player_num)):
 		angle -= turnspeed*delta
-	if Input.is_action_pressed("right"+str(player_num)):
+	if Input.is_action_pressed("right" + str(player_num)):
 		angle += turnspeed*delta
 	
 	if is_dead:
@@ -148,9 +151,8 @@ func _process(delta):
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 	
-	if Input.is_action_pressed("boost"+str(player_num)) and boost > 0:
-		spd *= 1.6
-		boost = max(0, boost - delta)
+	if Input.is_action_pressed("boost"+str(player_num)):
+		use_power()
 
 	if Input.is_action_pressed("break"+str(player_num)):
 		spd *= 0.6
@@ -265,3 +267,29 @@ func kill():
 	spawn_hole = 0.1
 	lives = 3
 	is_dead = false
+
+
+func give_power(type):
+	held_powerup = type
+	show_pickup("Picked up: " + type + "!")
+
+func use_power():
+	match held_powerup:
+		"Lives": 
+			lives += 2
+		"Slow others":
+			for p in get_tree().get_nodes_in_group("Player"):
+				if p != self:
+					p.power_slow()
+		"Reversed controls":
+			for p in get_tree().get_nodes_in_group("Player"):
+				if p != self:
+					p.power_reverse()
+		"Boost":
+			power_boost()
+		"Stun":
+			for p in get_tree().get_nodes_in_group("Player"):
+				if p != self:
+					p.power_stun()
+	held_powerup = ""
+
