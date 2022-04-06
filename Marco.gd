@@ -50,7 +50,7 @@ var render_list = []
 
 var fake_pos = Vector2()
 
-onready var color = colors[player_num]
+var color = Color.red
 
 var collides = false
 
@@ -117,13 +117,15 @@ func spawn_line2d():
 
 func _process(delta):
 
-	$Eyes.rotation = angle + PI / 2
+	$Face/Eyes.rotation = angle + PI / 2
 
 
 
-	var p = get_closest_thing(["Player","Powerup"]).position 
-	for c in $Eyes.get_children():
-		c.look_at(p)
+	var p = get_closest_thing(["Player","Powerup"])
+	
+	if p:
+		for c in $Face/Eyes.get_children():
+			c.look_at(p.position)
 
 
 	$ProgressBar.value = boost

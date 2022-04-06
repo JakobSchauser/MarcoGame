@@ -9,7 +9,6 @@
 radius = 9.51315
 
 [node name="Marco" type="KinematicBody2D" groups=["Player"]]
-position = Vector2( 62.5, 44.5 )
 script = ExtResource( 2 )
 powerup_scene = ExtResource( 3 )
 

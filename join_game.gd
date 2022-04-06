@@ -1,6 +1,6 @@
 extends Node2D
 
-export (int) var index
+export (int) var player_num
 export (String) var select_key
 
 var active = false
@@ -9,33 +9,16 @@ var selected = false
 
 var scroll_index = 0
 
-var worms = [
-	{ "name": "Agnes",
-	   "describe": "Royal blue business ladylike.",
-	   "color": G.blue },
-
-	{ "name": "Marco",
-	   "describe": "The classic.",
-	   "color": G.green
-    },
-	{
-		"name": "Levi",
-		"color": G.red,
-		"describe": "Pants!"
-	},
-	{   "name": "Udo",
-	    "color": Color.yellow,
-		"describe": "No one knows who this guy is."
-	}
-	]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Label.text = "Press '" + select_key + "' to join!"
 
+func get_worm():
+	return G.worms[scroll_index]
 
 func _process(dt):
-	var i = str(index)
+	var i = str(player_num)
 	if Input.is_action_just_pressed("boost" + i):
 		if active:
 			selected = true
@@ -55,13 +38,11 @@ func _process(dt):
 	if not active:
 		return
 	
-	scroll_index = scroll_index % len(worms)
-	var worm = worms[scroll_index]
+	scroll_index = scroll_index % len(G.worms)
+	var worm = get_worm()
 	$Describe.text = worm["describe"]
 	$Name.text = worm["name"]
 	$Face/Sprite.modulate = worm["color"]
-
-
 	
 	if selected:
 		$Describe.text = "Selected!"

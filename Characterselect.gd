@@ -1,8 +1,6 @@
 extends Node2D
 
-
 onready var timer = $Timer
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,7 +31,14 @@ func _process(delta):
 		$Label.text = str(round(timer.time_left+0.5))
 	
 func on_timeout():
-	G.change_scene("res://Main.tscn")
+	var p = []
+	for o in $joins.get_children():
+		if o.active:
+			var w = o.get_worm()
+			w["player_num"] = o.player_num
+			p.append(w)
+	G.players_data = p
+	G.change_scene("Main")
 
 	
 	
