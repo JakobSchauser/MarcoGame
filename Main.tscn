@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Lap.gd" type="Script" id=12]
 [ext_resource path="res://gradient.png" type="Texture" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
+[ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -66,9 +67,6 @@ player_num = 1
 
 [node name="Trails" type="Node2D" parent="."]
 
-[node name="Longrock" parent="Trails" instance=ExtResource( 9 )]
-position = Vector2( 952, 364 )
-
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
 position = Vector2( -157, 420 )
 rotation = 1.24029
@@ -111,3 +109,7 @@ position = Vector2( 383, 181 )
 stream = ExtResource( 4 )
 volume_db = -15.0
 autoplay = true
+
+[node name="Lever" parent="." instance=ExtResource( 15 )]
+position = Vector2( 228, 682 )
+rotation = -1.21905
