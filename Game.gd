@@ -6,6 +6,7 @@ var segments = []
 var players = []
 
 var total_time = 0
+export (PackedScene) var grass
 
 func check_collision(trails, player):
 	for t in trails:
@@ -20,7 +21,26 @@ func _ready():
 	players = get_tree().get_nodes_in_group("Player")
 	for p in players:
 		$Camera2D.add_target(p)
-	
+
+	print("Herro")
+	for i in range(500):
+		var x = rand_range(0,1000)
+		var y = rand_range(-500,1000)
+
+		var inst = grass.instance()
+
+		inst.position = Vector2(x,y)
+
+		var sx = rand_range(0.5,1) * sign(rand_range(-1,1))
+
+		inst.scale = Vector2(sx/10,abs(sx)/10)
+
+
+		inst.z_index = -100
+		add_child(inst)
+		
+
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func get_kills():

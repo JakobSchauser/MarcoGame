@@ -8,15 +8,16 @@ var winner = null
 
 var leader_board = []
 
-var red = Color("FF5C5C")
-var pink = Color("F47BC4")
-var yellow = Color("FEEB71")
-var purple = Color("B284EB")
-var blue = Color("47D1FF")
-var turqoise = Color("85FFEF")
-var green = Color("62E95D")
-var brown = Color("D0804E")
-var silver = Color("A8A29F")
+var red = Color("FF004D")
+var pink = Color("FF77A8")
+var yellow = Color("FFEC27")
+var purple = Color("7E2553")
+var blue = Color("29ADFF")
+var turqoise = Color("FFCCAA")
+var green = Color("00E436")
+var darkgreen = Color("008751")
+var brown = Color("AB5236")
+var silver = Color("83769C")
 
 var colors = {
 	"red": red,
@@ -26,6 +27,7 @@ var colors = {
 	"blue": blue,
 	"turqoise": turqoise,
 	"green": green,
+	"darkgreen": darkgreen,
 	"brown": brown,
 	"silver": silver
 }
