@@ -81,11 +81,14 @@ position = Vector2( 863, 562 )
 position = Vector2( 932, 380 )
 
 [node name="Lake" type="Sprite" parent="."]
+self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
 position = Vector2( 494, 264 )
 scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
+outline = true
+outline_color = Color( 1, 1, 1, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -98,12 +101,15 @@ text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 333, 1466 )
+wobble_amount = 0.2
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1618, 206 )
+wobble_amount = 0.2
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
 position = Vector2( 383, 181 )
+wobble_amount = 0.2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -111,5 +117,5 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Lever" parent="." instance=ExtResource( 15 )]
-position = Vector2( 228, 682 )
+position = Vector2( 230, 677 )
 rotation = -1.21905

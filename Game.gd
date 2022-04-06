@@ -23,7 +23,7 @@ func _ready():
 
 	print("Herro")
 	for i in range(500):
-		var x = rand_range(0,1000)
+		var x = rand_range(-200,1000)
 		var y = rand_range(-500,1000)
 
 		var inst = grass.instance()
