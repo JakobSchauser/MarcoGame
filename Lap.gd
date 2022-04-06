@@ -4,7 +4,7 @@ extends Area2D
 signal race_over
 # signal update_lap_label
 
-var total_laps = 3
+var total_laps = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,11 +22,21 @@ func on_body_entered(player):
 	var sgn = sign(player.move_dir().x) # Work only in levels with horizontal lap
 	
 	var max_laps = player.laps
+	
 	player.laps += sgn
-	for p in get_tree().get_nodes_in_group("Player"):
-		if p.laps > max_laps:
-			max_laps = p.laps
-
+	
+	var players = G.group("Player")
+	players.sort_custom(self, "compare_laps")
+	G.leader_board = players
+	
+	#print(G.leader_board)
+	#if len(G.leader_board) == 0:
+	#	return
+	#for p in get_tree().get_nodes_in_group("Player"):
+#		if p.laps > max_laps:
+#			max_laps = p.laps
+			
+	max_laps = G.leader_board[0].laps
 	get_tree().get_nodes_in_group("LapLabel")[0].text = "Lap " + str(max_laps) + " of " + str(total_laps)
 	
 	# emit_signal("update_lap_label", max_laps)
@@ -35,5 +45,7 @@ func on_body_entered(player):
 		emit_signal("race_over") 
 
 
+func compare_laps(a, b):
+	return a.laps < b.laps
 
 # func get_leader():

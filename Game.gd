@@ -5,6 +5,7 @@ var segments = []
 
 var players = []
 
+var total_time = 0
 export (PackedScene) var grass
 
 func check_collision(trails, player):
@@ -61,20 +62,27 @@ func get_kills():
 # 			draw_line(pp[i],pp[i+1],p.color,6)
 
 func on_race_over():
-	get_tree().reload_current_scene()
-
+	remove_child($Players)
+	get_tree().change_scene("res://Gameover.tscn")
 
 
 func _process(delta):
+	total_time += delta
 	# update()
 	var kills = get_kills()
 	if kills.size() != 0:
 		for k in kills:
-			k[1].lives -= 1
-			if k[1].lives <= 0:
-				get_tree().reload_current_scene()
+			var p = k[1]
+			p.lives -= 1
+			if p.lives <= 0 and not p.is_dead:
+				p.kill()
+				# get_tree().reload_current_scene()
 		# pass
 	$Camera2D.position = avg_pos(players)
+
+	if Input.is_action_just_pressed("ui_accept"):
+		print("yay")
+		on_race_over()
 	
 
 func avg_pos(objs):

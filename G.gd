@@ -1,9 +1,14 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Stats to display
+var run_time = 0
+var winner = null
+# var n_pickups = 
+
+var leader_board = []
+
+
 
 var red = Color("FF004D")
 var pink = Color("FF77A8")
@@ -36,6 +41,8 @@ var colors = {
 func _ready():
 	pass # Replace with function body.
 
+func _process(dt):
+	run_time += dt
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
