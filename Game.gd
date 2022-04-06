@@ -3,6 +3,8 @@ extends Node2D
 var segments = []
 # onready var lake = $L
 
+export(PackedScene) var player_scene
+
 var players = []
 
 var total_time = 0
@@ -18,11 +20,24 @@ func check_collision(trails, player):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Lap.connect("race_over", self, "on_race_over")
-	players = get_tree().get_nodes_in_group("Player")
+	
+	for i in range(len(G.players_data)):
+		var d = G.players_data[i]
+		var p = player_scene.instance()
+		p.worm_name = d["name"]
+		p.player_num = d["player_num"]
+		p.color = d["color"]
+		p.global_position = $StartPositions.get_child(i).global_position
+		$Players.add_child(p)
+		players.append(p)
+	
+	# players = get_tree().get_nodes_in_group("Player")
+	
+	
 	for p in players:
 		$Camera2D.add_target(p)
 
-	print("Herro")
+	# print("Herro")
 	for i in range(500):
 		var x = rand_range(-200,1000)
 		var y = rand_range(-500,1000)

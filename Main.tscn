@@ -22,18 +22,24 @@ extents = Vector2( 7, 200.5 )
 [node name="Worms" type="Node2D"]
 position = Vector2( 2, 0 )
 script = ExtResource( 3 )
+player_scene = ExtResource( 1 )
 grass = ExtResource( 7 )
 
+[node name="StartPositions" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 450, -192 )
+
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 450, -142 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 452, -96 )
+
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 453, -45 )
+
 [node name="Players" type="Node2D" parent="."]
-
-[node name="Marco" parent="Players" instance=ExtResource( 1 )]
-position = Vector2( 461, -128 )
-worm_name = "Agnes"
-
-[node name="Marco2" parent="Players" instance=ExtResource( 1 )]
-position = Vector2( 462, -164 )
-worm_name = "Marco"
-player_num = 1
 
 [node name="Gradient" type="Sprite" parent="."]
 visible = false

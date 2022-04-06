@@ -23,15 +23,15 @@ select_key = "up"
 
 [node name="join_game2" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 547, -3 )
-index = 1
+player_num = 1
 select_key = "w"
 
 [node name="join_game3" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 18, 324 )
-index = 2
+player_num = 2
 select_key = "t"
 
 [node name="join_game4" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 571, 301 )
-index = 3
+player_num = 3
 select_key = "i"

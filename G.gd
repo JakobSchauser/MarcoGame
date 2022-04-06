@@ -8,7 +8,7 @@ var winner = null
 
 var leader_board = []
 
-
+var players_data = []
 
 var red = Color("FF004D")
 var pink = Color("FF77A8")
@@ -38,26 +38,26 @@ var colors = {
 }
 
 
-
 var worms = [
 	{ "name": "Agnes",
 	   "describe": "Royal blue business ladylike.",
-	   "color": colors.blue },
+	   "color": blue },
 
 	{ "name": "Marco",
 	   "describe": "The classic.",
-	   "color": colors.green
-    },
+	   "color": green
+	},
 	{
 		"name": "Levi",
-		"color": colors.red,
+		"color": red,
 		"describe": "Pants!"
 	},
 	{   "name": "Udo",
-	    "color": colors.yellow,
-		"describe": "Loves archives"
+		"color": yellow,
+		"describe": "No one knows who this guy is."
 	}
 	]
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -79,3 +79,7 @@ func group(tag):
 func debug(x):
 	print(x)
 	return x
+
+
+func change_scene(name):
+	get_tree().change_scene("res://" + name + ".tscn")
