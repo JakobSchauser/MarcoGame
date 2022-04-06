@@ -2,6 +2,7 @@ extends Area2D
 
 
 signal race_over
+# signal update_lap_label
 
 var total_laps = 1
 
@@ -38,6 +39,8 @@ func on_body_entered(player):
 	max_laps = G.leader_board[0].laps
 	get_tree().get_nodes_in_group("LapLabel")[0].text = "Lap " + str(max_laps) + " of " + str(total_laps)
 	
+	# emit_signal("update_lap_label", max_laps)
+
 	if max_laps == total_laps + 1:
 		emit_signal("race_over") 
 

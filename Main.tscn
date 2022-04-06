@@ -12,7 +12,7 @@
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
-[ext_resource path="res://gradient.png" type="Texture" id=13]
+[ext_resource path="res://UIController.gd" type="Script" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 
@@ -81,40 +81,66 @@ margin = Vector2( 100, 100 )
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
 position = Vector2( -157, 420 )
 rotation = 1.24029
+outline = true
+wobble_amount = 0.2
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
 position = Vector2( -109, 914 )
+wobble_amount = 0.2
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 863, 562 )
+wobble_amount = 0.2
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 932, 380 )
+wobble_amount = 0.2
 
 [node name="Lake" type="Sprite" parent="."]
+self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
 position = Vector2( 494, 264 )
 scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
+outline = true
+outline_color = Color( 1, 1, 1, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 13 )
 
-[node name="LapLabel" type="Label" parent="CanvasLayer" groups=["LapLabel"]]
-margin_left = 403.0
-margin_top = 1.0
-margin_right = 541.0
-margin_bottom = 56.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 443.0
+margin_right = 581.0
+margin_bottom = 59.0
+
+[node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 138.0
+margin_bottom = 138.0
+
+[node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
+margin_top = 4.0
+margin_right = 138.0
+margin_bottom = 59.0
 text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 333, 1466 )
+wobble_amount = 0.2
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1618, 206 )
+wobble_amount = 0.2
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
 position = Vector2( 383, 181 )
+wobble_amount = 0.2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -122,5 +148,5 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Lever" parent="." instance=ExtResource( 15 )]
-position = Vector2( 228, 682 )
+position = Vector2( 230, 677 )
 rotation = -1.21905

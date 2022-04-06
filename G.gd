@@ -15,6 +15,7 @@ var pink = Color("FF77A8")
 var yellow = Color("FFEC27")
 var purple = Color("7E2553")
 var blue = Color("29ADFF")
+var darkblue = Color("2d10f4")
 var turqoise = Color("FFCCAA")
 var green = Color("00E436")
 var darkgreen = Color("008751")
@@ -27,11 +28,13 @@ var colors = {
 	"yellow": yellow,
 	"purple": purple,
 	"blue": blue,
+	"darkblue": darkblue,
 	"turqoise": turqoise,
 	"green": green,
 	"darkgreen": darkgreen,
 	"brown": brown,
-	"silver": silver
+	"silver": silver,
+	"white": Color.white
 }
 
 
