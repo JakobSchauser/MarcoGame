@@ -12,6 +12,7 @@ var purple = Color("7E2553")
 var blue = Color("29ADFF")
 var turqoise = Color("FFCCAA")
 var green = Color("00E436")
+var darkgreen = Color("008751")
 var brown = Color("AB5236")
 var silver = Color("83769C")
 
@@ -23,6 +24,7 @@ var colors = {
 	"blue": blue,
 	"turqoise": turqoise,
 	"green": green,
+	"darkgreen": darkgreen,
 	"brown": brown,
 	"silver": silver
 }
@@ -35,6 +37,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func timer(delay):
+	return get_tree().create_timer(delay)
 
 func group(tag):
 	return get_tree().get_nodes_in_group(tag)
