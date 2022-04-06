@@ -12,7 +12,7 @@
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
-[ext_resource path="res://gradient.png" type="Texture" id=13]
+[ext_resource path="res://UIController.gd" type="Script" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 
@@ -23,12 +23,14 @@ extents = Vector2( 7, 200.5 )
 script = ExtResource( 3 )
 grass = ExtResource( 7 )
 
-[node name="Gradient" type="Sprite" parent="."]
-visible = false
-position = Vector2( 649, 452 )
-texture = ExtResource( 13 )
-script = ExtResource( 14 )
-color = "green"
+[node name="Players" type="Node" parent="."]
+
+[node name="Marco" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 461, -128 )
+
+[node name="Marco2" parent="Players" instance=ExtResource( 1 )]
+position = Vector2( 462, -164 )
+player_num = 1
 
 [node name="Lap" type="Area2D" parent="." groups=["Lap"]]
 position = Vector2( 492, 11 )
@@ -58,27 +60,25 @@ smoothing_enabled = true
 script = ExtResource( 5 )
 margin = Vector2( 100, 100 )
 
-[node name="Marco" parent="." instance=ExtResource( 1 )]
-position = Vector2( 461, -128 )
-
-[node name="Marco2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 462, -164 )
-player_num = 1
-
 [node name="Trails" type="Node2D" parent="."]
 
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
 position = Vector2( -157, 420 )
 rotation = 1.24029
+outline = true
+wobble_amount = 0.2
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
 position = Vector2( -109, 914 )
+wobble_amount = 0.2
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 863, 562 )
+wobble_amount = 0.2
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 932, 380 )
+wobble_amount = 0.2
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
@@ -91,12 +91,27 @@ outline = true
 outline_color = Color( 1, 1, 1, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 13 )
 
-[node name="LapLabel" type="Label" parent="CanvasLayer" groups=["LapLabel"]]
-margin_left = 403.0
-margin_top = 1.0
-margin_right = 541.0
-margin_bottom = 56.0
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 443.0
+margin_right = 581.0
+margin_bottom = 59.0
+
+[node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 138.0
+margin_bottom = 138.0
+
+[node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
+margin_top = 4.0
+margin_right = 138.0
+margin_bottom = 59.0
 text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
