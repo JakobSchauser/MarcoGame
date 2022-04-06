@@ -6,6 +6,7 @@ var segments = []
 export(PackedScene) var player_scene
 
 var players = []
+var label_dict = {}
 
 var total_time = 0
 export (PackedScene) var grass
@@ -30,7 +31,21 @@ func _ready():
 		p.global_position = $StartPositions.get_child(i).global_position
 		$Players.add_child(p)
 		players.append(p)
+
+
+	for pp in players:
+		var l = Label.new()
+		
+		l.text = str(pp.lives) + " - " + pp.held_powerup + " "
+		
+		l.modulate = pp.color
+				
+		label_dict[pp.worm_name] = l 
+				
+		$CanvasLayer/CenterContainer/VBoxContainer/CharacterUI.add_child(l)
 	
+
+		
 	# players = get_tree().get_nodes_in_group("Player")
 	
 	
@@ -38,7 +53,7 @@ func _ready():
 		$Camera2D.add_target(p)
 
 	# print("Herro")
-	for i in range(500):
+	for _i in range(500):
 		var x = rand_range(-200,1000)
 		var y = rand_range(-500,1000)
 
@@ -98,6 +113,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		print("yay")
 		on_race_over()
+
+	for pp in players:
+	
+		label_dict[pp.worm_name].text = str(pp.lives) + " - " + pp.held_powerup + " "
 	
 
 func avg_pos(objs):
