@@ -44,7 +44,6 @@ position = Vector2( 453, -45 )
 [node name="Gradient" type="Sprite" parent="."]
 visible = false
 position = Vector2( 649, 452 )
-texture = ExtResource( 13 )
 script = ExtResource( 14 )
 color = "green"
 
@@ -122,7 +121,6 @@ margin_bottom = 59.0
 
 [node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 margin_right = 138.0
-margin_bottom = 138.0
 
 [node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
 margin_top = 4.0

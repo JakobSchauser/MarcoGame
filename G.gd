@@ -8,7 +8,6 @@ var winner = null
 
 var leader_board = []
 
-var players_data = []
 
 var red = Color("FF004D")
 var pink = Color("FF77A8")
@@ -40,24 +39,30 @@ var colors = {
 
 var worms = [
 	{ "name": "Agnes",
+		"player_num": 0,
 	   "describe": "Royal blue business ladylike.",
 	   "color": blue },
-
+	   
 	{ "name": "Marco",
+	"player_num": 1,
+
 	   "describe": "The classic.",
 	   "color": green
 	},
 	{
 		"name": "Levi",
+	"player_num": 2,
 		"color": red,
 		"describe": "Pants!"
 	},
 	{   "name": "Udo",
-		"color": yellow,
-		"describe": "No one knows who this guy is."
-	}
-	]
+	"player_num": 3,
+	"color": yellow,
+	"describe": "No one knows who this guy is."
+}
+]
 
+var players_data = [worms[0], worms[1]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,9 +70,9 @@ func _ready():
 
 func _process(dt):
 	run_time += dt
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+	
+	# Called every frame. 'delta' is the elapsed time since the previous frame.
+	#func _process(delta):
 #	pass
 
 func timer(delay):
