@@ -72,9 +72,11 @@ func _process(delta):
 	var kills = get_kills()
 	if kills.size() != 0:
 		for k in kills:
-			k[1].lives -= 1
-			if k[1].lives <= 0:
-				get_tree().reload_current_scene()
+			var p = k[1]
+			p.lives -= 1
+			if p.lives <= 0 and not p.is_dead:
+				p.kill()
+				# get_tree().reload_current_scene()
 		# pass
 	$Camera2D.position = avg_pos(players)
 

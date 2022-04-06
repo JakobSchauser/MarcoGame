@@ -8,6 +8,8 @@ var winner = null
 
 var leader_board = []
 
+
+
 var red = Color("FF004D")
 var pink = Color("FF77A8")
 var yellow = Color("FFEC27")

@@ -20,6 +20,7 @@
 extents = Vector2( 7, 200.5 )
 
 [node name="Worms" type="Node2D"]
+position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 grass = ExtResource( 7 )
 

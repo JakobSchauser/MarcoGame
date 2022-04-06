@@ -54,11 +54,13 @@ onready var color = colors[player_num]
 
 var collides = false
 
+var is_dead = false
+
 
 # onready var line : Line2D = $Line2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Sprite.modulate = color
+	$Face/Sprite.modulate = color
 	spawn_line2d()
 	# current_line.add_point(position)
 	
@@ -108,18 +110,18 @@ func spawn_line2d():
 	current_line.begin_cap_mode = 2
 	current_line.end_cap_mode = 2
 
-	add_child(current_line)
+	$Lines.add_child(current_line)
 	current_line.default_color = color
 	current_line.width = 10
 	current_line.set_as_toplevel(true)
 
 func _process(delta):
+
 	$Eyes.rotation = angle + PI / 2
 
-	var p
-	
-	
-	p = get_closest_thing(["Player","Powerup"]).position 
+
+
+	var p = get_closest_thing(["Player","Powerup"]).position 
 	for c in $Eyes.get_children():
 		c.look_at(p)
 
@@ -134,6 +136,9 @@ func _process(delta):
 		angle -= turnspeed*delta
 	if Input.is_action_pressed("right"+str(player_num)):
 		angle += turnspeed*delta
+	
+	if is_dead:
+		return
 
 	if Input.is_action_pressed("close"):
 		get_tree().quit()
@@ -166,7 +171,7 @@ func _process(delta):
 		var col = get_slide_collision(0)
 
 		if col != null:
-			if col.collider.is_in_group("Grass"):
+			if col.collider.is_in_group("Grass"): # You hit something
 				speed = slowspeed
 				collides = true
 	else:
@@ -179,7 +184,7 @@ func _process(delta):
 				
 	spawn_hole = max(0, spawn_hole - delta)
 
-	if rand_range(0, 1) > 0.995 and spawn_hole <= 0:
+	if rand_range(0, 1) > 0.99 and spawn_hole <= 0:
 		should_spawn_powerups = rand_range(0,1) < 0.9999
 		spawn_hole = 0.5
 		spawn_line2d()
@@ -191,6 +196,8 @@ func make_collision():
 		spawn_powerup(lastpos)
 
 func on_draw_timeout():
+	if is_dead or not current_line:
+		return
 	if spawn_hole <= 0:
 		joints_collison_count = (joints_collison_count + 1)%joints_collison
 		current_line.add_point(fake_pos)
@@ -240,6 +247,19 @@ func show_pickup(msg):
 	yield(get_tree().create_timer(2),"timeout")
 	$Pickup.hide()
 
-
 func play_pickup():
 	$pickup.play()
+
+
+func kill():
+	is_dead = true
+	points = []
+	current_line = null
+	for l in $Lines.get_children():
+		for i in range(l.get_point_count()):
+			l.remove_point(0)
+			yield(G.timer(0.01), "timeout")
+		l.queue_free()
+	spawn_hole = 0.1
+	lives = 3
+	is_dead = false

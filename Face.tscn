@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://White_Circle.png" type="Texture" id=2]
+[ext_resource path="res://Eye.tscn" type="PackedScene" id=3]
+
+[node name="Face" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0.866667, 1 )
+scale = Vector2( 0.01, 0.01 )
+texture = ExtResource( 2 )
+
+[node name="Eyes" type="Node2D" parent="."]
+
+[node name="Eye" parent="Eyes" instance=ExtResource( 3 )]
+position = Vector2( -8.5, -5.5 )
+
+[node name="Eye2" parent="Eyes" instance=ExtResource( 3 )]
+position = Vector2( 6.5, -5.5 )
