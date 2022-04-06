@@ -1,9 +1,12 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Stats to display
+var run_time = 0
+var winner = null
+# var n_pickups = 
+
+var leader_board = []
 
 var red = Color("FF5C5C")
 var pink = Color("F47BC4")
@@ -35,6 +38,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func timer(delay):
+	get_tree().create_timer(delay)
 
 func group(tag):
 	return get_tree().get_nodes_in_group(tag)
