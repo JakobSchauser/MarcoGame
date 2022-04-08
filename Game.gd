@@ -6,11 +6,16 @@ var segments = []
 export(PackedScene) var player_scene
 
 var players = []
-var label_dict = {}
+var ui_dict = {}
 
 var total_time = 0
 export (PackedScene) var grass
 
+
+onready var playerUI = preload("res://IndividualUI.tscn")  
+
+onready var powerup_images = {"":preload("lake.png"),"Reversed controls":preload("lake.png"),"Slow others":preload("res://cornerrock.png"),"Stun":preload("res://goal.JPG"),"Boost":preload("res://arrowmarco.png"),"Lives":preload("res://grass1.png")}
+# onready var powerup_images = {}
 func check_collision(trails, player):
 	for t in trails:
 		var closest_point : Vector2 = Geometry.get_closest_point_to_segment_2d(player.position, t[0], t[0+1])
@@ -30,19 +35,21 @@ func _ready():
 		p.color = d["color"]
 		p.global_position = $StartPositions.get_child(i).global_position
 		$Players.add_child(p)
+		p.connect("PickedUp", self, "on_update_powerup")
 		players.append(p)
-
-
-	for pp in players:
-		var l = Label.new()
 		
-		l.text = str(pp.lives) + " - " + pp.held_powerup + " "
 		
-		l.modulate = pp.color
-				
-		label_dict[pp.worm_name] = l 
-				
+		# for pp in players:
+		var l = playerUI.instance()
+		
+		l.get_node("Label").text = "3"
+		l.modulate = p.color
+		
+		ui_dict[p.worm_name] = l 
+		
 		$CanvasLayer/CenterContainer/VBoxContainer/CharacterUI.add_child(l)
+		
+		on_update_powerup(p,p.held_powerup)
 	
 
 		
@@ -96,6 +103,17 @@ func on_race_over():
 	get_tree().change_scene("res://Gameover.tscn")
 
 
+
+
+func on_update_powerup(worm, power):
+	ui_dict[worm.worm_name].get_node("Control/TextureRect").texture = powerup_images[power]
+
+
+func update_lives(worm,lives):
+	ui_dict[worm.worm_name].get_node("Label").text = str(lives)
+	
+
+
 func _process(delta):
 	total_time += delta
 	# update()
@@ -104,6 +122,7 @@ func _process(delta):
 		for k in kills:
 			var p = k[1]
 			p.lives -= 1
+			update_lives(p,p.lives)
 			if p.lives <= 0 and not p.is_dead:
 				p.kill()
 				# get_tree().reload_current_scene()
@@ -114,10 +133,6 @@ func _process(delta):
 		print("yay")
 		on_race_over()
 
-	for pp in players:
-	
-		label_dict[pp.worm_name].text = str(pp.lives) + " - " + pp.held_powerup + " "
-	
 
 func avg_pos(objs):
 	var pos = Vector2()
