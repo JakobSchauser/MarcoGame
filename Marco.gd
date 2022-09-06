@@ -4,6 +4,11 @@ extends KinematicBody2D
 
 export(String) var worm_name
 
+
+signal PickedUp
+signal ChangedHealth
+
+
 var boost = 0
 var maxboost = 5
 var basespeed = 100
@@ -136,6 +141,9 @@ func _process(delta):
 	t += delta
 	var spd = speed
 
+	if boost > 0:
+		spd *= 1.6
+		boost -= delta
 
 	if Input.is_action_pressed("left" + str(player_num)):
 		angle -= turnspeed*delta
@@ -272,6 +280,8 @@ func kill():
 func give_power(type):
 	held_powerup = type
 	show_pickup("Picked up: " + type + "!")
+	emit_signal("PickedUp",self,type)
+
 
 func use_power():
 	match held_powerup:
