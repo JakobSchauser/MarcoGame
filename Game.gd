@@ -76,7 +76,7 @@ func _ready():
 
 		var sx = rand_range(0.5,1) * sign(rand_range(-1,1))
 
-		inst.scale = Vector2(sx/10,abs(sx)/10)
+		inst.scale = Vector2(sx/5,abs(sx)/5)
 
 
 		inst.z_index = -100

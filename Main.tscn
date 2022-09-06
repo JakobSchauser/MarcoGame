@@ -98,6 +98,11 @@ texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
+polygon = PoolVector2Array( 230.189, 5.0777, 238.651, -76.1653, 258.962, -152.331, 260.655, -242.036, 236.959, -301.276, 189.567, -336.82, 132.02, -396.06, 40.6215, -424.833, -77.8579, -401.137, -148.946, -323.279, -165.871, -204.8, -177.719, -98.1686, -243.729, -16.9256, -324.972, 69.3951, -374.056, 196.337, -396.06, 277.58, -370.671, 350.361, -304.661, 416.37, -199.722, 455.299, -93.0909, 450.222, 10.1554, 428.218, 81.243, 390.982, 159.101, 348.668, 204.8, 296.199, 242.036, 226.803, 236.959, 142.175, 225.111, 57.5471 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
