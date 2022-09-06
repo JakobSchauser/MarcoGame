@@ -37,7 +37,7 @@ func on_timeout():
 			w["player_num"] = o.player_num
 			p.append(w)
 	G.players_data = p
-	G.change_scene("Main")
+	G.change_scene("Overworld")
 
 	
 	
