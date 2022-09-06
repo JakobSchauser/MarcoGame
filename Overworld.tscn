@@ -12,3 +12,17 @@ position = Vector2( 118, 51 )
 
 [node name="Lake" parent="." instance=ExtResource( 2 )]
 level = "Main"
+
+[node name="StartPositions" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 57, 45 )
+
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 134, 41 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 60, 128 )
+
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 123, 120 )
