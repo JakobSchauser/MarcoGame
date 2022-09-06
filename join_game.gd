@@ -19,8 +19,15 @@ func get_worm():
 
 func _process(dt):
 	var i = str(player_num)
+	var can_select = true
+	for a in get_tree().get_nodes_in_group("JoinGame"):
+		if a == self:
+			continue
+		if a.selected and a.scroll_index == scroll_index:
+			can_select = false
+
 	if Input.is_action_just_pressed("boost" + i):
-		if active:
+		if active and can_select:
 			selected = true
 		else:
 			active = true

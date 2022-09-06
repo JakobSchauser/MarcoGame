@@ -46,19 +46,19 @@ var worms = [
 	{ "name": "Marco",
 	"player_num": 1,
 
-	   "describe": "The classic.",
-	   "color": green
+	   "describe": "Ham kender vi.",
+	   "color": darkgreen
 	},
 	{
 		"name": "Levi",
 	"player_num": 2,
 		"color": red,
-		"describe": "Pants!"
+		"describe": "Vild og eventyrlysten."
 	},
 	{   "name": "Udo",
 	"player_num": 3,
 	"color": yellow,
-	"describe": "No one knows who this guy is."
+	"describe": "Din standard måleorm."
 }
 ]
 
