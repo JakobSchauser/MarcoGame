@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -6,12 +6,13 @@
 [ext_resource path="res://jazzmand2.wav" type="AudioStream" id=4]
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
-[ext_resource path="res://Grass_sprite.tscn" type="PackedScene" id=7]
+[ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://lake.png" type="Texture" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
+[ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 
@@ -22,7 +23,7 @@ extents = Vector2( 7, 200.5 )
 position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 player_scene = ExtResource( 1 )
-grass = ExtResource( 7 )
+vegetation = ExtResource( 7 )
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -79,23 +80,15 @@ margin = Vector2( 100, 100 )
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
 position = Vector2( -157, 420 )
 rotation = 1.24029
-outline = true
-wobble_amount = 0.2
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
 position = Vector2( -109, 914 )
-outline = true
-wobble_amount = 0.2
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 863, 562 )
-outline = true
-wobble_amount = 0.4
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
 position = Vector2( 932, 380 )
-outline = true
-wobble_amount = 0.4
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
@@ -104,8 +97,6 @@ scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
-outline = true
-outline_color = Color( 1, 1, 1, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -135,15 +126,12 @@ text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 333, 1466 )
-wobble_amount = 0.2
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1618, 206 )
-wobble_amount = 0.2
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
 position = Vector2( 383, 181 )
-wobble_amount = 0.2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -153,3 +141,6 @@ autoplay = true
 [node name="Lever" parent="." instance=ExtResource( 15 )]
 position = Vector2( 230, 677 )
 rotation = -1.21905
+
+[node name="Bush" parent="." instance=ExtResource( 13 )]
+position = Vector2( 682, 71 )

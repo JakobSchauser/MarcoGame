@@ -85,6 +85,9 @@ func debug(x):
 	print(x)
 	return x
 
+func rand_element(l):
+	var i = randi() % len(l)
+	return l[i]
 
 func change_scene(name):
 	get_tree().change_scene("res://" + name + ".tscn")
