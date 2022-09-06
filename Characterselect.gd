@@ -6,7 +6,6 @@ onready var timer = $Timer
 func _ready():
 	timer.connect("timeout", self, "on_timeout")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var actives = []

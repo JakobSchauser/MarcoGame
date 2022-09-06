@@ -20,6 +20,7 @@ G="*res://G.gd"
 
 [display]
 
+window/size/fullscreen=true
 window/stretch/aspect="keep"
 
 [global]

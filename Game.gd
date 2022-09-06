@@ -9,7 +9,9 @@ var players = []
 var label_dict = {}
 
 var total_time = 0
-export (PackedScene) var grass
+export (PackedScene) var vegetation
+
+onready var vegetation_factory = vegetation.instance()
 
 func check_collision(trails, player):
 	for t in trails:
@@ -53,11 +55,15 @@ func _ready():
 		$Camera2D.add_target(p)
 
 	# print("Herro")
+	var n_vegs = vegetation_factory.get_child_count()
 	for _i in range(500):
 		var x = rand_range(-200,1000)
 		var y = rand_range(-500,1000)
 
-		var inst = grass.instance()
+		
+		var inst = vegetation_factory.get_child(randi() % n_vegs).duplicate()
+		inst.flip_h = rand_range(0,1) > 0.5
+		inst.speed_scale += rand_range(-0.1, 0.1)
 
 		inst.position = Vector2(x,y)
 
@@ -83,13 +89,6 @@ func get_kills():
 				kills.append([p, q]) 
 
 	return kills
-
-
-# func _draw():
-# 	for p in players:
-# 		var pp = p.points
-# 		for i in range(pp.size() - 1):
-# 			draw_line(pp[i],pp[i+1],p.color,6)
 
 func on_race_over():
 	remove_child($Players)

@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://circle_anim.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Color.gd" type="Script" id=2]
+
+[node name="Bush" type="Node2D"]
+scale = Vector2( 0.3, 0.3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 4, -117.167 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "darkgreen"
+
+[node name="Berries" type="Node2D" parent="."]
+position = Vector2( 5, 110.833 )
+
+[node name="AnimatedSprite8" type="AnimatedSprite" parent="Berries"]
+position = Vector2( -43, -262 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
+
+[node name="AnimatedSprite9" type="AnimatedSprite" parent="Berries"]
+position = Vector2( -57, -171 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
+
+[node name="AnimatedSprite10" type="AnimatedSprite" parent="Berries"]
+position = Vector2( 44, -272 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
+
+[node name="AnimatedSprite11" type="AnimatedSprite" parent="Berries"]
+position = Vector2( 76, -189 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
+
+[node name="AnimatedSprite12" type="AnimatedSprite" parent="Berries"]
+position = Vector2( 20, -156 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
+
+[node name="AnimatedSprite13" type="AnimatedSprite" parent="Berries"]
+position = Vector2( 7, -223 )
+scale = Vector2( 0.1, 0.1 )
+frames = ExtResource( 1 )
+playing = true
+script = ExtResource( 2 )
+color = "red"
