@@ -17,6 +17,7 @@ var speed = basespeed
 var turnspeed = 2.3
 var angle = 0
 var laps = 0
+var overworld = false
 
 var held_powerup = ""
 
@@ -140,7 +141,9 @@ func _process(delta):
 	$Lives.text = str(lives)
 	t += delta
 	var spd = speed
-
+	
+	if overworld:
+		spd = 0
 	if boost > 0:
 		spd *= 1.6
 		boost -= delta
@@ -161,6 +164,8 @@ func _process(delta):
 	
 	if Input.is_action_pressed("boost"+str(player_num)):
 		use_power()
+		if overworld:
+			spd = speed
 
 	if Input.is_action_pressed("break"+str(player_num)):
 		spd *= 0.6

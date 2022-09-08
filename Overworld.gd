@@ -10,6 +10,7 @@ func _ready():
 		p.worm_name = d["name"]
 		p.player_num = d["player_num"]
 		p.color = d["color"]
+		p.overworld = true
 		p.global_position = $StartPositions.get_child(i).global_position
 		add_child(p)
 		

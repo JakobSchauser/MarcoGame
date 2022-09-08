@@ -53,6 +53,8 @@ func _process(dt):
 	
 	if selected:
 		$Describe.text = "Selected!"
+	else:
+		$Describe.text += "\n ('" + select_key + "' to select)"
 	
 	if not selected:
 		if Input.is_action_just_pressed("left" + i):

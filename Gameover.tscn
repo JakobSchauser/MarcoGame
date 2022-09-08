@@ -33,9 +33,9 @@ margin_right = 382.0
 margin_bottom = 495.0
 text = "Replay"
 
-[node name="Menu" type="Button" parent="."]
+[node name="Overworld" type="Button" parent="."]
 margin_left = 522.0
 margin_top = 428.0
 margin_right = 562.0
 margin_bottom = 489.0
-text = "Main menu"
+text = "Overworld"
