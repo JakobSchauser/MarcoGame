@@ -284,7 +284,7 @@ func kill():
 
 func give_power(type):
 	held_powerup = type
-	show_pickup("Picked up: " + type + "!")
+	show_pickup(type + "!")
 	emit_signal("PickedUp",self,type)
 
 
