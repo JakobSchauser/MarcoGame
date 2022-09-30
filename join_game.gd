@@ -2,6 +2,8 @@ extends Node2D
 
 export (int) var player_num
 export (String) var select_key
+export (String) var left_key
+export (String) var right_key
 
 var active = false
 
@@ -13,6 +15,10 @@ var scroll_index = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Label.text = "Press '" + select_key + "' to join!"
+	$Controls.text = ""
+	$Describe.text = ""
+
+
 
 func get_worm():
 	return G.worms[scroll_index]
@@ -53,8 +59,10 @@ func _process(dt):
 	
 	if selected:
 		$Describe.text = "Selected!"
+		$Controls.text = ""
 	else:
-		$Describe.text += "\n ('" + select_key + "' to select)"
+		$Controls.text = "'" + left_key + "' & '" + right_key + "' to choose your worm. \n'" + select_key + "' to select!"
+		$Describe.text = ""
 	
 	if not selected:
 		if Input.is_action_just_pressed("left" + i):

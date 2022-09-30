@@ -31,3 +31,13 @@ margin_right = 365.0
 margin_bottom = 253.0
 text = "Marco
 "
+
+[node name="Controls" type="Label" parent="."]
+margin_left = 66.0
+margin_top = 155.0
+margin_right = 798.0
+margin_bottom = 361.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "Marco
+"
+autowrap = true
