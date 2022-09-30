@@ -20,18 +20,26 @@ text = "Hellooo"
 
 [node name="join_game" parent="joins" instance=ExtResource( 1 )]
 select_key = "up"
+left_key = "left"
+right_key = "right"
 
 [node name="join_game2" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 547, -3 )
 player_num = 1
 select_key = "w"
+left_key = "a"
+right_key = "d"
 
 [node name="join_game3" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 18, 324 )
 player_num = 2
 select_key = "t"
+left_key = "f"
+right_key = "h"
 
 [node name="join_game4" parent="joins" instance=ExtResource( 1 )]
 position = Vector2( 571, 301 )
 player_num = 3
 select_key = "i"
+left_key = "j"
+right_key = "l"
