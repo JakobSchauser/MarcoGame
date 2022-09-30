@@ -43,3 +43,9 @@ func on_timeout():
 	
 
 
+# A function that prints whether something about the most important event in 1942
+# The following comments insults my above code using coarse language.
+
+
+
+# 1. 

@@ -1,0 +1,152 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://jazzmand2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+[ext_resource path="res://goal.JPG" type="Texture" id=6]
+[ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://lake.png" type="Texture" id=8]
+[ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://pik.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Lap.gd" type="Script" id=12]
+[ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Color.gd" type="Script" id=14]
+[ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 200.5 )
+
+[node name="Worms" type="Node2D"]
+position = Vector2( 2, 0 )
+script = ExtResource( 3 )
+player_scene = ExtResource( 1 )
+vegetation = ExtResource( 7 )
+
+[node name="StartPositions" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 450, -192 )
+
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 450, -142 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 452, -96 )
+
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 453, -45 )
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Gradient" type="Sprite" parent="."]
+visible = false
+position = Vector2( 649, 452 )
+script = ExtResource( 14 )
+color = "green"
+
+[node name="Lap" type="Area2D" parent="." groups=["Lap"]]
+position = Vector2( 492, 11 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lap"]
+position = Vector2( 5, -35.5 )
+shape = SubResource( 1 )
+
+[node name="Goal2" type="Sprite" parent="Lap"]
+position = Vector2( 3.99988, -77 )
+rotation = 1.56572
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 6 )
+
+[node name="Goal3" type="Sprite" parent="Lap"]
+position = Vector2( 3.00009, -222 )
+rotation = 1.56572
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 65, 51 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+script = ExtResource( 5 )
+max_zoom = 1.11111e+10
+margin = Vector2( 100, 100 )
+
+[node name="Trails" type="Node2D" parent="."]
+
+[node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
+position = Vector2( -157, 420 )
+rotation = 1.24029
+
+[node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( -109, 914 )
+
+[node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 863, 562 )
+
+[node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 932, 380 )
+
+[node name="Lake" type="Sprite" parent="."]
+self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
+position = Vector2( 494, 264 )
+scale = Vector2( 0.59082, 0.59082 )
+texture = ExtResource( 8 )
+script = ExtResource( 14 )
+color = "blue"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
+polygon = PoolVector2Array( 230.189, 5.0777, 238.651, -76.1653, 258.962, -152.331, 260.655, -242.036, 236.959, -301.276, 189.567, -336.82, 132.02, -396.06, 40.6215, -424.833, -77.8579, -401.137, -148.946, -323.279, -165.871, -204.8, -177.719, -98.1686, -243.729, -16.9256, -324.972, 69.3951, -374.056, 196.337, -396.06, 277.58, -370.671, 350.361, -304.661, 416.37, -199.722, 455.299, -93.0909, 450.222, 10.1554, 428.218, 81.243, 390.982, 159.101, 348.668, 204.8, 296.199, 242.036, 226.803, 236.959, 142.175, 225.111, 57.5471 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 12.0
+margin_right = 1012.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+
+[node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 1000.0
+rect_min_size = Vector2( 1000, 0 )
+custom_constants/separation = 100
+alignment = 1
+
+[node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
+margin_top = 4.0
+margin_right = 1000.0
+margin_bottom = 59.0
+text = "Laps: 0"
+
+[node name="Boot2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 333, 1466 )
+
+[node name="Boot3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1618, 206 )
+
+[node name="Boot" parent="." instance=ExtResource( 11 )]
+position = Vector2( 383, 181 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+autoplay = true
+
+[node name="Lever" parent="." instance=ExtResource( 15 )]
+position = Vector2( 230, 677 )
+rotation = -1.21905
+
+[node name="Bush" parent="." instance=ExtResource( 13 )]
+position = Vector2( 682, 71 )

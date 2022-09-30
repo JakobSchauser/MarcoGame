@@ -73,6 +73,7 @@ current = true
 zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
+max_zoom = 1.11111e+10
 margin = Vector2( 100, 100 )
 
 [node name="Trails" type="Node2D" parent="."]
@@ -82,17 +83,24 @@ position = Vector2( -157, 420 )
 rotation = 1.24029
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
-position = Vector2( -109, 914 )
+position = Vector2( 491, 222 )
+rotation = 0.416175
+
+[node name="Cornerrock2" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 131, -161 )
+rotation = 0.416175
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 863, 562 )
+position = Vector2( 239, 134 )
+rotation = -1.55152
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 932, 380 )
+position = Vector2( 418, 107 )
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
 position = Vector2( 494, 264 )
+rotation = 2.13825
 scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
@@ -130,13 +138,23 @@ margin_bottom = 59.0
 text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 333, 1466 )
+position = Vector2( -51, 1146 )
+rotation = 0.57335
+
+[node name="Boot4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1516, 869 )
+rotation = -2.4987
+
+[node name="Boot5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1795, 214 )
+rotation = -2.4987
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 1618, 206 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
-position = Vector2( 383, 181 )
+position = Vector2( 433, 43 )
+rotation = 0.28998
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -149,3 +167,10 @@ rotation = -1.21905
 
 [node name="Bush" parent="." instance=ExtResource( 13 )]
 position = Vector2( 682, 71 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1293.0
+margin_top = 1148.0
+margin_right = 1741.0
+margin_bottom = 1203.0
+text = "why did you go here???"
