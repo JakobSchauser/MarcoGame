@@ -157,7 +157,8 @@ func _process(delta):
 		return
 
 	if Input.is_action_pressed("close"):
-		get_tree().quit()
+		# get_tree().quit()
+		pass
 
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -309,4 +310,3 @@ func use_power():
 				if p != self:
 					p.power_stun()
 	held_powerup = ""
-
