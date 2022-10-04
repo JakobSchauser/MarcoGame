@@ -19,7 +19,11 @@ func on_button_pressed():
 	get_parent().get_parent().pause = false
 
 func on_button_pressed2():
+	Engine.time_scale = 1
+	get_parent().get_parent().pause = false
 	pass
 
 func on_button_pressed3():
+	Engine.time_scale = 1
+	get_parent().get_parent().pause = false
 	G.change_scene("Overworld")
