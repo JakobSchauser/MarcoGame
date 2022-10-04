@@ -49,6 +49,7 @@ func _process(dt):
 	$Face.visible = active
 	$Name.visible = active
 	if not active:
+		$Controls.text = ""
 		return
 	
 	scroll_index = scroll_index % len(G.worms)
@@ -61,9 +62,10 @@ func _process(dt):
 		$Describe.text = "Selected!"
 		$Controls.text = ""
 	else:
-		$Controls.text = "'" + left_key + "' & '" + right_key + "' to choose your worm. \n'" + select_key + "' to select!"
-		$Describe.text = ""
-	
+		if active:
+			$Controls.text = "'" + left_key + "' & '" + right_key + "' to choose your worm. \n'" + select_key + "' to select!"
+		else:
+			$Controls.text = ""
 	if not selected:
 		if Input.is_action_just_pressed("left" + i):
 			scroll_index -= 1

@@ -33,10 +33,11 @@ text = "Marco
 "
 
 [node name="Controls" type="Label" parent="."]
-margin_left = 66.0
-margin_top = 155.0
-margin_right = 798.0
-margin_bottom = 361.0
+modulate = Color( 1, 1, 1, 0.741176 )
+margin_left = 64.0
+margin_top = 190.0
+margin_right = 796.0
+margin_bottom = 396.0
 rect_scale = Vector2( 0.7, 0.7 )
 text = "Marco
 "

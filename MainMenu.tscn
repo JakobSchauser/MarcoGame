@@ -17,13 +17,12 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Marco and his friends race around the lake: The Video Game"
 autowrap = true
 
-[node name="MenuButton" type="MenuButton" parent="."]
+[node name="MenuButton" type="Button" parent="."]
 margin_left = 491.0
 margin_top = 656.0
 margin_right = 1171.0
 margin_bottom = 717.0
 text = "Click this button to start the game"
-switch_on_hover = true
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 1211.0
