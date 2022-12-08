@@ -30,6 +30,6 @@ margin_top = 13.0
 margin_right = 1798.0
 margin_bottom = 289.0
 rect_scale = Vector2( 0.5, 0.5 )
-text = "Made by Daniel, Jakob and Klas"
+text = "Made by Daniel, Jakob and Claes"
 
 [connection signal="button_down" from="MenuButton" to="." method="_on_MenuButton_button_down"]
