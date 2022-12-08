@@ -12,13 +12,20 @@ signal ChangedHealth
 var boost = 0
 var maxboost = 5
 var basespeed = 100
-var slowspeed = 20
-var speed = basespeed
+var slowspeed = 10
+var boostspeed = 200
+var speed = 0
 var turnspeed = 2.3
 var angle = 0
+var desired_angle = 0
+var desired_speed = 0
 var laps = 0
 var overworld = false
 
+var frozen_lerp = 0.05
+var normal_lerp = 0.2
+
+var rotation_lerp = normal_lerp
 var held_powerup = ""
 
 var joints_collison = 3
@@ -107,8 +114,6 @@ func get_closest_thing(things):
 					d = dd
 	return o
 
-
-
 func move_dir():
 	return Vector2(cos(angle),sin(angle))
 
@@ -123,11 +128,15 @@ func spawn_line2d():
 	current_line.width = 10
 	current_line.set_as_toplevel(true)
 
+
+
+func rotate_head():
+	$Face.get_node("Eyes").rotation = desired_angle + PI / 2
+	$Face/Eyes.rotation = desired_angle + PI / 2
+
+
 func _process(delta):
-	$Face.get_node("Eyes").rotation = angle + PI / 2
-
-	$Face/Eyes.rotation = angle + PI / 2
-
+	rotate_head()
 
 
 	var p = get_closest_thing(["Player","Powerup"])
@@ -140,19 +149,23 @@ func _process(delta):
 	$ProgressBar.value = boost
 	$Lives.text = str(lives)
 	t += delta
-	var spd = speed
+	speed = lerp(speed,desired_speed,0.05)
 	
 	if overworld:
-		spd = 0
+		#spd = 0
+		pass
 	if boost > 0:
-		spd *= 1.6
+		#spd *= 1.6
+		desired_speed = boostspeed
 		boost -= delta
 
 	if Input.is_action_pressed("left" + str(player_num)):
-		angle -= turnspeed*delta
+		desired_angle -= turnspeed*delta
 	if Input.is_action_pressed("right" + str(player_num)):
-		angle += turnspeed*delta
+		desired_angle += turnspeed*delta
 	
+	angle = lerp(angle,desired_angle,rotation_lerp)
+
 	if is_dead:
 		return
 
@@ -166,21 +179,17 @@ func _process(delta):
 	if Input.is_action_pressed("boost"+str(player_num)):
 		use_power()
 		if overworld:
-			spd = speed
+			# spd = speed
+			pass
 
 	if Input.is_action_pressed("break"+str(player_num)):
-		spd *= 0.6
+		print("Hello")
+		desired_speed = slowspeed
+	else:
+		desired_speed = basespeed
 
-	var movevec = Vector2(cos(angle),sin(angle))*spd
-
-
+	var movevec = Vector2(cos(angle),sin(angle))*speed
 	var off = movevec#*delta
-	
-	
-	
-	#fake_pos += off
-	
-	#position = fake_pos + off.normalized()*0.5 * radius
 	
 	move_and_slide(off)
 	fake_pos = position - off.normalized()*0.5 * radius
@@ -224,7 +233,6 @@ func on_draw_timeout():
 		make_collision()
 	lastpos = fake_pos
 
-
 func spawn_powerup(pos):
 	has_spawned = true
 	yield(get_tree().create_timer(0.7),"timeout")
@@ -235,20 +243,20 @@ func spawn_powerup(pos):
 	has_spawned = false
 	
 func power_slow():
-	speed = slowspeed
+	desired_speed = slowspeed
 	yield(get_tree().create_timer(6),"timeout")
-	speed = basespeed
+	desired_speed = basespeed
 
 func collide_slow():
-	speed = slowspeed
+	desired_speed = slowspeed
 	yield(get_tree().create_timer(1),"timeout")
-	speed = basespeed
+	desired_speed = basespeed
 
 
 func power_stun():
-	speed = 0.0007
+	desired_speed = 0.0007
 	yield(get_tree().create_timer(4),"timeout")
-	speed = basespeed
+	desired_speed = basespeed
 
 func power_reverse():
 	turnspeed *= -1
