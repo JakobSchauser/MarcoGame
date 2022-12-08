@@ -11,13 +11,11 @@ func _ready():
 		p.player_num = d["player_num"]
 		p.color = d["color"]
 		p.overworld = true
-		p.global_position = $StartPositions.get_child(i).global_position
+		if G.current_level_position == null:
+			p.global_position = $StartPositions.get_child(i).global_position
+		else:
+			p.global_position = G.current_level_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
 		add_child(p)
-		
 
 
-func start_level(level):
-	print(level)
-	get_tree().change_scene(level)
-	# add_child(i)
-	# TODO transistion
+

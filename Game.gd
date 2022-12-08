@@ -3,6 +3,9 @@ extends Node2D
 var segments = []
 # onready var lake = $L
 
+export(PackedScene) var pause_scene
+var pause = false
+
 export(PackedScene) var player_scene
 
 var players = []
@@ -27,6 +30,10 @@ func check_collision(trails, player):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	pause_scene = pause_scene.instance()
+	add_child(pause_scene)
+	pause_scene.hide()
+
 	$Lap.connect("race_over", self, "on_race_over")
 	
 	for i in range(len(G.players_data)):
@@ -114,6 +121,20 @@ func update_lives(worm,lives):
 
 
 func _process(delta):
+
+	if Input.is_action_just_pressed("ui_accept"):
+		if pause:
+			pause = false
+			pause_scene.hide()
+			Engine.time_scale = 1 #slow down the game 2 times
+		else:
+			Engine.time_scale = 0.05#slow down the game 2 times
+			pause_scene.show()
+			pause = true
+	
+	if pause:
+		return
+
 	total_time += delta
 	# update()
 	var kills = get_kills()
@@ -127,11 +148,6 @@ func _process(delta):
 				# get_tree().reload_current_scene()
 		# pass
 	$Camera2D.position = avg_pos(players)
-
-	if Input.is_action_just_pressed("ui_accept"):
-		print("yay")
-		on_race_over()
-
 
 func avg_pos(objs):
 	var pos = Vector2()

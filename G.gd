@@ -37,6 +37,7 @@ var colors = {
 	"white": Color.white
 }
 
+var current_level_position = null
 
 var worms = [
 	{ "name": "Agnes",

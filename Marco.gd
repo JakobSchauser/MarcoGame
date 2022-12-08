@@ -157,7 +157,8 @@ func _process(delta):
 		return
 
 	if Input.is_action_pressed("close"):
-		get_tree().quit()
+		# get_tree().quit()
+		pass
 
 	if Input.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
@@ -267,15 +268,17 @@ func show_pickup(msg):
 func play_pickup():
 	$pickup.play()
 
-
 func kill():
 	is_dead = true
+	var spd = range_lerp(len(points), 0, 100000, 0.01, 0.0001)
+	print(spd)
+
 	points = []
 	current_line = null
 	for l in $Lines.get_children():
 		for i in range(l.get_point_count()):
 			l.remove_point(0)
-			yield(G.timer(0.01), "timeout")
+			yield(G.timer(spd), "timeout")
 		l.queue_free()
 	spawn_hole = 0.1
 	lives = 3
@@ -307,4 +310,3 @@ func use_power():
 				if p != self:
 					p.power_stun()
 	held_powerup = ""
-

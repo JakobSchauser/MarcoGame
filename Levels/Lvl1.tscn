@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -22,6 +23,7 @@ extents = Vector2( 7, 200.5 )
 [node name="Worms" type="Node2D"]
 position = Vector2( 2, 0 )
 script = ExtResource( 3 )
+pause_scene = ExtResource( 16 )
 player_scene = ExtResource( 1 )
 vegetation = ExtResource( 7 )
 
@@ -73,6 +75,7 @@ current = true
 zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
+max_zoom = 1.11111e+10
 margin = Vector2( 100, 100 )
 
 [node name="Trails" type="Node2D" parent="."]
