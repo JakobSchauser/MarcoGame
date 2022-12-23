@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Levels/Lvl2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/LakeBaikal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Lake.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld.gd" type="Script" id=3]
 [ext_resource path="res://Levels/Lvl1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/LakeLadoga.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/LakeSuperior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/LakeVostok.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Lake_Vostok.png" type="Texture" id=8]
+[ext_resource path="res://lake_superior.png" type="Texture" id=9]
+[ext_resource path="res://lake_ladoga.png" type="Texture" id=10]
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource( 3 )
@@ -11,7 +17,8 @@ script = ExtResource( 3 )
 [node name="Lake" parent="." instance=ExtResource( 2 )]
 
 [node name="Label" parent="Lake" index="0"]
-text = "Lake Baltimore"
+text = "Lvl1
+"
 
 [node name="Lake" parent="Lake" index="1"]
 level = ExtResource( 4 )
@@ -20,7 +27,7 @@ level = ExtResource( 4 )
 position = Vector2( 473, 97 )
 
 [node name="Label" parent="Lake3" index="0"]
-text = "Lach ness"
+text = "Lake Baikal"
 
 [node name="Lake" parent="Lake3" index="1"]
 level = ExtResource( 1 )
@@ -32,10 +39,39 @@ position = Vector2( 1140, 539 )
 text = "Lake Go Fuck Yourself"
 
 [node name="Lake4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 352, 482 )
+position = Vector2( -320, 225 )
 
 [node name="Label" parent="Lake4" index="0"]
-text = "Lake Not Implemented"
+text = "Lake Ladoga"
+
+[node name="Lake" parent="Lake4" index="1"]
+texture = ExtResource( 10 )
+level = ExtResource( 5 )
+
+[node name="Lake5" parent="." instance=ExtResource( 2 )]
+position = Vector2( -12, 230 )
+
+[node name="Label" parent="Lake5" index="0"]
+text = "Lake Superior"
+
+[node name="Lake" parent="Lake5" index="1"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+level = ExtResource( 6 )
+
+[node name="CollisionShape2D" parent="Lake5/Lake/Area2D" index="0"]
+position = Vector2( -2.46533, -0.672363 )
+scale = Vector2( 1, 1 )
+
+[node name="Lake6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 294, 325 )
+
+[node name="Label" parent="Lake6" index="0"]
+text = "Lake Vostok"
+
+[node name="Lake" parent="Lake6" index="1"]
+texture = ExtResource( 8 )
+level = ExtResource( 7 )
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -55,3 +91,5 @@ position = Vector2( 123, 120 )
 [editable path="Lake3"]
 [editable path="Lake2"]
 [editable path="Lake4"]
+[editable path="Lake5"]
+[editable path="Lake6"]
