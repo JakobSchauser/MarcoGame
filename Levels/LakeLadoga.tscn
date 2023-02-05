@@ -142,9 +142,14 @@ rotation = -1.55152
 position = Vector2( 169, -694 )
 rotation = -1.55152
 
-[node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 310, 705 )
+[node name="Smallrock13" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1072, 1078 )
 rotation = -1.55152
+
+[node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 139.313, 845.893 )
+rotation = -1.55152
+offset = Vector2( 144.157, 167.94 )
 
 [node name="LakeLadoga" type="Sprite" parent="Trails"]
 position = Vector2( 676, 487 )
@@ -267,7 +272,15 @@ position = Vector2( 1460, 438 )
 position = Vector2( 114, -67.0001 )
 rotation = 0.579443
 
+[node name="Lever5" parent="levers" instance=ExtResource( 15 )]
+position = Vector2( -108, 397 )
+
+[node name="Door" parent="levers/Lever5" index="2"]
+position = Vector2( 114, -67.0001 )
+rotation = 0.579443
+
 [editable path="levers/Lever"]
 [editable path="levers/Lever3"]
 [editable path="levers/Lever2"]
 [editable path="levers/Lever4"]
+[editable path="levers/Lever5"]

@@ -31,16 +31,16 @@ vegetation = ExtResource( 7 )
 [node name="StartPositions" type="Node2D" parent="."]
 
 [node name="Position2D" type="Position2D" parent="StartPositions"]
-position = Vector2( 450, -192 )
+position = Vector2( 788, 408 )
 
 [node name="Position2D2" type="Position2D" parent="StartPositions"]
-position = Vector2( 450, -142 )
+position = Vector2( 788, 458 )
 
 [node name="Position2D3" type="Position2D" parent="StartPositions"]
-position = Vector2( 452, -96 )
+position = Vector2( 790, 504 )
 
 [node name="Position2D4" type="Position2D" parent="StartPositions"]
-position = Vector2( 453, -45 )
+position = Vector2( 791, 555 )
 
 [node name="Players" type="Node2D" parent="."]
 
@@ -89,7 +89,7 @@ position = Vector2( 811, 476 )
 rotation = 0.416175
 
 [node name="Cornerrock2" parent="Trails" instance=ExtResource( 2 )]
-position = Vector2( 131, -161 )
+position = Vector2( 260, 1551 )
 rotation = 0.416175
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
@@ -117,7 +117,7 @@ position = Vector2( -27, -150 )
 rotation = -1.55152
 
 [node name="Smallrock8" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 762, -614 )
+position = Vector2( 1270, 1260 )
 rotation = -1.55152
 
 [node name="Smallrock10" parent="Trails" instance=ExtResource( 10 )]
@@ -129,11 +129,11 @@ position = Vector2( 503, -149 )
 rotation = -1.55152
 
 [node name="Smallrock11" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 169, -694 )
+position = Vector2( 2253, 889 )
 rotation = -1.55152
 
 [node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 310, 705 )
+position = Vector2( 187, 1070 )
 rotation = -1.55152
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
@@ -198,12 +198,12 @@ position = Vector2( 1862, 1176 )
 rotation = -3.08873
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2087, -353 )
+position = Vector2( 1965, 1021 )
 rotation = 1.7831
 scale = Vector2( 1.24169, 1.24169 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
-position = Vector2( 231, -658 )
+position = Vector2( 116, 702 )
 rotation = 0.0696857
 scale = Vector2( 2.03089, 1 )
 
@@ -218,11 +218,17 @@ position = Vector2( 1313, 687 )
 [node name="Position2D2" parent="Node2D/positions" index="1"]
 position = Vector2( 945, 26.0001 )
 
+[node name="KinematicBody2D" parent="Node2D" index="1"]
+scale = Vector2( 0.4, 0.4 )
+
 [node name="Node2D2" parent="." instance=ExtResource( 15 )]
 position = Vector2( -466, 759 )
 
 [node name="Position2D2" parent="Node2D2/positions" index="1"]
 position = Vector2( 945, 26.0001 )
+
+[node name="KinematicBody2D" parent="Node2D2" index="1"]
+scale = Vector2( 0.4, 0.4 )
 
 [node name="Bush" parent="." instance=ExtResource( 13 )]
 position = Vector2( 682, 71 )

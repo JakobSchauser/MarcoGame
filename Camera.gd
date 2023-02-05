@@ -10,6 +10,9 @@ var targets = []  # Array of targets to be tracked.
 
 onready var screen_size = get_viewport_rect().size
 
+func _ready():
+    current = true
+
 func _process(delta):
     if !targets:
         return
