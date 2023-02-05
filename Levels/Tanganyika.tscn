@@ -1,0 +1,226 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=3]
+[ext_resource path="res://jazzmand2.wav" type="AudioStream" id=4]
+[ext_resource path="res://Camera.gd" type="Script" id=5]
+[ext_resource path="res://goal.JPG" type="Texture" id=6]
+[ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Screenshot from 2023-02-05 16-21-41.png" type="Texture" id=8]
+[ext_resource path="res://Levels/VisibleCollision.gd" type="Script" id=9]
+[ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Lap.gd" type="Script" id=12]
+[ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Color.gd" type="Script" id=14]
+[ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 200.5 )
+
+[node name="Worms" type="Node2D"]
+position = Vector2( 2, 0 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_vertical_guides_": [ -821.0 ]
+}
+pause_scene = ExtResource( 16 )
+player_scene = ExtResource( 1 )
+vegetation = ExtResource( 7 )
+
+[node name="StartPositions" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 395, -144 )
+
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 450, -142 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 452, -96 )
+
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 403, -96 )
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Gradient" type="Sprite" parent="."]
+visible = false
+position = Vector2( 649, 452 )
+script = ExtResource( 14 )
+color = "green"
+
+[node name="Lap" type="Area2D" parent="." groups=["Lap"]]
+position = Vector2( 492, 11 )
+z_index = -3
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lap"]
+position = Vector2( 5, -35.5 )
+shape = SubResource( 1 )
+
+[node name="Goal2" type="Sprite" parent="Lap"]
+position = Vector2( 3.99988, -77 )
+rotation = 1.56572
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 6 )
+
+[node name="Goal3" type="Sprite" parent="Lap"]
+position = Vector2( 3.00009, -222 )
+rotation = 1.56572
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 65, 51 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+script = ExtResource( 5 )
+max_zoom = 1.11111e+10
+margin = Vector2( 100, 100 )
+
+[node name="Trails" type="Node2D" parent="."]
+
+[node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 647, 612 )
+
+[node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 440, 690 )
+
+[node name="Smallrock3" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 342, 531 )
+
+[node name="Smallrock4" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 442, 505 )
+
+[node name="Smallrock5" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 223, 657 )
+
+[node name="Smallrock6" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 152, 735 )
+
+[node name="Smallrock15" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1343, -127 )
+
+[node name="Smallrock16" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1062, -61 )
+
+[node name="Smallrock17" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1178, -79 )
+
+[node name="Smallrock18" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1057, 42 )
+
+[node name="Smallrock19" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1210, 72 )
+
+[node name="Smallrock20" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1405, 5 )
+
+[node name="Smallrock7" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1004, 516 )
+
+[node name="Smallrock8" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1156, 613 )
+
+[node name="Smallrock9" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1208, 416 )
+
+[node name="Smallrock10" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1246, 497 )
+
+[node name="Smallrock11" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1718, 1374 )
+scale = Vector2( 4, 4 )
+
+[node name="Smallrock14" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1320, 1488 )
+scale = Vector2( 4, 4 )
+
+[node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 1175, 810 )
+
+[node name="Area2D" type="Area2D" parent="Trails"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Trails/Area2D"]
+polygon = PoolVector2Array( 7, -308, 125, -283, 227, -245, 241, -146, 275, -50, 248, 13, 136, 50, -27, 71, -68, 31, -161, -76, -158, -209, -65, -260 )
+script = ExtResource( 9 )
+color = "brown"
+
+[node name="Lake" type="Sprite" parent="."]
+self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
+position = Vector2( 525, 300 )
+rotation = 2.13825
+scale = Vector2( 0.59082, 0.59082 )
+script = ExtResource( 14 )
+color = "blue"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
+position = Vector2( 386.097, 221.572 )
+polygon = PoolVector2Array( -1570.62, -1254.94, -1618.36, -1216.48, -1618.01, -1096.27, -1575.82, -910.41, -1520.73, -849.178, -1509.16, -1001.07, -1451.5, -973.589, -1393.97, -757.362, -1306.1, -600.61, -1079.02, -363.995, -924.804, -373.972, -877.247, -311.956, -908.584, -203.668, -940.955, -90.7071, -885.774, 102.935, -779.744, 244.095, -556.393, 342.592, -402.085, 465.024, -260.829, 491.404, -195.547, 650.508, -99.1799, 713.528, -16.397, 660.764, 72.5647, 535.818, 77.6763, 424.175, -138.146, 324.894, -277.898, 225.298, -404.726, 45.2088, -450.186, -347.315, -690.291, -635.846, -918.785, -666.836, -1070.24, -791.088, -1282.55, -1061.21, -1486.42, -1148.03 )
+script = ExtResource( 9 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 12.0
+margin_right = 1012.0
+margin_bottom = 59.0
+size_flags_horizontal = 3
+
+[node name="CharacterUI" type="HBoxContainer" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 1000.0
+rect_min_size = Vector2( 1000, 0 )
+custom_constants/separation = 100
+alignment = 1
+
+[node name="LapLabel" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer" groups=["LapLabel"]]
+margin_top = 4.0
+margin_right = 1000.0
+margin_bottom = 59.0
+text = "Laps: 0"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+autoplay = true
+
+[node name="Lever" parent="." instance=ExtResource( 15 )]
+position = Vector2( 230, 677 )
+rotation = -1.21905
+
+[node name="Bush" parent="." instance=ExtResource( 13 )]
+position = Vector2( 682, 71 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 1293.0
+margin_top = 1148.0
+margin_right = 1741.0
+margin_bottom = 1203.0
+text = "why did you go here???"
+
+[node name="ScreenshotFrom2023-02-0516-21-41" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.592157 )
+position = Vector2( 633, -415 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -114, -397, -266, -294, -282, -163, -282, 7, -230, 95, -334, 196, -355, 439, -112, 712, 391, 739, 1209, 709, 1644, 583, 1629, 205, 1589, -173, 1551, -441, 1400, -485, 1106, -582, 691, -373, 319, -463, -59, -402, -118, -328, 37, -369, 221, -331, 383, -210, 493, -136, 740, -295, 854, -353, 926, -365, 993, -427, 1126, -425, 1269, -468, 1353, -466, 1364, -421, 1436, -396, 1496, -347, 1512, -180, 1516, 4, 1519, 161, 1528, 269, 1516, 313, 1503, 367, 1510, 459, 1458, 540, 1377, 582, 1140, 634, 843, 614, 655, 596, 414, 615, 234, 579, 82, 589, -26, 557, -190, 449, -275, 316, -281, 217, -167, 103, -170, 19, -227, -76, -242, -229, -173, -298, -124, -327 )
+script = ExtResource( 9 )
+color = "brown"

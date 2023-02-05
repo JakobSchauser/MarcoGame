@@ -8,6 +8,7 @@ onready var type = types[randi() % types.size()]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Spawned a powerup")
 	connect("body_entered",self,"on_body_entered")
 	# create a timer and connect it to the timeout signal
 	# when the timer times out, queue_free this instance 

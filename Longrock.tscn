@@ -5,12 +5,15 @@
 
 [node name="Longrock" type="Sprite" groups=["Grass"]]
 position = Vector2( 994, 338 )
+rotation = 0.192009
 texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 192, 35, 269, 106 )
 script = ExtResource( 2 )
 color = "silver"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Grass"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( -298, -436 )
+position = Vector2( -112, -12 )
 polygon = PoolVector2Array( 30, -23, 61, -7, 108, -17, 135, -12, 150, -4, 208, -6, 217, 4, 218, 15, 187, 35, 131, 29, 101, 42, 53, 32, 5, 37, -5, 26, 14, -18 )
