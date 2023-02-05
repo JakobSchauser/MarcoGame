@@ -34,7 +34,7 @@ var joints_collison = 3
 var joints_collison_count = 0
 
 
-var should_spawn_powerups = false
+var should_spawn_powerup = false
 var has_spawned = false
 
 export(PackedScene) var powerup_scene 
@@ -262,18 +262,17 @@ func _process(delta):
 			#	var bouncevec = movevec.bounce(col.normal)
 			#	angle = atan2(bouncevec.y,bouncevec.x)
 				
-	spawn_hole = max(0, spawn_hole - delta)
-
-	if rand_range(0, 1) > 0.99 and spawn_hole <= 0:
-		should_spawn_powerups = rand_range(0,1) < 0.9999
+	spawn_hole = max(-1, spawn_hole - delta)
+	if rand_range(0, 1) > 0.99 and spawn_hole <= -1 and not should_spawn_powerup:
+		should_spawn_powerup = true # rand_range(0,1) < 0.9
 		spawn_hole = 0.5
 		spawn_line2d()
+	
+	#if rand_range(0, 1) > 0.99:
+	#	spawn_powerup(lastpos)
 
 func make_collision():
-	if spawn_hole <= 0:
-		points.append([lastpos, fake_pos]) # Is used in game.gd 
-	elif should_spawn_powerups and not has_spawned and spawn_hole <= 0.25 and speed >= basespeed:
-		spawn_powerup(lastpos)
+	points.append([lastpos, fake_pos]) # Is used in game.gd 
 
 func on_draw_timeout():
 	if is_dead or not current_line:
@@ -284,18 +283,23 @@ func on_draw_timeout():
 		if joints_collison_count == 0:
 			make_collision()
 			current_line.add_point(fake_pos)
+	elif spawn_hole <= 0.25 and should_spawn_powerup and rand_range(0,1) < 0.4:
+		spawn_powerup(lastpos)
+
 	lastpos = fake_pos
 
+
 func spawn_powerup(pos):
-	if speed < 70:
-		return
-	has_spawned = true
+	#if speed < 70:
+	#	return
+	#has_spawned = true
+	should_spawn_powerup = false
 	yield(get_tree().create_timer(0.7),"timeout")
 	var inst = powerup_scene.instance()
 	inst.position = pos
 	add_child(inst)
 	inst.set_as_toplevel(true)
-	has_spawned = false
+	#has_spawned = false
 	
 func power_slow():
 	desired_speed = slowspeed
