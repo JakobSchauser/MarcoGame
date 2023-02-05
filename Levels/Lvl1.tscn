@@ -25,14 +25,7 @@ extents = Vector2( 7, 200.5 )
 [sub_resource type="CircleShape2D" id=2]
 radius = 187.808
 
-<<<<<<< HEAD
-[sub_resource type="CircleShape2D" id=3]
-radius = 320.4
-
-[node name="Worms" type="Node2D"]
-=======
 [node name="Worms2" type="Node2D"]
->>>>>>> c2a1a28a5100faf70ea78b518920773528f044a6
 position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 pause_scene = ExtResource( 16 )
