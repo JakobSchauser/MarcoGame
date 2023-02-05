@@ -22,9 +22,10 @@ onready var playerUI = preload("res://IndividualUI.tscn")
 onready var powerup_images = {"":preload("lake.png"),"Reversed controls":preload("lake.png"),"Slow others":preload("res://cornerrock.png"),"Stun":preload("res://goal.JPG"),"Boost":preload("res://arrowmarco.png"),"Lives":preload("res://grass1.png")}
 # onready var powerup_images = {}
 func check_collision(trails, player):
+	
 	for t in trails:
 		var closest_point : Vector2 = Geometry.get_closest_point_to_segment_2d(player.position, t[0], t[0+1])
-		if closest_point.distance_squared_to(player.position) <= player.radius:
+		if closest_point.distance_squared_to(player.position) <= player.radius * 0.5:
 			return t
 	return null
 
@@ -90,13 +91,15 @@ func _ready():
 		add_child(inst)
 		
 
-		
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func get_kills():
 	var kills = []
 	for p in players:
+		if p.invinsible:
+			continue
 		for q in players:
+			if q.invinsible:
+				continue
 			var c = check_collision(p.points, q)
 			if c:
 				p.points.erase(c)
@@ -121,7 +124,8 @@ func update_lives(worm,lives):
 
 
 func _process(delta):
-
+	for p in players:
+		update_lives(p,p.lives)
 	if Input.is_action_just_pressed("ui_accept"):
 		if pause:
 			pause = false
@@ -141,10 +145,11 @@ func _process(delta):
 	if kills.size() != 0:
 		for k in kills:
 			var p = k[1]
-			p.lives -= 1
-			update_lives(p,p.lives)
-			if p.lives <= 0 and not p.is_dead:
-				p.kill()
+			# p.lives -= 1
+			p.take_hit()
+			#update_lives(p,p.lives)
+			#if p.lives <= 0 and not p.is_dead:
+			#	p.kill()
 				# get_tree().reload_current_scene()
 		# pass
 	$Camera2D.position = avg_pos(players)
