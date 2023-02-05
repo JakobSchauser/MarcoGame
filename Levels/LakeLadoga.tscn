@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
 [ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://lake.png" type="Texture" id=8]
+[ext_resource path="res://Lake_Vostok.png" type="Texture" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://lake_ladoga.png" type="Texture" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -63,6 +64,12 @@ rotation = 1.56572
 scale = Vector2( 0.203125, 0.203125 )
 texture = ExtResource( 6 )
 
+[node name="Goal4" type="Sprite" parent="Lap"]
+position = Vector2( 1, -371 )
+rotation = 1.56572
+scale = Vector2( 0.203125, 0.203125 )
+texture = ExtResource( 6 )
+
 [node name="Goal3" type="Sprite" parent="Lap"]
 position = Vector2( 3.00009, -222 )
 rotation = 1.56572
@@ -71,7 +78,6 @@ texture = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 65, 51 )
-current = true
 zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
@@ -81,29 +87,75 @@ margin = Vector2( 100, 100 )
 [node name="Trails" type="Node2D" parent="."]
 
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
-position = Vector2( -157, 420 )
+position = Vector2( -328, 778 )
 rotation = 1.24029
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
-position = Vector2( 491, 222 )
+position = Vector2( 1060, 349 )
+rotation = -0.693419
+
+[node name="Cornerrock3" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 1086, 250 )
+rotation = 0.416175
+
+[node name="Cornerrock4" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 1375, 643 )
+rotation = -1.36899
+
+[node name="Cornerrock5" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 1018, 776 )
 rotation = 0.416175
 
 [node name="Cornerrock2" parent="Trails" instance=ExtResource( 2 )]
-position = Vector2( 131, -161 )
+position = Vector2( 402, 289 )
 rotation = 0.416175
 
+[node name="Cornerrock6" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 1358, 747 )
+rotation = -0.306898
+
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 239, 134 )
+position = Vector2( 1194, -423 )
 rotation = -1.55152
 
-[node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 418, 107 )
+[node name="Smallrock3" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 592, 90 )
+rotation = -1.55152
+
+[node name="Smallrock4" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( -29, 536 )
+rotation = -1.55152
+
+[node name="Smallrock5" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 461, 340 )
+rotation = -1.55152
+
+[node name="Smallrock7" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( -27, -150 )
+rotation = -1.55152
+
+[node name="Smallrock8" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 717, -588 )
+rotation = -1.55152
+
+[node name="Smallrock11" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 169, -694 )
+rotation = -1.55152
+
+[node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 310, 705 )
+rotation = -1.55152
+
+[node name="LakeLadoga" type="Sprite" parent="Trails"]
+position = Vector2( 676, 487 )
+scale = Vector2( 1.74494, 1.74494 )
+texture = ExtResource( 17 )
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
-position = Vector2( 525, 300 )
+position = Vector2( 492.402, 262.981 )
 rotation = 2.13825
-scale = Vector2( 0.59082, 0.59082 )
+scale = Vector2( 0.59082, 0.582651 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
@@ -111,8 +163,8 @@ color = "blue"
 [node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
-position = Vector2( -4.79953, 5.06635 )
-polygon = PoolVector2Array( 230.189, 5.0777, 238.651, -76.1653, 258.962, -152.331, 260.655, -242.036, 236.959, -301.276, 189.567, -336.82, 132.02, -396.06, 40.6215, -424.833, -77.8579, -401.137, -148.946, -323.279, -165.871, -204.8, -177.719, -98.1686, -243.729, -16.9256, -324.972, 69.3951, -374.056, 196.337, -396.06, 277.58, -370.671, 350.361, -304.661, 416.37, -199.722, 455.299, -93.0909, 450.222, 10.1554, 428.218, 81.243, 390.982, 159.101, 348.668, 204.8, 296.199, 242.036, 226.803, 236.959, 142.175, 225.111, 57.5471 )
+position = Vector2( 19.5107, -131.873 )
+polygon = PoolVector2Array( 629.228, -697.726, 563.57, -840.5, 622.542, -970.203, 440.991, -1070.64, 178.746, -919.461, 128.177, -1019.07, -32.9042, -994.337, -36.2125, -900.611, -148.969, -827.735, -215.203, -687.233, -303.663, -585.284, -296.004, -221.849, -382.722, -43.6844, -430.527, 91.012, -352.808, 214.838, -396.06, 277.58, -350.876, 372.17, -31.6302, 425.464, 333.18, 472.584, 429.009, 146.062, 506.819, 36.7484, 637.77, -7.18188, 630.036, -112.088, 926.267, -480.617, 1053.17, -556.531, 932.552, -767.583, 829.803, -678.786 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -141,32 +193,26 @@ margin_bottom = 59.0
 text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
-position = Vector2( -51, 1146 )
-rotation = 0.57335
-
-[node name="Boot4" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1516, 869 )
-rotation = -2.4987
+position = Vector2( -891, 1022 )
+rotation = 0.917287
+scale = Vector2( 2.02346, 1 )
 
 [node name="Boot5" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1795, 214 )
+position = Vector2( 843, 962 )
 rotation = -2.4987
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1618, 206 )
+position = Vector2( 2410, 426 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
-position = Vector2( 433, 43 )
+position = Vector2( 545, -73 )
 rotation = 0.28998
+scale = Vector2( 2.03089, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -15.0
 autoplay = true
-
-[node name="Lever" parent="." instance=ExtResource( 15 )]
-position = Vector2( 230, 677 )
-rotation = -1.21905
 
 [node name="Bush" parent="." instance=ExtResource( 13 )]
 position = Vector2( 682, 71 )
@@ -177,3 +223,51 @@ margin_top = 1148.0
 margin_right = 1741.0
 margin_bottom = 1203.0
 text = "why did you go here???"
+
+[node name="levers" type="Node2D" parent="."]
+
+[node name="Lever" parent="levers" instance=ExtResource( 15 )]
+position = Vector2( 659, 51 )
+
+[node name="Door" parent="levers/Lever" index="2"]
+position = Vector2( 116, -141 )
+
+[node name="Longrock" parent="levers/Lever/Door" index="0"]
+position = Vector2( 386, 454 )
+rotation = -0.17542
+
+[node name="Lever3" parent="levers" instance=ExtResource( 15 )]
+position = Vector2( 998, 410 )
+
+[node name="CollisionShape2D" parent="levers/Lever3" index="0"]
+position = Vector2( -32.75, -71.2922 )
+
+[node name="Sprite" parent="levers/Lever3" index="1"]
+position = Vector2( -32.75, -71.7922 )
+
+[node name="Door" parent="levers/Lever3" index="2"]
+position = Vector2( 195, -107 )
+rotation = 0.887475
+
+[node name="Longrock" parent="levers/Lever3/Door" index="0"]
+position = Vector2( 386, 454 )
+rotation = -0.17542
+
+[node name="Lever2" parent="levers" instance=ExtResource( 15 )]
+position = Vector2( 976, -399 )
+
+[node name="Door" parent="levers/Lever2" index="2"]
+position = Vector2( -8, 66 )
+rotation = 1.44372
+
+[node name="Lever4" parent="levers" instance=ExtResource( 15 )]
+position = Vector2( 1460, 438 )
+
+[node name="Door" parent="levers/Lever4" index="2"]
+position = Vector2( 114, -67.0001 )
+rotation = 0.579443
+
+[editable path="levers/Lever"]
+[editable path="levers/Lever3"]
+[editable path="levers/Lever2"]
+[editable path="levers/Lever4"]

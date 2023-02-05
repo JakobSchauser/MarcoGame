@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -7,32 +7,20 @@
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
 [ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://lake.png" type="Texture" id=8]
+[ext_resource path="res://Lake_Vostok.png" type="Texture" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
 [ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
-[ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
+[ext_resource path="res://FrozenGround.gd" type="Script" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
-[ext_resource path="res://FrozenGround.gd" type="Script" id=17]
-[ext_resource path="res://SandGround.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 187.808
-
-<<<<<<< HEAD
-[sub_resource type="CircleShape2D" id=3]
-radius = 320.4
-
 [node name="Worms" type="Node2D"]
-=======
-[node name="Worms2" type="Node2D"]
->>>>>>> c2a1a28a5100faf70ea78b518920773528f044a6
 position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 pause_scene = ExtResource( 16 )
@@ -83,7 +71,6 @@ texture = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 65, 51 )
-current = true
 zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
 script = ExtResource( 5 )
@@ -93,22 +80,69 @@ margin = Vector2( 100, 100 )
 [node name="Trails" type="Node2D" parent="."]
 
 [node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
-position = Vector2( -157, 420 )
+position = Vector2( -328, 778 )
 rotation = 1.24029
 
 [node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
-position = Vector2( -109, 914 )
+position = Vector2( 811, 476 )
+rotation = 0.416175
+
+[node name="Cornerrock2" parent="Trails" instance=ExtResource( 2 )]
+position = Vector2( 131, -161 )
+rotation = 0.416175
 
 [node name="Smallrock" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 863, 562 )
+position = Vector2( -118, 134 )
+rotation = -1.55152
+
+[node name="Smallrock3" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 592, 90 )
+rotation = -1.55152
+
+[node name="Smallrock4" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( -29, 536 )
+rotation = -1.55152
+
+[node name="Smallrock5" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 461, 340 )
+rotation = -1.55152
+
+[node name="Smallrock6" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 219, 28 )
+rotation = -1.55152
+
+[node name="Smallrock7" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( -27, -150 )
+rotation = -1.55152
+
+[node name="Smallrock8" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 762, -614 )
+rotation = -1.55152
+
+[node name="Smallrock10" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 493, -229 )
+rotation = -1.55152
+
+[node name="Smallrock9" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 503, -149 )
+rotation = -1.55152
+
+[node name="Smallrock11" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 169, -694 )
+rotation = -1.55152
+
+[node name="Smallrock12" parent="Trails" instance=ExtResource( 10 )]
+position = Vector2( 310, 705 )
+rotation = -1.55152
 
 [node name="Smallrock2" parent="Trails" instance=ExtResource( 10 )]
-position = Vector2( 932, 380 )
+position = Vector2( 400, 387 )
 
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
-position = Vector2( 494, 264 )
-scale = Vector2( 0.59082, 0.59082 )
+position = Vector2( 492.402, 262.981 )
+rotation = 2.13825
+scale = Vector2( 0.59082, 0.582651 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
@@ -116,7 +150,8 @@ color = "blue"
 [node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
-polygon = PoolVector2Array( 230.189, 5.0777, 238.651, -76.1653, 258.962, -152.331, 260.655, -242.036, 236.959, -301.276, 189.567, -336.82, 132.02, -396.06, 40.6215, -424.833, -77.8579, -401.137, -148.946, -323.279, -165.871, -204.8, -177.719, -98.1686, -243.729, -16.9256, -324.972, 69.3951, -374.056, 196.337, -396.06, 277.58, -370.671, 350.361, -304.661, 416.37, -199.722, 455.299, -93.0909, 450.222, 10.1554, 428.218, 81.243, 390.982, 159.101, 348.668, 204.8, 296.199, 242.036, 226.803, 236.959, 142.175, 225.111, 57.5471 )
+position = Vector2( 13.4246, -104.899 )
+polygon = PoolVector2Array( 621.029, -357.697, 675.642, -410.571, 638.768, -421.189, 592.796, -446.08, 490.407, -398.883, 364.632, -378.931, 212.523, -334.165, 105.852, -284.239, 33.012, -304.047, -69.8464, -188.309, -125.887, -134.526, -242.407, -62.2648, -363.962, 49.3333, -316.013, 115.114, -352.808, 214.838, -396.06, 277.58, -350.876, 372.17, -176.902, 405.796, -28.6982, 345.455, 2.90509, 247.033, 42.1463, 119.658, 97.0104, 54.5813, 249.464, -52.6255, 513.654, -204.958, 536.851, -259.886, 592.782, -285.5, 594.586, -304.714 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -145,36 +180,54 @@ margin_bottom = 59.0
 text = "Laps: 0"
 
 [node name="Boot2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 333, 1466 )
+position = Vector2( -891, 1022 )
+rotation = 0.917287
+scale = Vector2( 2.02346, 1 )
+
+[node name="Boot5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 843, 962 )
+rotation = -2.4987
 
 [node name="Boot3" parent="." instance=ExtResource( 11 )]
-position = Vector2( 1618, 206 )
+position = Vector2( 2410, 426 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
-position = Vector2( 383, 181 )
+position = Vector2( 545, -73 )
+rotation = 0.28998
+scale = Vector2( 2.03089, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -15.0
 autoplay = true
 
-[node name="Lever" parent="." instance=ExtResource( 15 )]
-position = Vector2( 230, 677 )
-rotation = -1.21905
-
 [node name="Bush" parent="." instance=ExtResource( 13 )]
 position = Vector2( 682, 71 )
 
-[node name="FrozenGround" type="Area2D" parent="."]
-script = ExtResource( 17 )
+[node name="Label" type="Label" parent="."]
+margin_left = 1293.0
+margin_top = 1148.0
+margin_right = 1741.0
+margin_bottom = 1203.0
+text = "why did you go here???"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrozenGround"]
-position = Vector2( 784, 163 )
-shape = SubResource( 2 )
+[node name="LakeVostok" type="Sprite" parent="."]
+position = Vector2( 560, 409 )
+scale = Vector2( 2.32375, 2.32376 )
+texture = ExtResource( 8 )
 
-[node name="SandGround" type="Area2D" parent="."]
-script = ExtResource( 18 )
+[node name="ice1" type="Area2D" parent="."]
+position = Vector2( 276, 721 )
+script = ExtResource( 15 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SandGround"]
-position = Vector2( 45, 42 )
-shape = SubResource( 3 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ice1"]
+position = Vector2( -2, -6 )
+polygon = PoolVector2Array( 97, 22, 248, 56, 403, 58, 524, 37, 605, 22, 705, 32, 800, 90, 928, 241, 988, 364, 1005, 426, 1005, 453, 654, 762, 409, 743, 69, 498, -99, 358, -116, 224, -90, 211, -22, 181, -8, 128, 11, 69, 58, 39 )
+
+[node name="ice2" type="Area2D" parent="."]
+position = Vector2( -491, -682 )
+script = ExtResource( 15 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ice2"]
+position = Vector2( -2, -6 )
+polygon = PoolVector2Array( 97, 22, 248, 56, 403, 58, 524, 37, 605, 22, 705, 32, 800, 90, 928, 241, 988, 364, 1005, 426, 1005, 453, 654, 762, 409, 743, 69, 498, -99, 358, -116, 224, -90, 211, -22, 181, -8, 128, 11, 69, 58, 39 )
