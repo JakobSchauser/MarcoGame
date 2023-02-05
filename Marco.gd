@@ -8,7 +8,7 @@ export(String) var worm_name
 signal PickedUp
 signal ChangedHealth
 
-
+var invinsible = false
 var boost = 0
 var maxboost = 5
 var basespeed = 100
@@ -21,6 +21,8 @@ var desired_angle = 0
 var desired_speed = 0
 var laps = 0
 var overworld = false
+
+var speed_multiplier = 1
 
 var frozen_lerp = 0.05
 var normal_lerp = 0.2
@@ -51,6 +53,7 @@ var t = 0
 
 onready var collision_timer = Timer.new()
 onready var draw_timer = Timer.new()
+onready var blink_timer = Timer.new()
 
 var points = []
 
@@ -77,6 +80,12 @@ var is_dead = false
 func _ready():
 	$Face/Sprite.modulate = color
 	spawn_line2d()
+	
+	add_child(blink_timer)
+	blink_timer.connect("timeout",self,"blink")
+	blink_timer.wait_time = 0.15
+	blink_timer.start()
+	blink_timer.one_shot = false
 	# current_line.add_point(position)
 	
 	# collision_timer.connect("timeout",self,"on_collision_timeout")
@@ -98,9 +107,46 @@ func _ready():
 	# points.append([position - movevec,position - movevec])
 	fake_pos = position
 
+	# connect timer to remove_tail
+	$Timer.connect("timeout",self,"remove_tail")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
+func blink():
+	if not invinsible:
+		show()
+		return
+	
+	
+	visible = !visible
 
+	
+
+
+func remove_tail():
+	if is_dead:
+		return
+	for i in range(1):
+	# Get last child 
+		var n = $Lines.get_child_count()
+		if n == 0:
+			return
+		var last = $Lines.get_child(0)
+		
+		var l = last.points.size()
+		if l == 0:
+			if last == current_line:
+				return
+			# print("Deleting")
+			last.queue_free()
+		
+		last.remove_point(0)
+		points.remove(0)
+		
+	# last.points = last.points
+	
+
+	# $Lines.remove_child(last)
 
 func get_closest_thing(things):
 	var d = INF
@@ -129,10 +175,15 @@ func spawn_line2d():
 	current_line.set_as_toplevel(true)
 
 
+func get_pos():
+	return $CollisionChecker.global_position
 
 func rotate_head():
-	$Face.get_node("Eyes").rotation = desired_angle + PI / 2
-	$Face/Eyes.rotation = desired_angle + PI / 2
+	#$Face.get_node("Eyes").rotation = desired_angle + PI / 2
+	#$Face/Eyes.rotation = desired_angle + PI / 2
+	#shape.rotation = desired_angle + PI / 2
+	rotation = desired_angle + PI / 2
+	#$CollisionShape2D.rotation = desired_angle + PI / 2
 
 
 func _process(delta):
@@ -158,11 +209,14 @@ func _process(delta):
 		#spd *= 1.6
 		desired_speed = boostspeed
 		boost -= delta
+	
+	if not is_dead:
+		if Input.is_action_pressed("left" + str(player_num)):
+			desired_angle -= turnspeed*delta
+		else:
+			desired_angle += turnspeed*delta
 
-	if Input.is_action_pressed("left" + str(player_num)):
-		desired_angle -= turnspeed*delta
-	if Input.is_action_pressed("right" + str(player_num)):
-		desired_angle += turnspeed*delta
+	#if Input.is_action_pressed("right" + str(player_num)):
 	
 	angle = lerp(angle,desired_angle,rotation_lerp)
 
@@ -183,16 +237,15 @@ func _process(delta):
 			pass
 
 	if Input.is_action_pressed("break"+str(player_num)):
-		print("Hello")
 		desired_speed = slowspeed
 	else:
 		desired_speed = basespeed
 
-	var movevec = Vector2(cos(angle),sin(angle))*speed
+	var movevec = Vector2(cos(angle),sin(angle))*speed*speed_multiplier
 	var off = movevec#*delta
 	
 	move_and_slide(off)
-	fake_pos = position - off.normalized()*0.5 * radius
+	fake_pos = position - off.normalized()*0.4 * radius
 	
 	if get_slide_count() > 0:
 		var col = get_slide_collision(0)
@@ -227,13 +280,15 @@ func on_draw_timeout():
 		return
 	if spawn_hole <= 0:
 		joints_collison_count = (joints_collison_count + 1)%joints_collison
-		current_line.add_point(fake_pos)
-
-	if joints_collison_count == 0:
-		make_collision()
+		
+		if joints_collison_count == 0:
+			make_collision()
+			current_line.add_point(fake_pos)
 	lastpos = fake_pos
 
 func spawn_powerup(pos):
+	if speed < 70:
+		return
 	has_spawned = true
 	yield(get_tree().create_timer(0.7),"timeout")
 	var inst = powerup_scene.instance()
@@ -279,18 +334,34 @@ func play_pickup():
 func kill():
 	is_dead = true
 	var spd = range_lerp(len(points), 0, 100000, 0.01, 0.0001)
-	print(spd)
 
 	points = []
 	current_line = null
 	for l in $Lines.get_children():
 		for i in range(l.get_point_count()):
+			#for _ in range(4):
 			l.remove_point(0)
-			yield(G.timer(spd), "timeout")
+			if i % 2 == 0: # only sometimes wait
+				yield(G.timer(spd), "timeout")
+				
+	yield(G.timer(spd), "timeout")
+	for l in $Lines.get_children():
 		l.queue_free()
 	spawn_hole = 0.1
 	lives = 3
+	$Lives.text = str(lives)
 	is_dead = false
+
+func take_hit():
+	if invinsible:
+		return
+	if lives == 0:
+		kill()
+		return
+	lives -= 1
+	invinsible = true
+	yield(G.timer(3), "timeout")
+	invinsible = false
 
 
 func give_power(type):
