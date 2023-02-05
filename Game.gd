@@ -32,7 +32,7 @@ func check_collision(trails, player):
 func _ready():
 	pause_scene = pause_scene.instance()
 	add_child(pause_scene)
-	pause_scene.hide()
+	pause_scene.get_node("Control").hide()
 
 	$Lap.connect("race_over", self, "on_race_over")
 	

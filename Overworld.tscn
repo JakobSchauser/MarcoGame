@@ -75,7 +75,6 @@ level = ExtResource( 6 )
 
 [node name="CollisionShape2D" parent="Lake5/Lake/Area2D" index="0"]
 position = Vector2( -2.46533, -0.672363 )
-scale = Vector2( 1, 1 )
 
 [node name="Lake6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 436, 251 )
