@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://boot.png" type="Texture" id=1]
 [ext_resource path="res://Color.gd" type="Script" id=2]
+[ext_resource path="res://patchwork.gdshader" type="Shader" id=3]
+[ext_resource path="res://patchwork.jpg" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/overlay_texture = ExtResource( 4 )
 
 [node name="Boot" type="Sprite" groups=["Grass"]]
+material = SubResource( 1 )
 position = Vector2( -161, -252 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 color = "silver"
-outline = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Grass"]]
 

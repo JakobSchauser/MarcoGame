@@ -15,6 +15,14 @@ margin_right = 748.0
 margin_bottom = 74.0
 text = "Lake not implemented"
 
+[node name="Label2" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 334.0
+margin_top = 17.0
+margin_right = 747.0
+margin_bottom = 72.0
+text = "Lake not implemented"
+
 [node name="Lake" type="Sprite" parent="."]
 position = Vector2( 494.917, 139.25 )
 scale = Vector2( 0.371795, 0.371795 )

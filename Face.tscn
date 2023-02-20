@@ -9,7 +9,6 @@
 modulate = Color( 1, 0, 0.866667, 1 )
 scale = Vector2( 0.1, 0.1 )
 frames = ExtResource( 1 )
-frame = 1
 speed_scale = 2.0
 playing = true
 

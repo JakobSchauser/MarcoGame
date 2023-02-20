@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -16,13 +16,16 @@
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
-[ext_resource path="res://FrozenGround.gd" type="Script" id=17]
+[ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
+[ext_resource path="res://lakepatchwork.jpg" type="Texture" id=18]
+[ext_resource path="res://patchwork.jpg" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 187.808
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 17 )
+shader_param/overlay_texture = ExtResource( 18 )
 
 [node name="Worms2" type="Node2D"]
 position = Vector2( 2, 0 )
@@ -30,6 +33,19 @@ script = ExtResource( 3 )
 pause_scene = ExtResource( 16 )
 player_scene = ExtResource( 1 )
 vegetation = ExtResource( 7 )
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.247059 )
+position = Vector2( 0, -635 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+margin_left = -2340.0
+margin_top = 1020.0
+margin_right = 12640.0
+margin_bottom = 15140.0
+texture = ExtResource( 19 )
+stretch_mode = 2
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -98,7 +114,7 @@ position = Vector2( 863, 562 )
 position = Vector2( 932, 380 )
 
 [node name="Lake" type="Sprite" parent="."]
-self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
+material = SubResource( 2 )
 position = Vector2( 494, 264 )
 scale = Vector2( 0.59082, 0.59082 )
 texture = ExtResource( 8 )
@@ -156,10 +172,3 @@ rotation = -1.21905
 
 [node name="Bush" parent="." instance=ExtResource( 13 )]
 position = Vector2( 682, 71 )
-
-[node name="FrozenGround" type="Area2D" parent="."]
-script = ExtResource( 17 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FrozenGround"]
-position = Vector2( 784, 163 )
-shape = SubResource( 2 )

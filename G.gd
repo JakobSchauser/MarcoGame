@@ -14,13 +14,13 @@ var red = Color("FF004D")
 var pink = Color("FF77A8")
 var yellow = Color("FFEC27")
 var purple = Color("7E2553")
-var blue = Color("29ADFF")
+var blue = Color("4984b8")
 var darkblue = Color("2d10f4")
 var turqoise = Color("FFCCAA")
 var green = Color("00E436")
 var darkgreen = Color("008751")
 var brown = Color("AB5236")
-var silver = Color("83769C")
+var silver = Color("FFFFFF")
 
 var colors = {
 	"red": red,
@@ -72,6 +72,9 @@ func _ready():
 
 func _process(dt):
 	run_time += dt
+
+	if(Input.is_action_pressed("ui_cancel")):
+		get_tree().quit()
 	
 	# Called every frame. 'delta' is the elapsed time since the previous frame.
 	#func _process(delta):
