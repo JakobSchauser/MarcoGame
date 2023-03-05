@@ -6,23 +6,33 @@
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 510.0
-margin_top = 107.0
-margin_right = 875.0
-margin_bottom = 372.0
+margin_left = 512.0
+margin_top = 195.0
+margin_right = 877.0
+margin_bottom = 540.0
 rect_scale = Vector2( 2, 2 )
 size_flags_vertical = 5
 size_flags_stretch_ratio = 8.34
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Marco and his friends race around the lake: The Video Game"
+text = "Joja:
+Touring the Great Lakes
+"
+align = 1
 autowrap = true
 
-[node name="MenuButton" type="Button" parent="."]
+[node name="Free" type="Button" parent="."]
 margin_left = 491.0
 margin_top = 656.0
 margin_right = 1171.0
 margin_bottom = 717.0
-text = "Click this button to start the game"
+text = "Free Play"
+
+[node name="Story" type="Button" parent="."]
+margin_left = 493.0
+margin_top = 734.0
+margin_right = 1173.0
+margin_bottom = 795.0
+text = "Story Mode"
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 1211.0
@@ -30,6 +40,7 @@ margin_top = 13.0
 margin_right = 1798.0
 margin_bottom = 289.0
 rect_scale = Vector2( 0.5, 0.5 )
-text = "Made by Daniel, Jakob and Claes"
+text = " Daniel, Jakob and Claes"
 
-[connection signal="button_down" from="MenuButton" to="." method="_on_MenuButton_button_down"]
+[connection signal="button_down" from="Free" to="." method="_on_MenuButton_button_down"]
+[connection signal="button_down" from="Story" to="." method="_on_MenuButton_button_down"]

@@ -7,6 +7,9 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 3 )
+shader_param/scale = 20.0
+shader_param/wave = false
+shader_param/offset = 20000.0
 shader_param/overlay_texture = ExtResource( 4 )
 
 [node name="Smallrock" type="Sprite" groups=["Grass"]]

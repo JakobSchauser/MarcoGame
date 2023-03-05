@@ -11,7 +11,7 @@ onready var lake_name = get_parent().name
 export(PackedScene) var level
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if lake_name in G.levels_played:
+	if lake_name in G.levels_played or lake_name in G.levels_locked:
 	# if "res://"+level+".tscn" in G.levels_played:
 		modulate.a = 0.2
 		is_played = true

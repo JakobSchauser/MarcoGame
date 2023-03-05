@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -7,17 +7,29 @@
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
 [ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://titicaca.jpeg" type="Texture" id=8]
+[ext_resource path="res://patchwork.gdshader" type="Shader" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
 [ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
+[ext_resource path="res://Lakes/Lake_Titicaca_cuout.png" type="Texture" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ship.png" type="Texture" id=17]
 [ext_resource path="res://harbor.png" type="Texture" id=18]
 [ext_resource path="res://Levels/Shipcontroller.gd" type="Script" id=19]
+[ext_resource path="res://wavefabric2.jpg" type="Texture" id=20]
+[ext_resource path="res://patchwork.jpg" type="Texture" id=21]
+
+[sub_resource type="ShaderMaterial" id=4]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 8 )
+shader_param/scale = 50.0
+shader_param/wave = true
+shader_param/offset = 0.0
+shader_param/overlay_texture = ExtResource( 20 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -32,17 +44,35 @@ pause_scene = ExtResource( 16 )
 player_scene = ExtResource( 1 )
 vegetation = ExtResource( 7 )
 
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color( 1, 1, 1, 0.247059 )
+position = Vector2( 132, -393 )
+scale = Vector2( 0.1, 0.1 )
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+material = SubResource( 4 )
+margin_left = -2340.0
+margin_top = 1020.0
+margin_right = 12640.0
+margin_bottom = 15140.0
+texture = ExtResource( 21 )
+stretch_mode = 2
+
 [node name="Lake" type="Sprite" parent="."]
+material = SubResource( 3 )
 position = Vector2( 730, 265 )
-texture = ExtResource( 8 )
+scale = Vector2( 3, 4 )
+texture = ExtResource( 15 )
 script = ExtResource( 14 )
 color = "blue"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
+position = Vector2( 24.6667, -5.25 )
+scale = Vector2( 0.3, 0.3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
 position = Vector2( -883, -71 )
-polygon = PoolVector2Array( 897, 23, 935, 40, 968, 92, 1017, 129, 1116, 146, 1092, 181, 1060, 180, 1035, 216, 1074, 256, 1155, 262, 1174, 295, 1160, 332, 1095, 371, 995, 378, 1005, 400, 1055, 400, 1046, 457, 984, 447, 933, 406, 967, 376, 959, 316, 946, 297, 986, 289, 994, 257, 968, 226, 940, 210, 932, 245, 913, 286, 857, 300, 799, 279, 792, 262, 750, 265, 735, 264, 786, 199, 770, 170, 667, 151, 620, 123, 612, 73, 583, 75, 577, 115, 523, 99, 588, 32, 639, 37, 552, -106, 564, -133, 598, -158, 629, -174, 643, -186, 675, -166, 689, -134, 716, -136, 783, -79, 849, -39, 842, -18, 861, 15 )
+polygon = PoolVector2Array( 907.444, 15.1667, 945.222, 36, 975.222, 71, 994.111, 122.667, 1090.78, 134.333, 1092, 181, 1060, 180, 1035, 216, 1074, 256, 1155, 262, 1174, 295, 1160, 332, 1095, 371, 995, 378, 1005, 400, 1055, 400, 1046, 457, 984, 447, 933, 406, 967, 376, 959, 316, 946, 297, 986, 289, 994, 257, 968, 226, 940, 210, 932, 245, 913, 286, 857, 300, 799, 279, 792, 262, 750, 265, 735, 264, 786, 199, 770, 170, 667, 151, 620, 123, 612, 73, 583, 75, 577, 115, 523, 99, 533, -50.6667, 579.667, 9.33334, 597.444, 12.6667, 537.444, -103.167, 513, -142.333, 560.778, -197.333, 611.889, -195.667, 629.667, -221.5, 661.889, -202.333, 683, -163.167, 718.556, -159, 771.889, -104, 800.778, -101.5, 849, -39, 842, -18, 869.667, -3.16666, 905.222, -3.99998 )
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -250,9 +280,9 @@ rotation = -2.4987
 position = Vector2( 2000, 574 )
 
 [node name="Boot" parent="." instance=ExtResource( 11 )]
-position = Vector2( 803, 252 )
+position = Vector2( 480.781, 155.853 )
 rotation = 0.28998
-scale = Vector2( 2.03089, 1 )
+scale = Vector2( 1.58932, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

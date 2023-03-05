@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
@@ -7,7 +7,7 @@
 [ext_resource path="res://Camera.gd" type="Script" id=5]
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
 [ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://lakeeyre.JPG" type="Texture" id=8]
+[ext_resource path="res://cutout_claes.png" type="Texture" id=8]
 [ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://pik.tscn" type="PackedScene" id=11]
@@ -17,6 +17,15 @@
 [ext_resource path="res://FrozenGround.gd" type="Script" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Levels/Tidecontroller.gd" type="Script" id=17]
+[ext_resource path="res://patchwork.gdshader" type="Shader" id=18]
+[ext_resource path="res://wavefabric2.jpg" type="Texture" id=19]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 18 )
+shader_param/scale = 20.0
+shader_param/wave = true
+shader_param/offset = 0.0
+shader_param/overlay_texture = ExtResource( 19 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -29,12 +38,14 @@ player_scene = ExtResource( 1 )
 vegetation = ExtResource( 7 )
 
 [node name="Lake" type="Sprite" parent="."]
-position = Vector2( 429, 494 )
+material = SubResource( 2 )
+position = Vector2( 490, 449 )
 texture = ExtResource( 8 )
 script = ExtResource( 14 )
 color = "blue"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
+position = Vector2( -44, 66 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lake/StaticBody2D"]
 position = Vector2( 87.598, -31.981 )

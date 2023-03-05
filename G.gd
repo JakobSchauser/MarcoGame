@@ -9,6 +9,7 @@ var winner = null
 var leader_board = []
 
 var levels_played = []
+var levels_locked = ["LakeVostok", "LakeEyre", "LakeBaikal", "LakeLadoga", "LakeTanga", "LakeTiticaca", ]
 
 var red = Color("FF004D")
 var pink = Color("FF77A8")
@@ -38,6 +39,8 @@ var colors = {
 }
 
 var current_level_position = null
+
+var GAMEMODE = 'story'
 
 var worms = [
 	{ "name": "Agnes",

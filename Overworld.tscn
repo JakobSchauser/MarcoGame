@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Levels/LakeBaikal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Lake.tscn" type="PackedScene" id=2]
@@ -16,14 +16,56 @@
 [ext_resource path="res://lake_superior.png" type="Texture" id=14]
 [ext_resource path="res://Lakes/lake_tanganyika.jpg" type="Texture" id=15]
 [ext_resource path="res://Lakes/Tanganyika.tscn" type="PackedScene" id=16]
+[ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
+[ext_resource path="res://patchwork.jpg" type="Texture" id=18]
+[ext_resource path="res://wavefabric2.jpg" type="Texture" id=19]
+[ext_resource path="res://linen.png" type="Texture" id=20]
+[ext_resource path="res://manilla.png" type="Texture" id=21]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 17 )
+shader_param/scale = 20.0
+shader_param/wave = true
+shader_param/offset = 0.0
+shader_param/overlay_texture = ExtResource( 19 )
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 17 )
+shader_param/scale = 3.0
+shader_param/wave = false
+shader_param/offset = 0.0
+shader_param/overlay_texture = ExtResource( 18 )
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.0117647, 0.580392, 0.890196, 1 )
+material = SubResource( 2 )
+margin_left = -183.0
+margin_top = -163.0
+margin_right = 2077.0
+margin_bottom = 1885.0
+rect_scale = Vector2( 0.7, 0.5 )
+texture = ExtResource( 18 )
+
+[node name="WorldMap2" type="Sprite" parent="."]
+modulate = Color( 0, 0.352941, 0.843137, 1 )
+material = SubResource( 1 )
+position = Vector2( 531, 301 )
+scale = Vector2( 0.14, 0.14 )
+texture = ExtResource( 11 )
+
 [node name="WorldMap" type="Sprite" parent="."]
+material = SubResource( 1 )
 position = Vector2( 531, 300 )
 scale = Vector2( 0.138534, 0.138534 )
 texture = ExtResource( 11 )
+
+[node name="Manilla" type="Sprite" parent="."]
+position = Vector2( 163, 74 )
+scale = Vector2( 0.241895, 0.241895 )
+texture = ExtResource( 21 )
 
 [node name="LakeVostok" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 452 )
@@ -38,6 +80,12 @@ text = "Lake Vostok"
 [node name="Lake" parent="LakeVostok" index="2"]
 texture = ExtResource( 8 )
 level = ExtResource( 7 )
+
+[node name="Linen" type="Sprite" parent="."]
+visible = false
+position = Vector2( 222, 56 )
+scale = Vector2( 0.14, 0.07 )
+texture = ExtResource( 20 )
 
 [node name="LakeBaikal" parent="." instance=ExtResource( 2 )]
 position = Vector2( 500, 38 )
@@ -121,18 +169,21 @@ position = Vector2( -109, 37 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Label" parent="LakeSuperior" index="0"]
+visible = false
 margin_left = 339.0
 margin_top = -3.0
 margin_right = 752.0
 margin_bottom = 52.0
-text = "Lake Superior"
+text = "Lake 
+Superior"
 
 [node name="Label2" parent="LakeSuperior" index="1"]
 margin_left = 338.0
 margin_top = -5.0
 margin_right = 751.0
 margin_bottom = 50.0
-text = "Lake Superior"
+text = "Lake 
+Superior"
 
 [node name="Lake" parent="LakeSuperior" index="2"]
 scale = Vector2( 0.2, 0.2 )
