@@ -1,24 +1,24 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://Marco.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Game.gd" type="Script" id=3]
-[ext_resource path="res://jazzmand2.wav" type="AudioStream" id=4]
-[ext_resource path="res://Camera.gd" type="Script" id=5]
-[ext_resource path="res://goal.JPG" type="Texture" id=6]
-[ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Lake_Vostok.png" type="Texture" id=8]
-[ext_resource path="res://Longrock.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Color.gd" type="Script" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://Camera.gd" type="Script" id=3]
+[ext_resource path="res://Lap.gd" type="Script" id=4]
+[ext_resource path="res://jazzmand2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Lake_Vostok.png" type="Texture" id=6]
+[ext_resource path="res://goal.JPG" type="Texture" id=7]
+[ext_resource path="res://wavefabric2.jpg" type="Texture" id=8]
+[ext_resource path="res://penguin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
-[ext_resource path="res://pik.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Lap.gd" type="Script" id=12]
-[ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Color.gd" type="Script" id=14]
-[ext_resource path="res://penguin.tscn" type="PackedScene" id=15]
-[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
-[ext_resource path="res://lake_superior.png" type="Texture" id=17]
+[ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Longrock.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Marco.tscn" type="PackedScene" id=13]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Bush.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Cornerrock.tscn" type="PackedScene" id=16]
+[ext_resource path="res://pik.tscn" type="PackedScene" id=17]
 [ext_resource path="res://patchwork.gdshader" type="Shader" id=18]
-[ext_resource path="res://wavefabric2.jpg" type="Texture" id=19]
+[ext_resource path="res://lake_superior.png" type="Texture" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
@@ -28,14 +28,14 @@ shader = ExtResource( 18 )
 shader_param/scale = 10.0
 shader_param/wave = true
 shader_param/offset = 0.0
-shader_param/overlay_texture = ExtResource( 19 )
+shader_param/overlay_texture = ExtResource( 8 )
 
 [node name="Worms" type="Node2D"]
 position = Vector2( 2, 0 )
-script = ExtResource( 3 )
-pause_scene = ExtResource( 16 )
-player_scene = ExtResource( 1 )
-vegetation = ExtResource( 7 )
+script = ExtResource( 2 )
+pause_scene = ExtResource( 14 )
+player_scene = ExtResource( 13 )
+vegetation = ExtResource( 11 )
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -56,12 +56,12 @@ position = Vector2( 791, 555 )
 [node name="Gradient" type="Sprite" parent="."]
 visible = false
 position = Vector2( 649, 452 )
-script = ExtResource( 14 )
+script = ExtResource( 1 )
 color = "green"
 
 [node name="Lap" type="Area2D" parent="." groups=["Lap"]]
 position = Vector2( 852, 626 )
-script = ExtResource( 12 )
+script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lap"]
 position = Vector2( 1, -21 )
@@ -71,33 +71,33 @@ shape = SubResource( 1 )
 position = Vector2( 3.99988, -77 )
 rotation = 1.56572
 scale = Vector2( 0.203125, 0.203125 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Goal3" type="Sprite" parent="Lap"]
 position = Vector2( 3.00009, -222 )
 rotation = 1.56572
 scale = Vector2( 0.203125, 0.203125 )
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 65, 51 )
 zoom = Vector2( 0.25, 0.25 )
 smoothing_enabled = true
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 max_zoom = 1.11111e+10
 margin = Vector2( 100, 100 )
 
 [node name="Trails" type="Node2D" parent="."]
 
-[node name="Longrock2" parent="Trails" instance=ExtResource( 9 )]
+[node name="Longrock2" parent="Trails" instance=ExtResource( 12 )]
 position = Vector2( -328, 778 )
 rotation = 1.24029
 
-[node name="Cornerrock" parent="Trails" instance=ExtResource( 2 )]
+[node name="Cornerrock" parent="Trails" instance=ExtResource( 16 )]
 position = Vector2( 811, 476 )
 rotation = 0.416175
 
-[node name="Cornerrock2" parent="Trails" instance=ExtResource( 2 )]
+[node name="Cornerrock2" parent="Trails" instance=ExtResource( 16 )]
 position = Vector2( 260, 1551 )
 rotation = 0.416175
 
@@ -151,14 +151,14 @@ position = Vector2( 400, 387 )
 [node name="Lake" type="Sprite" parent="."]
 self_modulate = Color( 0.121569, 0.0156863, 0.835294, 1 )
 position = Vector2( 1014, 878 )
-texture = ExtResource( 8 )
-script = ExtResource( 14 )
+texture = ExtResource( 6 )
+script = ExtResource( 1 )
 color = "blue"
 
 [node name="LakeSuperior" type="Sprite" parent="Lake"]
 material = SubResource( 2 )
 position = Vector2( -205, -9 )
-texture = ExtResource( 17 )
+texture = ExtResource( 19 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Lake"]
 position = Vector2( 74.598, 53.019 )
@@ -193,36 +193,36 @@ margin_right = 1000.0
 margin_bottom = 59.0
 text = "Laps: 0"
 
-[node name="Boot2" parent="." instance=ExtResource( 11 )]
+[node name="Boot2" parent="." instance=ExtResource( 17 )]
 position = Vector2( -260, 2091 )
 rotation = 0.168794
 scale = Vector2( 2.02346, 1 )
 
-[node name="Boot4" parent="." instance=ExtResource( 11 )]
+[node name="Boot4" parent="." instance=ExtResource( 17 )]
 position = Vector2( -1311, 1122 )
 rotation = 1.48814
 scale = Vector2( 2.02346, 1 )
 
-[node name="Boot5" parent="." instance=ExtResource( 11 )]
+[node name="Boot5" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1862, 1176 )
 rotation = -3.08873
 
-[node name="Boot3" parent="." instance=ExtResource( 11 )]
+[node name="Boot3" parent="." instance=ExtResource( 17 )]
 position = Vector2( 1965, 1021 )
 rotation = 1.7831
 scale = Vector2( 1.24169, 1.24169 )
 
-[node name="Boot" parent="." instance=ExtResource( 11 )]
+[node name="Boot" parent="." instance=ExtResource( 17 )]
 position = Vector2( 116, 702 )
 rotation = 0.0696857
 scale = Vector2( 2.03089, 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = -15.0
 autoplay = true
 
-[node name="Node2D" parent="." instance=ExtResource( 15 )]
+[node name="Node2D" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1313, 687 )
 
 [node name="Position2D2" parent="Node2D/positions" index="1"]
@@ -231,7 +231,7 @@ position = Vector2( 945, 26.0001 )
 [node name="KinematicBody2D" parent="Node2D" index="1"]
 scale = Vector2( 0.4, 0.4 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 15 )]
+[node name="Node2D2" parent="." instance=ExtResource( 9 )]
 position = Vector2( -466, 759 )
 
 [node name="Position2D2" parent="Node2D2/positions" index="1"]
@@ -240,7 +240,7 @@ position = Vector2( 945, 26.0001 )
 [node name="KinematicBody2D" parent="Node2D2" index="1"]
 scale = Vector2( 0.4, 0.4 )
 
-[node name="Bush" parent="." instance=ExtResource( 13 )]
+[node name="Bush" parent="." instance=ExtResource( 15 )]
 position = Vector2( 682, 71 )
 
 [editable path="Node2D"]

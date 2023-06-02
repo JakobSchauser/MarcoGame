@@ -17,6 +17,7 @@ func _ready():
 		else:
 			p.global_position = G.current_level_position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
 		add_child(p)
+		$Camera2D.add_target(p)
 
 
 

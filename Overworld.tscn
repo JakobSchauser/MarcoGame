@@ -1,27 +1,15 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
+[ext_resource path="res://Camera.gd" type="Script" id=1]
 [ext_resource path="res://Lake.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld.gd" type="Script" id=3]
-[ext_resource path="res://lakeeyre.JPG" type="Texture" id=4]
-[ext_resource path="res://Lake_Vostok.png" type="Texture" id=8]
-[ext_resource path="res://lake_ladoga.png" type="Texture" id=10]
+[ext_resource path="res://water.jpg" type="Texture" id=4]
+[ext_resource path="res://Manilla.tscn" type="PackedScene" id=5]
 [ext_resource path="res://world map.png" type="Texture" id=11]
-[ext_resource path="res://titicaca.jpeg" type="Texture" id=12]
-[ext_resource path="res://lake_superior.png" type="Texture" id=14]
-[ext_resource path="res://Lakes/lake_tanganyika.jpg" type="Texture" id=15]
 [ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
 [ext_resource path="res://patchwork.jpg" type="Texture" id=18]
-[ext_resource path="res://wavefabric2.jpg" type="Texture" id=19]
 [ext_resource path="res://linen.png" type="Texture" id=20]
-[ext_resource path="res://manilla.png" type="Texture" id=21]
 [ext_resource path="res://drivesound.ogv" type="VideoStream" id=22]
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 17 )
-shader_param/scale = 20.0
-shader_param/wave = true
-shader_param/offset = 0.0
-shader_param/overlay_texture = ExtResource( 19 )
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 17 )
@@ -33,9 +21,14 @@ shader_param/overlay_texture = ExtResource( 18 )
 [node name="Overworld" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Water" type="Sprite" parent="."]
+position = Vector2( 540, 414 )
+scale = Vector2( 5.42154, 5.25275 )
+texture = ExtResource( 4 )
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 modulate = Color( 0.0117647, 0.580392, 0.890196, 1 )
-material = SubResource( 2 )
 margin_left = -183.0
 margin_top = -163.0
 margin_right = 2077.0
@@ -56,11 +49,6 @@ position = Vector2( 531, 300 )
 scale = Vector2( 0.138534, 0.138534 )
 texture = ExtResource( 11 )
 
-[node name="Manilla" type="Sprite" parent="."]
-position = Vector2( 384.663, 120.5 )
-scale = Vector2( 0.241895, 0.241895 )
-texture = ExtResource( 21 )
-
 [node name="LakeVostok" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 452 )
 scale = Vector2( 0.7, 0.7 )
@@ -71,8 +59,16 @@ text = "Lake Vostok"
 [node name="Label2" parent="LakeVostok" index="1"]
 text = "Lake Vostok"
 
-[node name="Lake" parent="LakeVostok" index="2"]
-texture = ExtResource( 8 )
+[node name="VostokManilla7" parent="LakeVostok" instance=ExtResource( 5 )]
+position = Vector2( 301.429, 137.143 )
+rotation = -0.121359
+scale = Vector2( 0.142857, 0.142857 )
+
+[node name="Label2" parent="LakeVostok/VostokManilla7" index="0"]
+text = "  Lake
+ Vostok
+
+"
 
 [node name="Linen" type="Sprite" parent="."]
 visible = false
@@ -90,8 +86,15 @@ text = "Lake Baikal"
 [node name="Label2" parent="LakeBaikal" index="1"]
 text = "Lake Baikal"
 
-[node name="Lake" parent="LakeBaikal" index="2"]
-texture = ExtResource( 8 )
+[node name="BaikalManilla3" parent="LakeBaikal" instance=ExtResource( 5 )]
+position = Vector2( 311.935, 115.998 )
+rotation = 0.0537464
+scale = Vector2( 0.125, 0.125 )
+
+[node name="Label2" parent="LakeBaikal/BaikalManilla3" index="0"]
+text = "  Lake
+ Baikal
+"
 
 [node name="LakeEyre" parent="." instance=ExtResource( 2 )]
 position = Vector2( 713, 304 )
@@ -105,10 +108,18 @@ text = "Lake Eyre"
 
 [node name="Lake" parent="LakeEyre" index="2"]
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="LakeEyre/Lake/Area2D" index="0"]
 position = Vector2( -2.46582, -0.672363 )
+
+[node name="EyreManilla4" parent="LakeEyre" instance=ExtResource( 5 )]
+position = Vector2( 179.096, 99.5972 )
+rotation = 0.0710098
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Label2" parent="LakeEyre/EyreManilla4" index="0"]
+text = "  Lake
+ Eyre"
 
 [node name="LakeLadoga" parent="." instance=ExtResource( 2 )]
 position = Vector2( 405, 43 )
@@ -128,8 +139,16 @@ margin_right = 751.0
 margin_bottom = 50.0
 text = "Lake Ladoga"
 
-[node name="Lake" parent="LakeLadoga" index="2"]
-texture = ExtResource( 10 )
+[node name="LadogaManilla2" parent="LakeLadoga" instance=ExtResource( 5 )]
+position = Vector2( 268, 62 )
+rotation = 0.248841
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Label2" parent="LakeLadoga/LadogaManilla2" index="0"]
+text = "  Lake
+ Ladoga
+
+"
 
 [node name="LakeTiticaca" parent="." instance=ExtResource( 2 )]
 position = Vector2( 112, 255 )
@@ -151,14 +170,22 @@ text = "Lake Titicaca"
 
 [node name="Lake" parent="LakeTiticaca" index="2"]
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 12 )
+
+[node name="TiticacaManilla6" parent="LakeTiticaca" instance=ExtResource( 5 )]
+position = Vector2( 214, 118 )
+rotation = -0.0898859
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Label2" parent="LakeTiticaca/TiticacaManilla6" index="0"]
+text = "  Lake
+ Titicaca
+"
 
 [node name="LakeSuperior" parent="." instance=ExtResource( 2 )]
 position = Vector2( -109, 37 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Label" parent="LakeSuperior" index="0"]
-visible = false
 margin_left = 339.0
 margin_top = -3.0
 margin_right = 752.0
@@ -177,7 +204,17 @@ Superior"
 [node name="Lake" parent="LakeSuperior" index="2"]
 position = Vector2( 494.286, 138.571 )
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 14 )
+
+[node name="SuperiorManilla" parent="LakeSuperior" instance=ExtResource( 5 )]
+position = Vector2( 328.571, 22.8572 )
+rotation = 0.511034
+scale = Vector2( 0.142857, 0.142857 )
+
+[node name="Label2" parent="LakeSuperior/SuperiorManilla" index="0"]
+margin_left = 1525.29
+margin_top = -35.3154
+margin_right = 1938.29
+margin_bottom = 135.685
 
 [node name="LakeTanganyika" parent="." instance=ExtResource( 2 )]
 position = Vector2( 389, 232 )
@@ -199,7 +236,20 @@ text = "Lake Tanganyika"
 
 [node name="Lake" parent="LakeTanganyika" index="2"]
 scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 15 )
+
+[node name="TanganyikaManilla5" parent="LakeTanganyika" instance=ExtResource( 5 )]
+position = Vector2( 171.096, 53.5972 )
+rotation = 0.134177
+scale = Vector2( 0.2, 0.2 )
+
+[node name="Label2" parent="LakeTanganyika/TanganyikaManilla5" index="0"]
+margin_left = 1432.78
+margin_top = -47.4043
+margin_right = 1845.78
+margin_bottom = 123.596
+text = "  Lake
+ Tanganyika
+"
 
 [node name="StartPositions" type="Node2D" parent="."]
 
@@ -215,52 +265,57 @@ position = Vector2( 60, 128 )
 [node name="Position2D4" type="Position2D" parent="StartPositions"]
 position = Vector2( 123, 120 )
 
-[node name="Control" type="Control" parent="."]
-margin_left = -171.0
-margin_top = -162.0
-margin_right = 917.0
-margin_bottom = 926.0
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="VIDEO" type="AspectRatioContainer" parent="Control"]
+[node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -596.0
-margin_top = 7.0
-margin_right = 1324.0
-margin_bottom = 1095.0
+
+[node name="VIDEO" type="AspectRatioContainer" parent="CanvasLayer/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_scale = Vector2( 0.9, 0.9 )
+ratio = 2.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="VideoPlayer" type="VideoPlayer" parent="Control/VIDEO" groups=["video"]]
+[node name="VideoPlayer" type="VideoPlayer" parent="CanvasLayer/Control/VIDEO" groups=["video"]]
 visible = false
-margin_left = 416.0
-margin_right = 2592.0
-margin_bottom = 2176.0
+margin_left = -448.0
+margin_top = -244.0
+margin_right = 1472.0
+margin_bottom = 844.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource( 22 )
 expand = false
 
-[node name="SkipLabel" type="Label" parent="Control"]
+[node name="SkipLabel" type="Label" parent="CanvasLayer/Control"]
 margin_left = 719.0
 margin_top = 659.0
 margin_right = 1201.0
 margin_bottom = 714.0
-text = "PRESS ENTER TO SKIPq"
+text = "PRESS ENTER TO SKIP"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 position = Vector2( 550, 298 )
 current = true
+zoom = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+max_zoom = 0.25
 
 [editable path="LakeVostok"]
+[editable path="LakeVostok/VostokManilla7"]
 [editable path="LakeBaikal"]
+[editable path="LakeBaikal/BaikalManilla3"]
 [editable path="LakeEyre"]
+[editable path="LakeEyre/EyreManilla4"]
 [editable path="LakeLadoga"]
+[editable path="LakeLadoga/LadogaManilla2"]
 [editable path="LakeTiticaca"]
+[editable path="LakeTiticaca/TiticacaManilla6"]
 [editable path="LakeSuperior"]
+[editable path="LakeSuperior/SuperiorManilla"]
 [editable path="LakeTanganyika"]
+[editable path="LakeTanganyika/TanganyikaManilla5"]

@@ -18,7 +18,7 @@
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://ship.png" type="Texture" id=17]
 [ext_resource path="res://harbor.png" type="Texture" id=18]
-[ext_resource path="res://Levels/Shipcontroller.gd" type="Script" id=19]
+[ext_resource path="res://levels/Shipcontroller.gd" type="Script" id=19]
 [ext_resource path="res://wavefabric2.jpg" type="Texture" id=20]
 [ext_resource path="res://patchwork.jpg" type="Texture" id=21]
 

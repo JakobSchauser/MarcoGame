@@ -4,7 +4,7 @@ extends Area2D
 signal race_over
 # signal update_lap_label
 
-var total_laps = 1
+var total_laps = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

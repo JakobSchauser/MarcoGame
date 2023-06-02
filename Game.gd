@@ -128,7 +128,8 @@ func update_lives(worm,lives):
 func _process(delta):
 	for p in players:
 		update_lives(p,p.lives)
-	if Input.is_action_just_pressed("ui_accept") and G.game_state == "game" and false:
+	# if you press escape, pause the game
+	if Input.is_action_just_pressed("ui_cancel") and G.game_state == "game":
 		if pause:
 			pause = false
 			pause_scene.hide()

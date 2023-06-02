@@ -221,6 +221,22 @@ func _process(delta):
 		for c in $Face/Eyes.get_children():
 			c.look_at(p.position)
 
+	if G.game_state == "overworld":
+		var moved = false
+		if position.x > 1100:
+			position.x = 0
+			moved = true
+		if position.x < -50:
+			position.x = 1100
+			moved = true
+		if position.y > 600:
+			position.y = 0
+			moved = true
+		if position.y < 0:
+			position.y = 600
+			moved = true
+		if moved:
+			remove_tail_quick()
 
 	$ProgressBar.value = boost
 	$Lives.text = str(lives)

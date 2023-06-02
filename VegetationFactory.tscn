@@ -19,6 +19,7 @@ color = "white"
 [node name="middle" type="AnimatedSprite" parent="Flower"]
 scale = Vector2( 0.1, 0.1 )
 frames = ExtResource( 2 )
+frame = 1
 playing = true
 script = ExtResource( 5 )
 color = "yellow"
@@ -27,12 +28,12 @@ color = "yellow"
 position = Vector2( 28, 5 )
 scale = Vector2( 1, 1 )
 frames = ExtResource( 3 )
+frame = 1
 playing = true
 
 [node name="Vegetation3" parent="." instance=ExtResource( 1 )]
 position = Vector2( 55, 11 )
 scale = Vector2( 1, 1 )
 frames = ExtResource( 4 )
-frame = 1
 speed_scale = 0.5
 playing = true

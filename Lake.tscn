@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://water.jpg" type="Texture" id=1]
 [ext_resource path="res://Lake.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -9,6 +8,7 @@ extents = Vector2( 164.069, 137.172 )
 [node name="Lake" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = 335.0
 margin_top = 19.0
 margin_right = 748.0
@@ -16,6 +16,7 @@ margin_bottom = 74.0
 text = "Lake not implemented"
 
 [node name="Label2" type="Label" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 334.0
 margin_top = 17.0
@@ -26,7 +27,6 @@ text = "Lake not implemented"
 [node name="Lake" type="Sprite" parent="."]
 position = Vector2( 494.917, 139.25 )
 scale = Vector2( 0.371795, 0.371795 )
-texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="Lake"]

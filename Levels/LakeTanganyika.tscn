@@ -7,13 +7,14 @@
 [ext_resource path="res://goal.JPG" type="Texture" id=6]
 [ext_resource path="res://VegetationFactory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Screenshot from 2023-02-05 16-21-41.png" type="Texture" id=8]
-[ext_resource path="res://Levels/VisibleCollision.gd" type="Script" id=9]
+[ext_resource path="res://levels/VisibleCollision.gd" type="Script" id=9]
 [ext_resource path="res://Smallrock.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Lap.gd" type="Script" id=12]
 [ext_resource path="res://Bush.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Color.gd" type="Script" id=14]
 [ext_resource path="res://Lever.tscn" type="PackedScene" id=15]
 [ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=16]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 200.5 )
