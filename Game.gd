@@ -31,6 +31,7 @@ func check_collision(trails, player):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	G.set_game_state("game")
 	pause_scene = pause_scene.instance()
 	add_child(pause_scene)
 	pause_scene.get_node("Control").hide()
@@ -127,7 +128,7 @@ func update_lives(worm,lives):
 func _process(delta):
 	for p in players:
 		update_lives(p,p.lives)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and G.game_state == "game" and false:
 		if pause:
 			pause = false
 			pause_scene.hide()

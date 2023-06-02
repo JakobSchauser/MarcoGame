@@ -13,6 +13,7 @@ onready var level = load("res://levels/" +lake_name+ ".tscn")
 
 onready var video = get_tree().get_nodes_in_group("video")[0]
 
+onready var skip_label = video.get_parent().get_parent().get_node("SkipLabel")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +30,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	if video.is_playing():
+		skip_label.show()
+	else:
+		skip_label.hide()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		video.stop()
+		# video.queue_free()
+		change_scene_to_level()
+		return
+		
+	
+
 	if is_played and not G.GAMEMODE == "free":
 		return
 	if $Area2D.get_overlapping_bodies().size() == len(get_tree().get_nodes_in_group("Player")):
+		if G.GAMEMODE == "free":
+			change_scene_to_level()
+			return
+		
 		#get_parent().start_level(level + ".tscn")
 		G.current_level_position = global_position
 
@@ -42,6 +60,7 @@ func _physics_process(delta):
 
 		# print("b4 video.play()")
 		video.show()
+		skip_label.show()
 		video.play()
 		# print("video.play()")
 

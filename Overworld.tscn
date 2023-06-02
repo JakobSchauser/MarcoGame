@@ -246,6 +246,13 @@ grow_vertical = 2
 stream = ExtResource( 22 )
 expand = false
 
+[node name="SkipLabel" type="Label" parent="Control"]
+margin_left = 719.0
+margin_top = 659.0
+margin_right = 1201.0
+margin_bottom = 714.0
+text = "PRESS ENTER TO SKIPq"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 550, 298 )
 current = true

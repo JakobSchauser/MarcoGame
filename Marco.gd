@@ -315,6 +315,9 @@ func on_draw_timeout():
 
 
 func spawn_powerup(pos):
+	if not G.game_state == "game":
+		return
+
 	#if speed < 70:
 	#	return
 	#has_spawned = true

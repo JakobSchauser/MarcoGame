@@ -4,6 +4,7 @@ extends Node2D
 var player_scene = load("res://Marco.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	G.set_game_state("overworld")
 	for i in range(len(G.players_data)):
 		var d = G.players_data[i]
 		var p = player_scene.instance()

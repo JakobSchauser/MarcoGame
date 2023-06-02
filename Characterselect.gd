@@ -4,6 +4,7 @@ onready var timer = $Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	G.set_game_state("character_select")
 	timer.connect("timeout", self, "on_timeout")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,6 +1,9 @@
 extends Node
 
 
+
+var game_state = null
+
 # Stats to display
 var run_time = 0
 var winner = null
@@ -67,6 +70,11 @@ var worms = [
 	"describe": "Din standard måleorm."
 }
 ]
+
+
+func set_game_state(state):
+	assert (state in ["character_select", "current_state", "game", "overworld", "pause"])
+	game_state = state
 
 var players_data = [worms[0], worms[1]]
 
