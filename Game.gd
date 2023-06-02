@@ -70,6 +70,7 @@ func _ready():
 		$Camera2D.add_target(p)
 
 	# print("Herro")
+	add_child(vegetation_factory)
 	var n_vegs = vegetation_factory.get_child_count()
 	for _i in range(500):
 		var x = rand_range(-200,1000)

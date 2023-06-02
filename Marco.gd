@@ -120,16 +120,41 @@ func blink():
 	
 	visible = !visible
 
+func remove_tail_quick():
+	# while true:
+
+	for c in $Lines.get_children():
+		if c != current_line:
+			c.queue_free()
+	# current_line = Line2D.new()
+	current_line.points = []
+	points = []
+		# var n = $Lines.get_child_count()
+		# print(n)
 	
+		# if n <= 0:
+		# 	return
+		
+		# var last = $Lines.get_child(0)
+		
+		# var l = last.points.size()
+		# if l == 0:
+		# 	if last == current_line:
+		# 		return
+		# 	# print("Deleting")
+		# 	last.queue_free()
+		# else:
+		# 	if points.size() > 0:
+		# 		last.remove_point(0)
+		# 	points.remove(0)
 
 
 func remove_tail():
 	if is_dead:
 		return
 	for i in range(1):
-	# Get last child 
 		var n = $Lines.get_child_count()
-		if n == 0:
+		if n <= 0:
 			return
 		var last = $Lines.get_child(0)
 		

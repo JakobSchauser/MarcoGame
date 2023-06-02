@@ -4,6 +4,7 @@
 [ext_resource path="res://Characterselect.gd" type="Script" id=2]
 
 [node name="Characterselect" type="Node2D"]
+position = Vector2( 251, 135 )
 script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]

@@ -5,7 +5,7 @@ var hasstarted = false
 
 
 func _ready():
-	yield(G.timer(0.05),"timeout")
+	# yield(G.timer(0.05),"timeout")
 	get_parent().get_node("Particles").color = get_parent().self_modulate
 
 func _on_Area2D_body_entered(body):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://White_Circle.png" type="Texture" id=1]
+[ext_resource path="res://knapognap.png" type="Texture" id=1]
 [ext_resource path="res://Powerup.gd" type="Script" id=2]
 [ext_resource path="res://Color.gd" type="Script" id=3]
 
@@ -13,9 +13,8 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0, 1, 0.505882, 1 )
-position = Vector2( 61, -19 )
-scale = Vector2( 0.007, 0.007 )
+position = Vector2( 365, -113 )
+scale = Vector2( 0.042, 0.042 )
 texture = ExtResource( 1 )
 offset = Vector2( -8714.29, 2714.29 )
 script = ExtResource( 3 )

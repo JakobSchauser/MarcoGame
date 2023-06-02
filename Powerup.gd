@@ -3,7 +3,7 @@ extends Area2D
 # Slalom
 # Destroy all snake bodies
 
-var types = ["Lives","Slow others","Reversed controls","Boost","Stun"]
+onready var types = ["Lives","Slow others","Reversed controls","Boost","Stun"]
 onready var type = types[randi() % types.size()]
 
 # Called when the node enters the scene tree for the first time.
@@ -13,9 +13,9 @@ func _ready():
 	# create a timer and connect it to the timeout signal
 	# when the timer times out, queue_free this instance 
 	var timer = Timer.new()
+	add_child(timer)
 	timer.connect("timeout", self, "queue_free")
 	timer.start(10)
-	add_child(timer)
 	
 
 

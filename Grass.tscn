@@ -1,3 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Grass.gd" type="Script" id=1]
 
 [node name="Grass" type="StaticBody2D" groups=["Grass"]]
+script = ExtResource( 1 )

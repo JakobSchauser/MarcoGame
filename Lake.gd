@@ -8,7 +8,8 @@ extends Sprite
 var is_played = false
 
 onready var lake_name = get_parent().name
-export(PackedScene) var level
+# export(PackedScene) var level
+onready var level = load("res://levels/" +lake_name+ ".tscn")
 
 onready var video = get_tree().get_nodes_in_group("video")[0]
 
@@ -16,8 +17,9 @@ onready var video = get_tree().get_nodes_in_group("video")[0]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("lake name: " + lake_name)
-	if lake_name in G.levels_played or lake_name in G.levels_locked:
-	# if "res://"+level+".tscn" in G.levels_played:
+
+	# there is missing a parenthesis here
+	if (G.GAMEMODE == "story") and (lake_name in G.levels_played or lake_name in G.levels_locked):
 		modulate.a = 0.4
 		is_played = true
 
@@ -33,10 +35,22 @@ func _physics_process(delta):
 		#get_parent().start_level(level + ".tscn")
 		G.current_level_position = global_position
 
+		# ugly hack to put video on top
+		# var p = video.get_parent()
+		# p.remove_child(video)
+		# p.add_child(video)
 
+		# print("b4 video.play()")
 		video.show()
 		video.play()
+		# print("video.play()")
 
+		# loop over all players
+		for player in get_tree().get_nodes_in_group("Player"):
+			# player.get_parent().remove_child(player)
+			# move player to (0,0)
+			player.global_position = Vector2(-9999,-999990)
+			player.remove_tail_quick()
 		# wait for video to finish
 
 		G.levels_played.append(lake_name)
@@ -44,7 +58,7 @@ func _physics_process(delta):
 		
 		
 func change_scene_to_level():
-	video.queue_free()
+	# video.queue_free()
 	get_tree().change_scene_to(level)
 
 

@@ -9,8 +9,7 @@ var winner = null
 var leader_board = []
 
 var levels_played = []
-# var levels_locked = ["LakeEyre", "LakeBaikal", "LakeLadoga", "LakeSuperior", "LakeTanga", "LakeTiticaca"]
-var levels_locked = []
+var levels_locked = ["LakeEyre", "LakeBaikal", "LakeLadoga", "LakeSuperior", "LakeTanganyika", "LakeTiticaca"]
 
 
 var red = Color("FF004D")
