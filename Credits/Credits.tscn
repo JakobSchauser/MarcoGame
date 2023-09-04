@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Credits/CreditsHelicopter.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="Credits" type="Node2D"]
+
+[node name="CreditsHelicopter" type="Sprite" parent="."]
+position = Vector2( 616, 168 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="CreditsHelicopter"]
+current = true
+zoom = Vector2( 0.8, 0.8 )
+limit_smoothed = true
+
+[node name="labels" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="labels"]
+margin_left = 321.0
+margin_top = 231.0
+margin_right = 534.0
+margin_bottom = 286.0
+text = "Credits"
+
+[node name="Label2" type="Label" parent="labels"]
+margin_left = 315.0
+margin_top = 405.0
+margin_right = 759.0
+margin_bottom = 518.0
+text = "Programming and art by"
+
+[node name="Label3" type="Label" parent="labels"]
+margin_left = 252.0
+margin_top = 612.0
+margin_right = 556.0
+margin_bottom = 725.0
+text = "Jakob Schauser"
+
+[node name="Label5" type="Label" parent="labels"]
+margin_left = 491.0
+margin_top = 770.0
+margin_right = 795.0
+margin_bottom = 883.0
+text = "and"
+
+[node name="Label4" type="Label" parent="labels"]
+margin_left = 672.0
+margin_top = 935.0
+margin_right = 976.0
+margin_bottom = 1048.0
+text = "Daniel Grunkin"
+
+[node name="Label6" type="Label" parent="labels"]
+margin_left = 412.0
+margin_top = 1143.0
+margin_right = 716.0
+margin_bottom = 1256.0
+text = "Story by"
+
+[node name="Label7" type="Label" parent="labels"]
+margin_left = 567.0
+margin_top = 1325.0
+margin_right = 871.0
+margin_bottom = 1438.0
+text = "Claes Lindhart"
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 573, 95, 454, 680, 535, 1118, 514, 1784, 769, 2683, 457, 3666, 673, 4386 )
