@@ -13,7 +13,7 @@ var leader_board = []
 
 var levels_played = []
 var levels_locked = ["LakeEyre", "LakeBaikal", "LakeLadoga", "LakeSuperior", "LakeTanganyika", "LakeTiticaca"]
-
+var all_levels = ["LakeVostok","LakeEyre", "LakeBaikal", "LakeLadoga", "LakeSuperior", "LakeTanganyika", "LakeTiticaca"]
 
 var red = Color("FF004D")
 var pink = Color("FF77A8")
@@ -49,7 +49,7 @@ var GAMEMODE = 'story'
 var worms = [
 	{ "name": "Agnes",
 		"player_num": 0,
-	   "describe": "Royal blue business ladylike.",
+	   "describe": "Royal blue. Business ladylike. Alt sidder som det skal",
 	   "color": blue },
 	   
 	{ "name": "Marco",
@@ -87,10 +87,6 @@ func _process(dt):
 
 	if(Input.is_action_pressed("ui_cancel")):
 		get_tree().quit()
-	
-	# Called every frame. 'delta' is the elapsed time since the previous frame.
-	#func _process(delta):
-#	pass
 
 func timer(delay):
 	return get_tree().create_timer(delay)
@@ -108,3 +104,8 @@ func rand_element(l):
 
 func change_scene(name):
 	get_tree().change_scene("res://" + name + ".tscn")
+
+func get_next_target():
+	for lvl in all_levels:
+		if (!(lvl in levels_locked) and !(lvl in levels_played)):
+			return lvl

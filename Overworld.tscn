@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Camera.gd" type="Script" id=1]
 [ext_resource path="res://Lake.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://water.jpg" type="Texture" id=4]
 [ext_resource path="res://Manilla.tscn" type="PackedScene" id=5]
 [ext_resource path="res://VideoVideoVIDEO.tscn" type="PackedScene" id=6]
+[ext_resource path="res://squirrel_spritesheet.png" type="Texture" id=7]
+[ext_resource path="res://squirrel.gd" type="Script" id=8]
+[ext_resource path="res://videos/UnitRunStory-20230705-090129-06.ogv" type="VideoStream" id=9]
 [ext_resource path="res://world map.png" type="Texture" id=11]
 [ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
 [ext_resource path="res://patchwork.jpg" type="Texture" id=18]
@@ -17,6 +20,54 @@ shader_param/scale = 3.0
 shader_param/wave = false
 shader_param/offset = 0.0
 shader_param/overlay_texture = ExtResource( 18 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 10, 140, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 561, 140, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1112, 140, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 10, 460, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 561, 460, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 1112, 460, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 10, 780, 551, 320 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 561, 780, 551, 320 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource( 3 )
@@ -266,6 +317,7 @@ position = Vector2( 60, 128 )
 position = Vector2( 123, 120 )
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
+stream = ExtResource( 9 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 position = Vector2( 550, 298 )
@@ -273,6 +325,15 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
 max_zoom = 0.25
+
+[node name="squirrel" type="AnimatedSprite" parent="."]
+position = Vector2( 2, -4 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 10 )
+frame = 3
+speed_scale = 4.0
+playing = true
+script = ExtResource( 8 )
 
 [editable path="LakeVostok"]
 [editable path="LakeVostok/VostokManilla7"]

@@ -56,6 +56,7 @@ func _physics_process(delta):
 
 	if is_played and not G.GAMEMODE == "free":
 		return
+		
 	if $Area2D.get_overlapping_bodies().size() == len(get_tree().get_nodes_in_group("Player")):
 		if G.GAMEMODE == "free":
 			change_scene_to_level()
