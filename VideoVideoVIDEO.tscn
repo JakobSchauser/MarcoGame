@@ -28,6 +28,7 @@ grow_vertical = 2
 expand = false
 
 [node name="SkipLabel" type="Label" parent="Control"]
+visible = false
 margin_left = 719.0
 margin_top = 659.0
 margin_right = 1201.0

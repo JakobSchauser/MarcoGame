@@ -15,7 +15,7 @@ func _ready():
 		if G.current_level_position == null:
 			p.global_position = $StartPositions.get_child(i).global_position
 			
-
+		p.should_not_blink = true
 		
 		add_child(p)
 		$Camera2D.add_target(p)

@@ -12,6 +12,7 @@ func _ready():
 func play():
 	$Control/VIDEO/VideoPlayer.play()
 	$Control/VIDEO/VideoPlayer.show()
+	$Control/VIDEO/Skip.show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

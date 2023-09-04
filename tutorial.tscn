@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Camera.gd" type="Script" id=1]
 [ext_resource path="res://tutorial.gd" type="Script" id=2]
@@ -8,12 +8,65 @@
 [ext_resource path="res://collision_shape.gd" type="Script" id=6]
 [ext_resource path="res://VideoVideoVIDEO.tscn" type="PackedScene" id=7]
 [ext_resource path="res://videos/UnitRunStory-20230705-090129-01.ogv" type="VideoStream" id=8]
+[ext_resource path="res://powerup_shape.gd" type="Script" id=9]
+[ext_resource path="res://apple.png" type="Texture" id=10]
+[ext_resource path="res://puddle.webp" type="Texture" id=11]
+[ext_resource path="res://story_shape.gd" type="Script" id=12]
+[ext_resource path="res://arrow.png" type="Texture" id=13]
+[ext_resource path="res://plane.jpg" type="Texture" id=14]
+[ext_resource path="res://videos/UnitRunStory-20230705-090129-03.ogv" type="VideoStream" id=15]
+[ext_resource path="res://story_shape2.gd" type="Script" id=16]
+[ext_resource path="res://videos/UnitRunStory-20230705-090129-05.ogv" type="VideoStream" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 815.5, 231.5 )
+extents = Vector2( 228.688, 231.5 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Plane" type="Sprite" parent="."]
+position = Vector2( 1422, 237 )
+rotation = 0.57849
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="Plane2" type="Sprite" parent="."]
+position = Vector2( 1747, 887 )
+rotation = 0.57849
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 14 )
+
+[node name="Arrow" type="Sprite" parent="."]
+position = Vector2( 1434, 386 )
+rotation = 4.46448
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 13 )
+
+[node name="Arrow2" type="Sprite" parent="."]
+position = Vector2( 3077, -224 )
+rotation = 4.68443
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 13 )
+
+[node name="Apple" type="Sprite" parent="."]
+position = Vector2( 1120, 604 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Apple2" type="Sprite" parent="."]
+position = Vector2( 1043, 458 )
+scale = Vector2( 0.322, 0.2505 )
+texture = ExtResource( 10 )
+
+[node name="Apple3" type="Sprite" parent="."]
+position = Vector2( 643, 252 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
+
+[node name="Apple4" type="Sprite" parent="."]
+position = Vector2( 427, 106 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 10 )
 
 [node name="StartPositions" type="Node2D" parent="."]
 position = Vector2( 26, 310 )
@@ -48,6 +101,7 @@ margin_top = 41.0
 margin_right = 702.0
 margin_bottom = 96.0
 rect_scale = Vector2( 0.4, 0.4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press left-arrow to turn left"
 
 [node name="Label2" type="Label" parent="labels"]
@@ -67,10 +121,10 @@ rect_scale = Vector2( 0.4, 0.4 )
 text = "Press Z to turn left"
 
 [node name="Label4" type="Label" parent="labels"]
-margin_left = 1016.0
-margin_top = 516.0
-margin_right = 1587.0
-margin_bottom = 571.0
+margin_left = 978.0
+margin_top = 514.0
+margin_right = 1549.0
+margin_bottom = 569.0
 rect_scale = Vector2( 0.4, 0.4 )
 text = "Press L to turn left"
 
@@ -98,12 +152,25 @@ scale = Vector2( 5, 1 )
 position = Vector2( 657, 464 )
 
 [node name="Boot5" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1080, 193 )
-rotation = -2.83854
+position = Vector2( 796, 1419 )
+rotation = -0.0195252
 
 [node name="Boot6" parent="." instance=ExtResource( 3 )]
 position = Vector2( 2258, -53 )
 rotation = 0.09994
+
+[node name="Boot8" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2828, -555 )
+rotation = 1.54193
+
+[node name="Boot9" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2613, 260 )
+rotation = 3.7492
+
+[node name="Puddle" type="Sprite" parent="."]
+position = Vector2( 2554, 75 )
+scale = Vector2( 1.47288, 3.125 )
+texture = ExtResource( 11 )
 
 [node name="Label5" type="Label" parent="."]
 margin_left = 1328.0
@@ -113,6 +180,33 @@ margin_bottom = 71.0
 rect_scale = Vector2( 0.7, 0.7 )
 text = "Do not run into 
    the tails"
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 1762.0
+margin_top = -1007.0
+margin_right = 2371.0
+margin_bottom = -894.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "Remember to use the powerups that you
+ and your friends spawn!"
+
+[node name="Label7" type="Label" parent="."]
+margin_left = 1900.0
+margin_top = -322.0
+margin_right = 2748.0
+margin_bottom = -209.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "Now back to your apples
+ and get walkie-talkie"
+
+[node name="Label8" type="Label" parent="."]
+margin_left = 2907.0
+margin_top = -442.0
+margin_right = 3755.0
+margin_bottom = -329.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "See who can get around
+this puddle the fastest"
 
 [node name="Boot7" parent="." instance=ExtResource( 3 )]
 position = Vector2( 759, -299 )
@@ -139,20 +233,63 @@ position = Vector2( 665.263, -5.87573 )
 
 [node name="powerup_shape" type="Area2D" parent="."]
 position = Vector2( 2337, -891 )
+script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="powerup_shape"]
-position = Vector2( 214, -34 )
+position = Vector2( -151, -34 )
 shape = SubResource( 1 )
+
+[node name="story_shape" type="Area2D" parent="."]
+position = Vector2( 2548, -360 )
+script = ExtResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="story_shape"]
+position = Vector2( 14, -23 )
+shape = SubResource( 1 )
+
+[node name="Longrock6" parent="story_shape" instance=ExtResource( 5 )]
+position = Vector2( -1064, 906 )
+rotation = 1.85901
+scale = Vector2( 3, 1 )
+
+[node name="Longrock5" parent="story_shape" instance=ExtResource( 5 )]
+position = Vector2( 257, 116 )
+rotation = 1.64845
+scale = Vector2( 3, 1 )
+
+[node name="story_shape2" type="Area2D" parent="."]
+position = Vector2( 1716, 903 )
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="story_shape2"]
+position = Vector2( -16, 181 )
+shape = SubResource( 1 )
+
+[node name="Longrock6" parent="story_shape2" instance=ExtResource( 5 )]
+position = Vector2( -309, 302 )
+rotation = 3.39871
+scale = Vector2( 6.97454, 1.61203 )
+
+[node name="Longrock5" parent="story_shape2" instance=ExtResource( 5 )]
+position = Vector2( 257, 116 )
+rotation = 1.64845
+scale = Vector2( 3, 1 )
 
 [node name="collision_shape" type="Area2D" parent="."]
 position = Vector2( 2337, -891 )
 script = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collision_shape"]
-position = Vector2( -475, 664 )
+position = Vector2( -810, 683 )
 shape = SubResource( 1 )
 
 [node name="videoVideo" parent="." instance=ExtResource( 7 )]
 stream = ExtResource( 8 )
+
+[node name="videoVideo2" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 15 )
+
+[node name="videoVideo3" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 17 )
 
 [connection signal="body_entered" from="collision_shape" to="collision_shape" method="_on_collision_shape_body_entered"]

@@ -21,6 +21,7 @@ var desired_angle = 0
 var desired_speed = 0
 var laps = 0
 var overworld = false
+var should_not_blink = false
 
 var speed_multiplier = 1
 
@@ -116,10 +117,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 func blink():
-	if not invinsible:
+	if not invinsible or should_not_blink:
 		show()
 		return
-	
 	
 	visible = !visible
 
