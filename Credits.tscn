@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Credits" type="Node2D"]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 583, 65, 412, 375, 565, 653, 469, 792, 560, 1365, 338, 1658, 570, 2081, 409, 2995, 1397, 3785, 1209, 5051 )
+width = 30.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Face.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Marco.gd" type="Script" id=2]
 [ext_resource path="res://Powerup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art/IMG_20230904_172821_HDR.jpg" type="Texture" id=4]
 [ext_resource path="res://pickup_marco.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -13,6 +14,7 @@ script = ExtResource( 2 )
 powerup_scene = ExtResource( 3 )
 
 [node name="Face" parent="." instance=ExtResource( 1 )]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1 )
@@ -58,3 +60,9 @@ autostart = true
 
 [node name="CollisionChecker" type="Position2D" parent="."]
 position = Vector2( 0, -5 )
+
+[node name="Img20230904172821Hdr" type="Sprite" parent="."]
+position = Vector2( 2.38419e-07, -1 )
+rotation = -1.00473
+scale = Vector2( 0.0441667, 0.0475 )
+texture = ExtResource( 4 )

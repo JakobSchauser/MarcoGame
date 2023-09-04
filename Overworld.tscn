@@ -1,30 +1,76 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Camera.gd" type="Script" id=1]
 [ext_resource path="res://Lake.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Overworld.gd" type="Script" id=3]
-[ext_resource path="res://water.jpg" type="Texture" id=4]
+[ext_resource path="res://ocean.jpeg" type="Texture" id=4]
 [ext_resource path="res://Manilla.tscn" type="PackedScene" id=5]
+[ext_resource path="res://grass_patch.png" type="Texture" id=6]
+[ext_resource path="res://marco_expanded_palette.png" type="Texture" id=7]
+[ext_resource path="res://Art/IMG_20230904_172129.jpg" type="Texture" id=8]
+[ext_resource path="res://Art/IMG_20230904_173632.jpg" type="Texture" id=9]
 [ext_resource path="res://world map.png" type="Texture" id=11]
 [ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
-[ext_resource path="res://patchwork.jpg" type="Texture" id=18]
 [ext_resource path="res://linen.png" type="Texture" id=20]
 [ext_resource path="res://drivesound.ogv" type="VideoStream" id=22]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 17 )
-shader_param/scale = 3.0
+shader_param/scale = 2.0
 shader_param/wave = false
 shader_param/offset = 0.0
-shader_param/overlay_texture = ExtResource( 18 )
+shader_param/overlay_texture = ExtResource( 6 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+uniform int num_colors: hint_range(2,16) = 8;
+uniform sampler2D PALETTE_TEXTURE: hint_black;
+
+vec3 palette_limiter (in vec3 albedo){
+	float estimation_cutoff = 0.001;
+	vec3 closest_color;
+	float min_dist = 2.0;
+	float n = float(num_colors);
+	
+	for (int i=0; i<num_colors; i++ ){
+		float index = 1.000/(2.000*n)+float(i)/n;
+		vec3 index_color = texture(PALETTE_TEXTURE, vec2(index,0.5)).rgb;
+		float dist = length(index_color - albedo);
+		if (dist < min_dist) {
+			min_dist = dist;
+			closest_color = index_color;
+			if (min_dist < estimation_cutoff){
+				return closest_color;
+			}
+		}
+	}
+	return closest_color;
+}
+
+void fragment() {
+	COLOR.rgb = palette_limiter(texture(SCREEN_TEXTURE,SCREEN_UV).rgb);
+	// COLOR.rgb = texture(SCREEN_TEXTURE,SCREEN_UV).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/num_colors = 16
+shader_param/PALETTE_TEXTURE = ExtResource( 7 )
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Img20230904172129" type="Sprite" parent="."]
+position = Vector2( 486, 294 )
+scale = Vector2( 0.199333, 0.199333 )
+texture = ExtResource( 8 )
+
 [node name="Water" type="Sprite" parent="."]
-position = Vector2( 540, 414 )
-scale = Vector2( 5.42154, 5.25275 )
+visible = false
+position = Vector2( 492, 320 )
 texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, -205.624, 1139.49, 727.435 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -34,16 +80,18 @@ margin_top = -163.0
 margin_right = 2077.0
 margin_bottom = 1885.0
 rect_scale = Vector2( 0.7, 0.5 )
-texture = ExtResource( 18 )
+texture = ExtResource( 4 )
 
 [node name="WorldMap2" type="Sprite" parent="."]
-modulate = Color( 0, 0.352941, 0.843137, 1 )
+visible = false
+modulate = Color( 0, 0, 0, 1 )
 material = SubResource( 1 )
 position = Vector2( 531, 301 )
 scale = Vector2( 0.14, 0.14 )
 texture = ExtResource( 11 )
 
 [node name="WorldMap" type="Sprite" parent="."]
+visible = false
 material = SubResource( 1 )
 position = Vector2( 531, 300 )
 scale = Vector2( 0.138534, 0.138534 )
@@ -267,9 +315,18 @@ position = Vector2( 123, 120 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="Control" type="Control" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 17.0
+margin_top = -6.0
+margin_right = 17.0
+margin_bottom = -6.0
 
 [node name="VIDEO" type="AspectRatioContainer" parent="CanvasLayer/Control"]
 anchor_right = 1.0
@@ -304,6 +361,27 @@ current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 1 )
 max_zoom = 0.25
+
+[node name="Img20230904173632" type="Sprite" parent="."]
+position = Vector2( 530, 107 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 2948.77, 2262.28, 507.302, 127.824 )
+
+[node name="Img20230904173633" type="Sprite" parent="."]
+position = Vector2( 439, 158 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 2948.77, 2262.28, 507.302, 127.824 )
+
+[node name="Img20230904173634" type="Sprite" parent="."]
+position = Vector2( 450, 430 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 2948.77, 2262.28, 507.302, 127.824 )
 
 [editable path="LakeVostok"]
 [editable path="LakeVostok/VostokManilla7"]
