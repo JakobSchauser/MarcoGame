@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Camera.gd" type="Script" id=1]
+[ext_resource path="res://tutorial.gd" type="Script" id=2]
+[ext_resource path="res://pik.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Smallrock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Longrock.tscn" type="PackedScene" id=5]
+[ext_resource path="res://collision_shape.gd" type="Script" id=6]
+[ext_resource path="res://VideoVideoVIDEO.tscn" type="PackedScene" id=7]
+[ext_resource path="res://videos/UnitRunStory-20230705-090129-01.ogv" type="VideoStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 815.5, 231.5 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="StartPositions" type="Node2D" parent="."]
+position = Vector2( 26, 310 )
+
+[node name="Position2D" type="Position2D" parent="StartPositions"]
+position = Vector2( 615, -47 )
+
+[node name="Position2D2" type="Position2D" parent="StartPositions"]
+position = Vector2( 880, 125 )
+
+[node name="Position2D3" type="Position2D" parent="StartPositions"]
+position = Vector2( 397, -189 )
+
+[node name="Position2D4" type="Position2D" parent="StartPositions"]
+position = Vector2( 1085, 301 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 65, 51 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+script = ExtResource( 1 )
+max_zoom = 1.11111e+10
+margin = Vector2( 100, 100 )
+
+[node name="labels" type="Node2D" parent="."]
+position = Vector2( 65, 51 )
+
+[node name="Label1" type="Label" parent="labels"]
+margin_left = 315.0
+margin_top = 41.0
+margin_right = 702.0
+margin_bottom = 96.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Press left-arrow to turn left"
+
+[node name="Label2" type="Label" parent="labels"]
+margin_left = 542.0
+margin_top = 240.0
+margin_right = 1113.0
+margin_bottom = 295.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Press A to turn left"
+
+[node name="Label3" type="Label" parent="labels"]
+margin_left = 697.0
+margin_top = 346.0
+margin_right = 1268.0
+margin_bottom = 401.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Press Z to turn left"
+
+[node name="Label4" type="Label" parent="labels"]
+margin_left = 1016.0
+margin_top = 516.0
+margin_right = 1587.0
+margin_bottom = 571.0
+rect_scale = Vector2( 0.4, 0.4 )
+text = "Press L to turn left"
+
+[node name="Longrock" parent="." instance=ExtResource( 5 )]
+position = Vector2( 731, 182 )
+rotation = -0.0261261
+scale = Vector2( 5, 1 )
+
+[node name="Longrock2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 651, 353 )
+rotation = -0.0261261
+scale = Vector2( 5, 1 )
+
+[node name="Longrock3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 681, 520 )
+rotation = -0.0261261
+scale = Vector2( 5, 1 )
+
+[node name="Longrock4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 637, 695 )
+rotation = -0.0261261
+scale = Vector2( 5, 1 )
+
+[node name="Boot3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 657, 464 )
+
+[node name="Boot5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1080, 193 )
+rotation = -2.83854
+
+[node name="Boot6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2258, -53 )
+rotation = 0.09994
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 1328.0
+margin_top = -42.0
+margin_right = 1715.0
+margin_bottom = 71.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "Do not run into 
+   the tails"
+
+[node name="Boot7" parent="." instance=ExtResource( 3 )]
+position = Vector2( 759, -299 )
+rotation = 0.09994
+offset = Vector2( 976.544, -408.705 )
+
+[node name="Smallrock3" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 985.181, -388.232 )
+
+[node name="Smallrock4" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 1028.57, -356.403 )
+
+[node name="Smallrock5" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 1073.96, -324.773 )
+
+[node name="Smallrock6" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 576.089, -73.3149 )
+
+[node name="Smallrock7" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 621.871, -37.705 )
+
+[node name="Smallrock8" parent="Boot7" instance=ExtResource( 4 )]
+position = Vector2( 665.263, -5.87573 )
+
+[node name="powerup_shape" type="Area2D" parent="."]
+position = Vector2( 2337, -891 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="powerup_shape"]
+position = Vector2( 214, -34 )
+shape = SubResource( 1 )
+
+[node name="collision_shape" type="Area2D" parent="."]
+position = Vector2( 2337, -891 )
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_shape"]
+position = Vector2( -475, 664 )
+shape = SubResource( 1 )
+
+[node name="videoVideo" parent="." instance=ExtResource( 7 )]
+stream = ExtResource( 8 )
+
+[connection signal="body_entered" from="collision_shape" to="collision_shape" method="_on_collision_shape_body_entered"]

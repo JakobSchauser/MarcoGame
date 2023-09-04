@@ -5,11 +5,11 @@
 [ext_resource path="res://Overworld.gd" type="Script" id=3]
 [ext_resource path="res://water.jpg" type="Texture" id=4]
 [ext_resource path="res://Manilla.tscn" type="PackedScene" id=5]
+[ext_resource path="res://VideoVideoVIDEO.tscn" type="PackedScene" id=6]
 [ext_resource path="res://world map.png" type="Texture" id=11]
 [ext_resource path="res://patchwork.gdshader" type="Shader" id=17]
 [ext_resource path="res://patchwork.jpg" type="Texture" id=18]
 [ext_resource path="res://linen.png" type="Texture" id=20]
-[ext_resource path="res://drivesound.ogv" type="VideoStream" id=22]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 17 )
@@ -265,38 +265,7 @@ position = Vector2( 60, 128 )
 [node name="Position2D4" type="Position2D" parent="StartPositions"]
 position = Vector2( 123, 120 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VIDEO" type="AspectRatioContainer" parent="CanvasLayer/Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_scale = Vector2( 0.9, 0.9 )
-ratio = 2.0
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="VideoPlayer" type="VideoPlayer" parent="CanvasLayer/Control/VIDEO" groups=["video"]]
-visible = false
-margin_left = -448.0
-margin_top = -244.0
-margin_right = 1472.0
-margin_bottom = 844.0
-grow_horizontal = 2
-grow_vertical = 2
-stream = ExtResource( 22 )
-expand = false
-
-[node name="SkipLabel" type="Label" parent="CanvasLayer/Control"]
-margin_left = 719.0
-margin_top = 659.0
-margin_right = 1201.0
-margin_bottom = 714.0
-text = "PRESS ENTER TO SKIP"
+[node name="CanvasLayer" parent="." instance=ExtResource( 6 )]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["Camera"]]
 position = Vector2( 550, 298 )

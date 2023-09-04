@@ -21,10 +21,10 @@ align = 1
 autowrap = true
 
 [node name="Free" type="Button" parent="."]
-margin_left = 491.0
-margin_top = 656.0
-margin_right = 1171.0
-margin_bottom = 717.0
+margin_left = 495.0
+margin_top = 805.0
+margin_right = 1175.0
+margin_bottom = 866.0
 text = "Free Play"
 
 [node name="Story" type="Button" parent="."]
@@ -33,6 +33,13 @@ margin_top = 734.0
 margin_right = 1173.0
 margin_bottom = 795.0
 text = "Story Mode"
+
+[node name="Tutorial" type="Button" parent="."]
+margin_left = 492.0
+margin_top = 661.0
+margin_right = 1172.0
+margin_bottom = 722.0
+text = "Tutorial"
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 1211.0
@@ -44,3 +51,4 @@ text = " Daniel, Jakob and Claes"
 
 [connection signal="button_down" from="Free" to="." method="_on_MenuButton_button_down"]
 [connection signal="button_down" from="Story" to="." method="_on_MenuButton_button_down"]
+[connection signal="button_down" from="Tutorial" to="." method="_on_MenuButton_button_down"]

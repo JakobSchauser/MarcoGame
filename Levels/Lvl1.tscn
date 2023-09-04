@@ -173,7 +173,7 @@ volume_db = -15.0
 autoplay = true
 
 [node name="Lever" parent="." instance=ExtResource( 15 )]
-position = Vector2( 230, 677 )
+position = Vector2( 230, 670 )
 rotation = -1.21905
 
 [node name="Bush" parent="." instance=ExtResource( 13 )]

@@ -73,7 +73,7 @@ var worms = [
 
 
 func set_game_state(state):
-	assert (state in ["character_select", "current_state", "game", "overworld", "pause"])
+	assert (state in ["character_select", "current_state", "game", "overworld", "pause", "tutorial"])
 	game_state = state
 
 var players_data = [worms[0], worms[1]]

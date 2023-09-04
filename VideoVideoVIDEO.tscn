@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://videocontroller.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VIDEO" type="AspectRatioContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.9, 0.9 )
+ratio = 2.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="Control/VIDEO" groups=["video"]]
+visible = false
+margin_top = 44.0
+margin_right = 1024.0
+margin_bottom = 556.0
+grow_horizontal = 2
+grow_vertical = 2
+expand = false
+
+[node name="SkipLabel" type="Label" parent="Control"]
+margin_left = 719.0
+margin_top = 659.0
+margin_right = 1201.0
+margin_bottom = 714.0
+text = "PRESS ENTER TO SKIP"
+
+[connection signal="finished" from="Control/VIDEO/VideoPlayer" to="." method="_on_VideoPlayer_finished"]

@@ -109,6 +109,9 @@ func _ready():
 
 	# connect timer to remove_tail
 	$Timer.connect("timeout",self,"remove_tail")
+	
+	if G.game_state == "tutorial":
+		invinsible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
